@@ -5,69 +5,41 @@ Build and continuously enhance a multi-page tech consultancy website for "ACE in
 
 ## Brand Guidelines
 - **Name**: ACE inovations (strictly ONE "n", lowercase "i" in inovations)
-- **Logo**: Bold "ACE" in Electric Blue (#0066FF), lighter-weight lowercase "i" for "inovations" in Slate Grey
-- **Palette**: Background #F9FAFB, Electric Blue (#0066FF), Deep Violet (#7C3AED), Dark Slate (#1A202C)
-- **Typography**: Inter font, extra-bold weights for headings
-- **Framework**: React (CRA + craco), Tailwind CSS, Framer Motion
+- **Logo**: LogicNodeIcon — two gradient pillars (blue→violet) forming an inverted V with a glowing white apex node
+- **Wordmark**: Space Grotesk — "ACE" weight 700, "inovations" weight 200, Dark Slate (#1A202C)
+- **Favicon**: SVG version of LogicNodeIcon
+- **Loading**: Pillars rise → node ignites → violet ripple → shatter → page reveals
+- **Palette**: #F9FAFB (bg), #2E5BFF (Deep Cobalt), #6D28D9 (Royal Violet), #1A202C (Dark Slate)
+- **Typography**: Inter (body), Space Grotesk (brand wordmark)
 
 ## Button System (3 Variants)
-1. **Header Dark** (`header-dark`): Dark Slate bg, white text, 1px blue border, violet glow on hover → Header/Footer CTAs
-2. **Violet Shift** (`violet-shift`): Deep Violet bg, white text, mechanical glass highlight, transitions to blue on hover → Labs/Stacks pages
-3. **Gradient Ghost** (`ghost-gradient`): Transparent bg, 2px gradient border (blue→violet), dark text, violet tint on hover → Home/Services secondary
-- All buttons use `rounded-xl` (12px+ radius)
+1. **Header Dark** (`header-dark`): Dark Slate bg, blue border, violet glow hover → Header/Footer CTAs
+2. **Violet Shift** (`violet-shift`): Deep Violet bg, mechanical glass, blue hover → Labs/Stacks
+3. **Gradient Ghost** (`ghost-gradient`): Transparent, gradient border, violet tint hover → Home/Services secondary
 
 ## Routes
-- `/` - Homepage (Hero, Mission, Philosophy, ACE Engine, Squads, Process, Insights, CTA)
-- `/labs` - ACE Labs (Engine Core hero, Bento grid with status pills, Philosophy)
-- `/stacks` - ACE Stacks (Engineering blog + recommended tools sidebar)
-- `/squads` - ACE Squads (High-Velocity Units model)
-- `/growth-engineering` - Growth Engineering service page
+- `/` - Homepage
+- `/labs` - ACE Labs (Engine Core hero + Bento Grid)
+- `/stacks` - ACE Stacks (Engineering blog + tools sidebar)
+- `/squads` - ACE Squads (High-Velocity Units)
+- `/growth-engineering` - Growth Engineering service
 
-## Architecture
-```
-/app/frontend/src/
-├── components/
-│   ├── ui/button.jsx             # 3-variant button system
-│   ├── EngineCore.js             # 3D glass sphere hero visual
-│   ├── ScrollSpiral.js           # SVG spiral with scroll-speed reactivity
-│   ├── KeywordMarquee.js         # CSS-animated keyword marquee
-│   ├── PhilosophySection.js      # AI philosophy section
-│   ├── Navbar.js                 # Glassmorphism sticky header
-│   ├── Footer.js                 # Global footer with CTA
-│   ├── HeroSection.js            # Homepage hero
-│   ├── ContactModal.js           # Contact modal (MOCKED)
-│   └── ...                       # Other section components
-├── pages/
-│   ├── HomePage.js               # / route
-│   ├── AceLabsPage.js            # /labs (Engine Core + Bento Grid)
-│   ├── AceStacksPage.js          # /stacks (Articles + Tools Sidebar)
-│   ├── AceSquadsPage.js          # /squads (High-Velocity Units)
-│   └── GrowthEngineeringPage.js  # /growth-engineering
-└── App.js                        # Router config
-```
+## Key Components
+- `LogicNodeIcon.js` — Reusable SVG logo (navbar size=26, footer size=20 glow=false)
+- `LoadingAnimation.js` — Full-screen loading with 5 phases (rise→ignite→ripple→shrink→done)
+- `EngineCore.js` — 3D glass sphere for Labs hero
+- `ScrollSpiral.js` — SVG spiral with scroll-speed reactivity + Labs hover pulsation
+- `KeywordMarquee.js` — CSS-animated horizontal keyword ticker
 
 ## Completed Features
-
-### Phase 1 - Initial Build
-- [x] Multi-page React app, Premium White aesthetic, all core sections
-
-### Phase 2 - Visual Architecture
-- [x] SVG Spiral Background, Keyword Marquee, Philosophy Section, ACE Squads Page, Button glow
-
-### Phase 3 - Labs Redesign + Stacks Page (Feb 7, 2026)
-- [x] ACE Labs: Engine Core hero, enhanced bento grid with status pills, spiral pulsation on hover
-- [x] ACE Stacks: Article grid (6 articles), tech stack pills, "Tools that Power ACE" sidebar, affiliate disclaimer
-- [x] ScrollSpiral: scroll-speed reactivity + hover pulsation
-
-### Phase 4 - Button System (Feb 7, 2026)
-- [x] Header Dark variant (Dark Slate #1A202C, blue border, violet glow hover)
-- [x] Violet Shift variant (Deep Violet #7B2D8E, mechanical glass, blue hover transition)
-- [x] Gradient Ghost variant (transparent, gradient border blue→violet, violet tint hover)
-- [x] All buttons rounded-xl (12px+)
-- [x] Applied across all pages: Header→dark, Labs/Stacks→violet, Home secondary→ghost
+- [x] Phase 1: Multi-page app, Premium White aesthetic, all core sections
+- [x] Phase 2: SVG Spiral, Keyword Marquee, Philosophy Section, ACE Squads Page
+- [x] Phase 3: Labs redesign (Engine Core), ACE Stacks page, ScrollSpiral enhancement
+- [x] Phase 4: 3-variant button system (header-dark, violet-shift, ghost-gradient)
+- [x] Phase 5: Logo Integration Kit (LogicNodeIcon, LoadingAnimation, favicon, Space Grotesk wordmark)
 
 ## Backlog
-- P1: Individual article pages (clicking articles)
+- P1: Individual article pages (clicking ACE Stacks articles)
 - P1: Contact page with real email integration
 - P2: About page, Case Studies page
 - P2: SEO optimization (meta, OG, sitemap)
