@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from "react";
+import { useLocation, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/Logo";
 import {
-  Menu, X, Zap, Globe, TrendingUp, Users, Map,
+  Menu, X, Globe, TrendingUp, Users, Map,
   ChevronDown, FlaskConical, BookOpen, Info
 } from "lucide-react";
 import { ContactModal } from "@/components/ContactModal";
@@ -12,28 +14,29 @@ const services = [
     icon: Globe,
     title: "Platform Engineering",
     description: "Custom SaaS & Marketplace development",
-    href: "#services",
+    href: "/#services",
     color: "primary",
   },
   {
     icon: TrendingUp,
     title: "Growth Engineering",
     description: "Technical SEO & funnel instrumentation",
-    href: "#services",
+    href: "/growth-engineering",
     color: "accent",
+    isRoute: true,
   },
   {
     icon: Users,
     title: "ACE Squads",
-    description: "On-demand engineering units",
-    href: "#services",
+    description: "Integrated expertise on-demand",
+    href: "/#squads",
     color: "primary",
   },
   {
     icon: Map,
     title: "Strategic Blueprinting",
     description: "Technical audits & product roadmaps",
-    href: "#services",
+    href: "/#services",
     color: "accent",
   },
 ];
@@ -42,8 +45,8 @@ export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
-  const megaMenuRef = useRef(null);
   const megaMenuTimeoutRef = useRef(null);
+  const location = useLocation();
 
   const handleMegaEnter = () => {
     clearTimeout(megaMenuTimeoutRef.current);
@@ -51,20 +54,45 @@ export const Navbar = () => {
   };
 
   const handleMegaLeave = () => {
-    megaMenuTimeoutRef.current = setTimeout(() => {
-      setMegaMenuOpen(false);
-    }, 200);
+    megaMenuTimeoutRef.current = setTimeout(() => setMegaMenuOpen(false), 200);
   };
 
   useEffect(() => {
     return () => clearTimeout(megaMenuTimeoutRef.current);
   }, []);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   const navItems = [
-    { label: "ACE Labs", href: "#labs", icon: FlaskConical },
-    { label: "Insights", href: "#insights", icon: BookOpen },
-    { label: "About", href: "#about", icon: Info },
+    { label: "ACE Labs", href: "/labs", isRoute: true, icon: FlaskConical },
+    { label: "Insights", href: "/#insights", icon: BookOpen },
+    { label: "About", href: "/#about", icon: Info },
   ];
+
+  const renderNavLink = (item) => {
+    if (item.isRoute) {
+      return (
+        <Link
+          key={item.label}
+          to={item.href}
+          className="px-4 py-2 text-sm font-medium text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary/60 transition-colors duration-200"
+        >
+          {item.label}
+        </Link>
+      );
+    }
+    return (
+      <a
+        key={item.label}
+        href={item.href}
+        className="px-4 py-2 text-sm font-medium text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary/60 transition-colors duration-200"
+      >
+        {item.label}
+      </a>
+    );
+  };
 
   return (
     <>
@@ -81,28 +109,17 @@ export const Navbar = () => {
       >
         <div className="section-container">
           <nav className="flex items-center justify-between h-16 lg:h-[4.25rem]">
-            {/* Logo */}
-            <a href="/" className="flex items-center gap-2.5 group">
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary">
-                <Zap className="w-4 h-4 text-primary-foreground" />
-              </div>
-              <span className="text-lg font-bold tracking-tight text-foreground">
-                ACE<span className="font-normal text-muted-foreground"> Innovations</span>
-              </span>
-            </a>
+            <Logo />
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-0.5">
-              {/* Services Mega Menu trigger */}
+              {/* Services Mega Menu */}
               <div
                 className="relative"
-                ref={megaMenuRef}
                 onMouseEnter={handleMegaEnter}
                 onMouseLeave={handleMegaLeave}
               >
-                <button
-                  className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary/60 transition-colors duration-200"
-                >
+                <button className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary/60 transition-colors duration-200">
                   Services
                   <ChevronDown
                     className="w-3.5 h-3.5 transition-transform duration-200"
@@ -110,7 +127,6 @@ export const Navbar = () => {
                   />
                 </button>
 
-                {/* Mega Menu Dropdown */}
                 <AnimatePresence>
                   {megaMenuOpen && (
                     <motion.div
@@ -131,50 +147,51 @@ export const Navbar = () => {
                     >
                       <div className="p-2">
                         <div className="grid grid-cols-2 gap-1">
-                          {services.map((service) => (
-                            <a
-                              key={service.title}
-                              href={service.href}
-                              className="flex items-start gap-3 p-3.5 rounded-lg group hover:bg-secondary/50 transition-colors duration-200"
-                              onClick={() => setMegaMenuOpen(false)}
-                            >
-                              <div
-                                className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
-                                style={{
-                                  background: service.color === "primary"
-                                    ? 'hsl(216 100% 50% / 0.08)'
-                                    : 'hsl(259 72% 58% / 0.08)',
-                                }}
+                          {services.map((service) => {
+                            const Wrapper = service.isRoute ? Link : 'a';
+                            const linkProps = service.isRoute ? { to: service.href } : { href: service.href };
+                            return (
+                              <Wrapper
+                                key={service.title}
+                                {...linkProps}
+                                className="flex items-start gap-3 p-3.5 rounded-lg group hover:bg-secondary/50 transition-colors duration-200"
+                                onClick={() => setMegaMenuOpen(false)}
                               >
-                                <service.icon
-                                  className="w-4 h-4"
+                                <div
+                                  className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
                                   style={{
-                                    color: service.color === "primary"
-                                      ? 'hsl(var(--primary))'
-                                      : 'hsl(var(--accent))',
+                                    background: service.color === "primary"
+                                      ? 'hsl(216 100% 50% / 0.08)'
+                                      : 'hsl(259 72% 58% / 0.08)',
                                   }}
-                                />
-                              </div>
-                              <div>
-                                <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
-                                  {service.title}
-                                </p>
-                                <p className="text-xs mt-0.5" style={{ color: 'hsl(var(--caption))' }}>
-                                  {service.description}
-                                </p>
-                              </div>
-                            </a>
-                          ))}
+                                >
+                                  <service.icon
+                                    className="w-4 h-4"
+                                    style={{
+                                      color: service.color === "primary"
+                                        ? 'hsl(var(--primary))'
+                                        : 'hsl(var(--accent))',
+                                    }}
+                                  />
+                                </div>
+                                <div>
+                                  <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
+                                    {service.title}
+                                  </p>
+                                  <p className="text-xs mt-0.5" style={{ color: 'hsl(var(--caption))' }}>
+                                    {service.description}
+                                  </p>
+                                </div>
+                              </Wrapper>
+                            );
+                          })}
                         </div>
                       </div>
-                      {/* Mega menu footer */}
                       <div
                         className="px-5 py-3 flex items-center justify-between"
                         style={{ borderTop: '1px solid hsl(var(--border) / 0.5)', background: 'hsl(var(--secondary) / 0.4)' }}
                       >
-                        <p className="text-xs" style={{ color: 'hsl(var(--caption))' }}>
-                          Need a custom solution?
-                        </p>
+                        <p className="text-xs" style={{ color: 'hsl(var(--caption))' }}>Need a custom solution?</p>
                         <button
                           onClick={() => { setContactOpen(true); setMegaMenuOpen(false); }}
                           className="text-xs font-medium transition-colors duration-200"
@@ -188,30 +205,17 @@ export const Navbar = () => {
                 </AnimatePresence>
               </div>
 
-              {/* Other nav items */}
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="px-4 py-2 text-sm font-medium text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary/60 transition-colors duration-200"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navItems.map(renderNavLink)}
             </div>
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
-              <Button
-                variant="premium"
-                size="default"
-                onClick={() => setContactOpen(true)}
-              >
+              <Button variant="premium" size="default" onClick={() => setContactOpen(true)}>
                 Start a Project
               </Button>
             </div>
 
-            {/* Mobile menu button */}
+            {/* Mobile toggle */}
             <button
               className="lg:hidden p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors duration-200"
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -222,7 +226,7 @@ export const Navbar = () => {
           </nav>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile Menu */}
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
@@ -234,44 +238,40 @@ export const Navbar = () => {
               style={{ background: 'hsl(var(--background) / 0.97)', backdropFilter: 'blur(16px)' }}
             >
               <div className="section-container py-4 flex flex-col gap-0.5">
-                {/* Services group */}
-                <p className="px-4 pt-2 pb-1 text-[10px] font-semibold tracking-[0.15em] uppercase" style={{ color: 'hsl(var(--caption))' }}>
-                  Services
-                </p>
-                {services.map((service) => (
-                  <a
-                    key={service.title}
-                    href={service.href}
-                    className="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary/60 transition-colors duration-200"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    <service.icon className="w-4 h-4" style={{ color: service.color === 'primary' ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }} />
-                    {service.title}
-                  </a>
-                ))}
-
+                <p className="px-4 pt-2 pb-1 text-[10px] font-semibold tracking-[0.15em] uppercase" style={{ color: 'hsl(var(--caption))' }}>Services</p>
+                {services.map((service) => {
+                  const Wrapper = service.isRoute ? Link : 'a';
+                  const linkProps = service.isRoute ? { to: service.href } : { href: service.href };
+                  return (
+                    <Wrapper
+                      key={service.title}
+                      {...linkProps}
+                      className="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary/60 transition-colors duration-200"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      <service.icon className="w-4 h-4" style={{ color: service.color === 'primary' ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }} />
+                      {service.title}
+                    </Wrapper>
+                  );
+                })}
                 <div className="my-2 border-t border-border/40" />
-
-                {/* Other links */}
-                {navItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary/60 transition-colors duration-200"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    <item.icon className="w-4 h-4" />
-                    {item.label}
-                  </a>
-                ))}
-
+                {navItems.map((item) => {
+                  const Wrapper = item.isRoute ? Link : 'a';
+                  const linkProps = item.isRoute ? { to: item.href } : { href: item.href };
+                  return (
+                    <Wrapper
+                      key={item.label}
+                      {...linkProps}
+                      className="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary/60 transition-colors duration-200"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      <item.icon className="w-4 h-4" />
+                      {item.label}
+                    </Wrapper>
+                  );
+                })}
                 <div className="pt-3 mt-2 border-t border-border/40">
-                  <Button
-                    variant="premium"
-                    size="default"
-                    className="w-full"
-                    onClick={() => { setContactOpen(true); setMobileOpen(false); }}
-                  >
+                  <Button variant="premium" size="default" className="w-full" onClick={() => { setContactOpen(true); setMobileOpen(false); }}>
                     Start a Project
                   </Button>
                 </div>
