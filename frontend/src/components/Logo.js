@@ -13,8 +13,12 @@ export const Logo = ({ size = "default" }) => {
         <Zap className={`text-primary-foreground ${isSmall ? 'w-3.5 h-3.5' : 'w-4 h-4'}`} />
       </div>
       <span className={`tracking-tight ${isSmall ? 'text-sm' : 'text-lg'}`}>
-        <span className="font-bold" style={{ color: 'hsl(var(--primary))' }}>ACE</span>
-        <span className="font-light" style={{ color: 'hsl(215 16% 47%)' }}>{' '}inovations</span>
+        <span className="font-extrabold" style={{ color: 'hsl(var(--primary))' }}>ACE</span>
+        <span className="font-light tracking-wide" style={{ color: 'hsl(215 16% 47%)' }}>
+          {' '}
+          <span style={{ color: 'hsl(var(--primary))', fontWeight: 400 }}>i</span>
+          novations
+        </span>
       </span>
     </Link>
   );
