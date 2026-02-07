@@ -20,7 +20,8 @@ Build and continuously enhance a multi-page tech consultancy website for "ACE in
 │   ├── AceSquadsSection.js       # Squads section on homepage
 │   ├── CTASection.js             # About / CTA section
 │   ├── ContactModal.js           # Contact form modal (mocked submission)
-│   ├── FluidShape.js             # Animated fluid shape in hero
+│   ├── EngineCore.js             # 3D glass sphere hero visual for Labs
+│   ├── FluidShape.js             # Animated fluid shape in homepage hero
 │   ├── Footer.js                 # Global footer with CTA band
 │   ├── HeroSection.js            # Homepage hero with keyword marquee
 │   ├── InsightsSection.js        # Blog/insights horizontal scroll
@@ -30,27 +31,29 @@ Build and continuously enhance a multi-page tech consultancy website for "ACE in
 │   ├── MouseGlow.js              # Mouse-follow purple glow
 │   ├── Navbar.js                 # Glassmorphism sticky header with mega menu
 │   ├── PhilosophySection.js      # AI philosophy section
-│   ├── ScrollSpiral.js           # SVG spiral background "gap filler"
+│   ├── ScrollSpiral.js           # SVG spiral background with scroll-speed reactivity
 │   ├── ServiceArchitecture.js    # Service architecture component
 │   ├── StickySection.js          # Scroll-based sticky section wrapper
 │   └── TransitionSection.js      # Mission statement section
 ├── pages/
 │   ├── HomePage.js               # / route
-│   ├── AceLabsPage.js            # /labs route
-│   ├── AceSquadsPage.js          # /squads route
+│   ├── AceLabsPage.js            # /labs route (Engine Core hero + Bento Grid)
+│   ├── AceSquadsPage.js          # /squads route (High-Velocity Units)
+│   ├── AceStacksPage.js          # /stacks route (Engineering Blog + Sidebar)
 │   └── GrowthEngineeringPage.js  # /growth-engineering route
 └── App.js                        # Router configuration
 ```
 
 ## Routes
 - `/` - Homepage (Hero, Mission, Philosophy, ACE Engine, Squads, Process, Insights, CTA)
-- `/labs` - ACE Labs (Bento grid with 3 products)
+- `/labs` - ACE Labs (Engine Core hero, Bento grid with 3 products, Philosophy)
+- `/stacks` - ACE Stacks (Engineering blog articles + recommended tools sidebar)
 - `/squads` - ACE Squads (High-Velocity Units model)
 - `/growth-engineering` - Growth Engineering service page
 
 ## Implemented Features (All Complete)
 
-### Phase 1 - Initial Build (Previous Session)
+### Phase 1 - Initial Build
 - [x] Multi-page React app with react-router-dom
 - [x] Clean Premium White aesthetic
 - [x] Glassmorphism sticky header with mega menu
@@ -59,7 +62,6 @@ Build and continuously enhance a multi-page tech consultancy website for "ACE in
 - [x] ACE Squads section (homepage)
 - [x] ACE Loop process section
 - [x] Insights horizontal scroll section
-- [x] ACE Labs page with Bento Grid
 - [x] Growth Engineering service page
 - [x] Global CTA footer
 - [x] Contact modal (mocked)
@@ -67,24 +69,35 @@ Build and continuously enhance a multi-page tech consultancy website for "ACE in
 - [x] Mouse-follow glow effect
 - [x] Branding: "ACE inovations" with stylized lowercase "i"
 
-### Phase 2 - Visual Architecture Enhancement (Feb 7, 2026)
+### Phase 2 - Visual Architecture Enhancement
 - [x] SVG Spiral Background "Gap Filler" - scroll-reactive thin line animation
-- [x] Updated hero sub-headline (removed extra text)
-- [x] Horizontal keyword marquee replacing metrics/social proof
-- [x] Philosophy Section on homepage ("We don't hide AI. We celebrate it.")
-- [x] NEW ACE Squads Page (/squads) - "High-Velocity Units" concept
-  - The Architect, The Engineer, The Growth Specialist roles
-  - Advantages section (ACE Engine Powered, Zero Handoff Friction, Full-Stack Ownership)
-- [x] Button glow effect on hover (btn-glow CSS class)
-- [x] Navigation updated with ACE Squads page link
-- [x] Footer links updated with /squads route
-- [x] ScrollSpiral component on all pages
+- [x] Updated hero sub-headline, keyword marquee replacing metrics
+- [x] Philosophy Section on homepage
+- [x] ACE Squads Page (/squads) - "High-Velocity Units" concept
+- [x] Button glow effect on hover
+- [x] Navigation and footer updated
+
+### Phase 3 - ACE Labs Redesign + ACE Stacks (Feb 7, 2026)
+- [x] ACE Labs page redesigned with Engine Core 3D glass sphere hero
+- [x] Bento Grid enhanced with bordered status pills (Internal Beta, In Development, R&D Phase)
+- [x] Labs card hover triggers ScrollSpiral pulsation with Electric Blue
+- [x] NEW ACE Stacks page (/stacks) - "Field Notes from the Frontline"
+  - Two-column article grid with 6 technical articles
+  - Tech stack pill visuals on each article (Next.js, Tailwind, etc.)
+  - Category meta with // prefix format
+  - Hover: shadow lift + title shifts to violet gradient
+- [x] Sidebar: "The Tools that Power ACE" with 7 verified tools
+- [x] Affiliate disclaimer footnote
+- [x] ScrollSpiral enhanced with scroll-speed reactivity (stroke expands on fast scroll)
+- [x] Navigation updated (ACE Labs, ACE Stacks, ACE Squads, About)
+- [x] Footer updated with ACE Stacks
 
 ## Backlog / Future Considerations
-- P1: Blog/Insights page (currently just teasers)
-- P1: About page (currently just a section)
+- P1: Individual article/blog post pages (clicking articles)
+- P1: Contact page with real email integration (SendGrid/Resend)
+- P2: About page (currently just a section)
 - P2: Case Studies page
-- P2: Contact page with real email integration
-- P2: SEO optimization (meta tags, OG tags)
+- P2: SEO optimization (meta tags, OG tags, sitemap)
 - P3: Dark mode toggle
 - P3: Performance optimization (lazy loading, code splitting)
+- P3: Careers page
