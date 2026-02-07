@@ -245,6 +245,9 @@ frontend:
       - working: true
         agent: "testing"
         comment: "Verified responsive design on both desktop (1920x1080) and mobile (390x844) views. Mobile hamburger menu works correctly, sections stack properly on mobile, and all content is accessible."
+      - working: true
+        agent: "testing"
+        comment: "Verified responsive design for the new ACE Labs and Insights sections. On mobile (390x844), the hamburger menu correctly shows Services group (4 items with icons), ACE Labs, Insights, About, and Start a Project. The horizontal scroll on Insights section works well on mobile. All content is properly displayed and accessible on both desktop and mobile views."
 
   - task: "Scroll Navigation Implementation"
     implemented: true
