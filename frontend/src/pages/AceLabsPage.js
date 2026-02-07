@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { MouseGlow } from "@/components/MouseGlow";
+import { ScrollSpiral } from "@/components/ScrollSpiral";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ContactModal } from "@/components/ContactModal";
@@ -82,6 +83,7 @@ export default function AceLabsPage() {
 
   return (
     <div className="min-h-screen animate-bg-breathe">
+      <ScrollSpiral />
       <MouseGlow />
       <Navbar />
 
@@ -293,7 +295,7 @@ export default function AceLabsPage() {
                   initial="hidden"
                   animate={storyInView ? "visible" : "hidden"}
                 >
-                  <Button variant="premium" size="lg" onClick={() => setContactOpen(true)}>
+                  <Button variant="premium" size="lg" onClick={() => setContactOpen(true)} className="btn-glow">
                     Start a Project
                     <ArrowRight className="w-4 h-4 ml-1" />
                   </Button>
