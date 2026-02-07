@@ -1,12 +1,13 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback } from "react";
 import { Navbar } from "@/components/Navbar";
 import { MouseGlow } from "@/components/MouseGlow";
 import { ScrollSpiral } from "@/components/ScrollSpiral";
+import { EngineCore } from "@/components/EngineCore";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ContactModal } from "@/components/ContactModal";
-import { Zap, Workflow, ScanSearch, ArrowRight, Sparkles } from "lucide-react";
+import { Rocket, GitBranch, ScanSearch, ArrowRight, Sparkles } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -23,7 +24,7 @@ const fadeUp = {
 
 const labProducts = [
   {
-    icon: Zap,
+    icon: Rocket,
     status: "Internal Beta",
     title: "ACE Velocity Agent",
     mission: "Launch Faster.",
@@ -39,7 +40,7 @@ const labProducts = [
     span: "lg:col-span-2",
   },
   {
-    icon: Workflow,
+    icon: GitBranch,
     status: "In Development",
     title: "ACE Flow-Bot",
     mission: "Automate Workflows.",
@@ -80,6 +81,17 @@ export default function AceLabsPage() {
   const gridInView = useInView(gridRef, { once: true, margin: "-80px" });
   const storyInView = useInView(storyRef, { once: true, margin: "-80px" });
   const [contactOpen, setContactOpen] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  const handleCardEnter = useCallback((idx) => {
+    setHoveredCard(idx);
+    document.dispatchEvent(new CustomEvent("labs-card-hover", { detail: { active: true } }));
+  }, []);
+
+  const handleCardLeave = useCallback(() => {
+    setHoveredCard(null);
+    document.dispatchEvent(new CustomEvent("labs-card-hover", { detail: { active: false } }));
+  }, []);
 
   return (
     <div className="min-h-screen animate-bg-breathe">
@@ -88,9 +100,8 @@ export default function AceLabsPage() {
       <Navbar />
 
       <main>
-        {/* Hero */}
+        {/* Hero with Engine Core */}
         <section ref={heroRef} className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
-          {/* Aura glow */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -99,45 +110,81 @@ export default function AceLabsPage() {
           />
 
           <div className="section-container relative z-10">
-            <div className="max-w-3xl">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+              {/* Left: Content */}
+              <div>
+                <motion.div
+                  custom={0}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={heroInView ? "visible" : "hidden"}
+                  className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-medium tracking-wide uppercase mb-8"
+                  style={{
+                    background: 'hsl(259 72% 58% / 0.06)',
+                    color: 'hsl(var(--accent))',
+                    border: '1px solid hsl(259 72% 58% / 0.12)',
+                  }}
+                  data-testid="labs-hero-badge"
+                >
+                  <Sparkles className="w-3 h-3" />
+                  Internal R&amp;D
+                </motion.div>
+
+                <motion.h1
+                  custom={1}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={heroInView ? "visible" : "hidden"}
+                  className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tighter text-foreground"
+                  data-testid="labs-hero-heading"
+                >
+                  ACE Labs:{" "}
+                  <span className="gradient-text">Internal R&amp;D</span>.
+                </motion.h1>
+
+                <motion.p
+                  custom={2}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={heroInView ? "visible" : "hidden"}
+                  className="mt-6 text-base md:text-lg leading-relaxed max-w-xl"
+                  style={{ color: 'hsl(var(--body))' }}
+                >
+                  Where we build the agents, frameworks, and tools that power our
+                  engineering squads. These are the proprietary systems behind our speed.
+                </motion.p>
+
+                <motion.div
+                  custom={3}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={heroInView ? "visible" : "hidden"}
+                  className="mt-10"
+                >
+                  <Button
+                    variant="premium"
+                    size="lg"
+                    onClick={() => setContactOpen(true)}
+                    className="btn-glow"
+                    data-testid="labs-hero-cta"
+                  >
+                    Explore Our Stack
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </Button>
+                </motion.div>
+              </div>
+
+              {/* Right: Engine Core Visual */}
               <motion.div
-                custom={0}
-                variants={fadeUp}
-                initial="hidden"
-                animate={heroInView ? "visible" : "hidden"}
-                className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-medium tracking-wide uppercase mb-8"
-                style={{
-                  background: 'hsl(259 72% 58% / 0.06)',
-                  color: 'hsl(var(--accent))',
-                  border: '1px solid hsl(259 72% 58% / 0.12)',
-                }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                className="hidden lg:flex items-center justify-center"
               >
-                <Sparkles className="w-3 h-3" />
-                Internal R&amp;D
+                <div className="relative w-full aspect-square max-w-md">
+                  <EngineCore />
+                </div>
               </motion.div>
-
-              <motion.h1
-                custom={1}
-                variants={fadeUp}
-                initial="hidden"
-                animate={heroInView ? "visible" : "hidden"}
-                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tighter text-foreground"
-              >
-                ACE Labs: Engineering{" "}
-                <span className="gradient-text">the Future</span>.
-              </motion.h1>
-
-              <motion.p
-                custom={2}
-                variants={fadeUp}
-                initial="hidden"
-                animate={heroInView ? "visible" : "hidden"}
-                className="mt-6 text-base md:text-lg leading-relaxed max-w-2xl"
-                style={{ color: 'hsl(var(--body))' }}
-              >
-                Internal R&amp;D where we build the agents and tools that power our
-                engineering squads. These are the systems behind our speed.
-              </motion.p>
             </div>
           </div>
         </section>
@@ -154,6 +201,14 @@ export default function AceLabsPage() {
                   initial="hidden"
                   animate={gridInView ? "visible" : "hidden"}
                   className={`labs-card-premium rounded-2xl overflow-hidden flex flex-col ${product.span}`}
+                  onMouseEnter={() => handleCardEnter(i)}
+                  onMouseLeave={handleCardLeave}
+                  data-testid={`labs-card-${i}`}
+                  style={{
+                    boxShadow: hoveredCard === i
+                      ? 'var(--shadow-elevated), 0 0 60px hsl(216 100% 50% / 0.12)'
+                      : undefined,
+                  }}
                 >
                   <div className="p-7 lg:p-8 flex flex-col flex-1">
                     {/* Header */}
@@ -167,7 +222,7 @@ export default function AceLabsPage() {
                         }}
                       >
                         <product.icon
-                          className="w-5.5 h-5.5"
+                          className="w-5 h-5"
                           style={{
                             color: product.color === "primary"
                               ? 'hsl(var(--primary))'
@@ -176,7 +231,7 @@ export default function AceLabsPage() {
                         />
                       </div>
                       <span
-                        className="px-3 py-1 text-[10px] font-semibold tracking-wider uppercase rounded-full"
+                        className="status-pill px-3 py-1 text-[10px] font-semibold tracking-wider uppercase rounded-full"
                         style={{
                           background: product.color === "primary"
                             ? 'hsl(216 100% 50% / 0.07)'
@@ -184,7 +239,11 @@ export default function AceLabsPage() {
                           color: product.color === "primary"
                             ? 'hsl(var(--primary))'
                             : 'hsl(var(--accent))',
+                          border: `1px solid ${product.color === "primary"
+                            ? 'hsl(216 100% 50% / 0.12)'
+                            : 'hsl(259 72% 58% / 0.12)'}`,
                         }}
+                        data-testid={`labs-status-${i}`}
                       >
                         {product.status}
                       </span>
@@ -243,7 +302,6 @@ export default function AceLabsPage() {
 
           <div className="section-container relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-start">
-              {/* Left: Headline */}
               <motion.div
                 custom={0}
                 variants={fadeUp}
@@ -262,7 +320,6 @@ export default function AceLabsPage() {
                 </h2>
               </motion.div>
 
-              {/* Right: Body Copy */}
               <div className="space-y-6">
                 <motion.p
                   custom={1}
