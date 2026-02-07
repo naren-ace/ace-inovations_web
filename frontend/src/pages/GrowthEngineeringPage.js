@@ -141,7 +141,7 @@ export default function GrowthEngineeringPage() {
                 style={{ color: 'hsl(var(--body))' }}
               >
                 We don&apos;t just build it; we engineer its growth. Technical SEO,
-                funnel instrumentation, and performance systems\u2014integrated into
+                funnel instrumentation, and performance systems&mdash;integrated into
                 your product from day one, not bolted on as an afterthought.
               </motion.p>
 
