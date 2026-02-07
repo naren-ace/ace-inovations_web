@@ -212,7 +212,7 @@ export const Navbar = () => {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
-              <Button variant="premium" size="default" onClick={() => setContactOpen(true)}>
+              <Button variant="header-dark" size="default" onClick={() => setContactOpen(true)} data-testid="nav-start-project-btn">
                 Start a Project
               </Button>
             </div>
@@ -273,7 +273,7 @@ export const Navbar = () => {
                   );
                 })}
                 <div className="pt-3 mt-2 border-t border-border/40">
-                  <Button variant="premium" size="default" className="w-full" onClick={() => { setContactOpen(true); setMobileOpen(false); }}>
+                  <Button variant="header-dark" size="default" className="w-full" onClick={() => { setContactOpen(true); setMobileOpen(false); }} data-testid="nav-mobile-start-project-btn">
                     Start a Project
                   </Button>
                 </div>
