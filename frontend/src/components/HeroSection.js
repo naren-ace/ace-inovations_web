@@ -111,7 +111,7 @@ export const HeroSection = () => {
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>
                 <Button
-                  variant="outline-premium"
+                  variant="ghost-gradient"
                   size="lg"
                   onClick={scrollToEngine}
                   data-testid="hero-explore-btn"
