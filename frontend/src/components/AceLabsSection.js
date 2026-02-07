@@ -103,8 +103,8 @@ export const AceLabsSection = () => {
             className="mt-5 text-base md:text-lg leading-relaxed"
             style={{ color: 'hsl(var(--body))' }}
           >
-            Our internal R&D arm builds autonomous agents and intelligent
-            automations\u2014the same tools we use to deliver at elite velocity for our clients.
+            Our internal R&amp;D arm builds autonomous agents and intelligent
+            automations—the same tools we use to deliver at elite velocity for our clients.
           </motion.p>
         </div>
 
