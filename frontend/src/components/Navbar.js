@@ -28,9 +28,10 @@ const services = [
   {
     icon: Users,
     title: "ACE Squads",
-    description: "Integrated expertise on-demand",
-    href: "/#squads",
+    description: "High-velocity integrated units",
+    href: "/squads",
     color: "primary",
+    isRoute: true,
   },
   {
     icon: Map,
@@ -67,6 +68,7 @@ export const Navbar = () => {
 
   const navItems = [
     { label: "ACE Labs", href: "/labs", isRoute: true, icon: FlaskConical },
+    { label: "ACE Squads", href: "/squads", isRoute: true, icon: Users },
     { label: "Insights", href: "/#insights", icon: BookOpen },
     { label: "About", href: "/#about", icon: Info },
   ];
