@@ -256,7 +256,7 @@ export default function GrowthEngineeringPage() {
                 </h2>
                 <p className="mt-5 text-base leading-relaxed max-w-lg" style={{ color: 'hsl(var(--body))' }}>
                   Traditional agencies separate marketing from engineering. We don&apos;t.
-                  Growth isn&apos;t a department\u2014it&apos;s an engineering discipline. Every system
+                  Growth isn&apos;t a department&mdash;it&apos;s an engineering discipline. Every system
                   we build has growth baked into its architecture.
                 </p>
               </motion.div>
