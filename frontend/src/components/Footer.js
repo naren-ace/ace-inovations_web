@@ -24,7 +24,7 @@ const footerLinks = {
   Services: [
     { label: "Platform Engineering", href: "/#services" },
     { label: "Growth Engineering", href: "/growth-engineering", isRoute: true },
-    { label: "ACE Squads", href: "/#squads" },
+    { label: "ACE Squads", href: "/squads", isRoute: true },
     { label: "Strategic Blueprinting", href: "/#services" },
   ],
   Products: [

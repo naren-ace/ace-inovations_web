@@ -235,6 +235,20 @@
     border-color: hsl(259 72% 58% / 0.2);
     transform: translateY(-4px);
   }
+
+  /* Button glow effect on hover */
+  .btn-glow {
+    position: relative;
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 20px hsl(216 100% 50% / 0.3),
+                0 0 40px hsl(216 100% 50% / 0.15),
+                0 4px 16px hsl(216 100% 50% / 0.2);
+    transform: translateY(-1px);
+  }
 }
 
 @layer utilities {
