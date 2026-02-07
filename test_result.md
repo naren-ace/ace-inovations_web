@@ -137,6 +137,9 @@ frontend:
       - working: true
         agent: "testing"
         comment: "Verified hero section with correct headline 'Engineering the Next Generation of Digital Platforms', sub-headline, CTAs ('Start a Project' and 'Explore the ACE Engine'), trust indicators ('Trusted by 40+ teams'), and animated fluid shape on desktop view."
+      - working: true
+        agent: "testing"
+        comment: "Verified the extra-bold heading 'Engineering the Next Generation of Digital Platforms.' with gradient text on 'Next Generation'. Both CTAs ('Start a Project' and 'Explore the ACE Engine') are functioning correctly, and the floating fluid shape with morphing animation is displayed on the right side."
 
   - task: "ACE Engine Section Implementation"
     implemented: true
