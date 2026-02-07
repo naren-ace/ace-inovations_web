@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/Logo";
 import {
   Menu, X, Globe, TrendingUp, Users, Map,
-  ChevronDown, FlaskConical, BookOpen, Info
+  ChevronDown, FlaskConical, BookOpen, Info, Layers
 } from "lucide-react";
 import { ContactModal } from "@/components/ContactModal";
 
@@ -68,8 +68,8 @@ export const Navbar = () => {
 
   const navItems = [
     { label: "ACE Labs", href: "/labs", isRoute: true, icon: FlaskConical },
+    { label: "ACE Stacks", href: "/stacks", isRoute: true, icon: Layers },
     { label: "ACE Squads", href: "/squads", isRoute: true, icon: Users },
-    { label: "Insights", href: "/#insights", icon: BookOpen },
     { label: "About", href: "/#about", icon: Info },
   ];
 

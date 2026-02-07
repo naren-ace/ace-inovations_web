@@ -2,6 +2,10 @@ import { useEffect, useRef } from "react";
 
 export const ScrollSpiral = () => {
   const svgRef = useRef(null);
+  const lastScrollY = useRef(0);
+  const velocityRef = useRef(0);
+  const rafRef = useRef(null);
+  const hoverActiveRef = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -11,17 +15,77 @@ export const ScrollSpiral = () => {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = Math.min(scrollY / docHeight, 1);
 
+      // Calculate scroll velocity for reactive expansion
+      const delta = Math.abs(scrollY - lastScrollY.current);
+      velocityRef.current = Math.min(delta / 10, 3);
+      lastScrollY.current = scrollY;
+
+      const baseWidth = 0.5;
+      const velocityBoost = velocityRef.current * 0.4;
+      const hoverBoost = hoverActiveRef.current ? 0.8 : 0;
+      const strokeW = baseWidth + velocityBoost + hoverBoost;
+
       paths.forEach((path, i) => {
         const length = path.getTotalLength();
         const offset = length * (1 - progress * 1.2 + i * 0.05);
         path.style.strokeDasharray = `${length}`;
         path.style.strokeDashoffset = `${Math.max(offset, 0)}`;
+        path.style.strokeWidth = `${strokeW}`;
+        path.style.opacity = hoverActiveRef.current
+          ? (i === 0 ? '0.55' : '0.4')
+          : (i === 0 ? '0.35' : '0.25');
       });
     };
 
+    // Decay velocity over time for smooth falloff
+    const tick = () => {
+      if (velocityRef.current > 0.01) {
+        velocityRef.current *= 0.92;
+        if (svgRef.current) {
+          const paths = svgRef.current.querySelectorAll(".spiral-path");
+          const baseWidth = 0.5;
+          const velocityBoost = velocityRef.current * 0.4;
+          const hoverBoost = hoverActiveRef.current ? 0.8 : 0;
+          paths.forEach((path) => {
+            path.style.strokeWidth = `${baseWidth + velocityBoost + hoverBoost}`;
+          });
+        }
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    const handleLabsHover = (e) => {
+      hoverActiveRef.current = e.detail.active;
+      if (svgRef.current) {
+        const paths = svgRef.current.querySelectorAll(".spiral-path");
+        paths.forEach((path, i) => {
+          path.style.transition = 'opacity 0.4s ease, stroke-width 0.4s ease';
+          path.style.opacity = e.detail.active
+            ? (i === 0 ? '0.55' : '0.4')
+            : (i === 0 ? '0.35' : '0.25');
+          path.style.strokeWidth = e.detail.active ? '1.2' : '0.5';
+          // Change stroke to blue on hover
+          if (e.detail.active) {
+            path.style.stroke = i === 0
+              ? 'hsl(216, 100%, 50%)'
+              : 'hsl(216, 100%, 60%)';
+          } else {
+            path.style.stroke = '';
+          }
+        });
+      }
+    };
+
     handleScroll();
+    rafRef.current = requestAnimationFrame(tick);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    document.addEventListener("labs-card-hover", handleLabsHover);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("labs-card-hover", handleLabsHover);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   return (
@@ -29,6 +93,7 @@ export const ScrollSpiral = () => {
       className="fixed inset-0 pointer-events-none"
       style={{ zIndex: 0 }}
       aria-hidden="true"
+      data-testid="scroll-spiral"
     >
       <svg
         ref={svgRef}
@@ -45,6 +110,7 @@ export const ScrollSpiral = () => {
           strokeWidth="0.5"
           strokeLinecap="round"
           opacity="0.35"
+          style={{ transition: 'opacity 0.3s ease' }}
         />
         <path
           className="spiral-path"
@@ -53,6 +119,7 @@ export const ScrollSpiral = () => {
           strokeWidth="0.5"
           strokeLinecap="round"
           opacity="0.25"
+          style={{ transition: 'opacity 0.3s ease' }}
         />
         <defs>
           <linearGradient id="spiralGradient1" x1="0%" y1="0%" x2="100%" y2="100%">

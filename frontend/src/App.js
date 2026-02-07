@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "@/pages/HomePage";
 import AceLabsPage from "@/pages/AceLabsPage";
 import AceSquadsPage from "@/pages/AceSquadsPage";
+import AceStacksPage from "@/pages/AceStacksPage";
 import GrowthEngineeringPage from "@/pages/GrowthEngineeringPage";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/labs" element={<AceLabsPage />} />
         <Route path="/squads" element={<AceSquadsPage />} />
+        <Route path="/stacks" element={<AceStacksPage />} />
         <Route path="/growth-engineering" element={<GrowthEngineeringPage />} />
       </Routes>
     </BrowserRouter>
