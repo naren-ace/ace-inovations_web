@@ -119,6 +119,9 @@ frontend:
       - working: true
         agent: "testing"
         comment: "Verified navbar with logo, navigation links (Services, Process, Engine, About), and Start a Project button. The navbar has the blur backdrop as expected. All links are working and correctly navigate to their respective sections."
+      - working: true
+        agent: "testing"
+        comment: "Verified the sticky glassmorphism header with blur backdrop and the new Services mega-menu dropdown with 4 service items (Platform Engineering, Growth Engineering, ACE Squads, Strategic Blueprinting) in a 2-column grid. The mega-menu includes a footer with 'Need a custom solution?' and 'Talk to us →' link. Updated navigation items (Services with chevron, ACE Labs, Insights, About) are all present and working correctly. The 'Start a Project' CTA button correctly opens the contact modal dialog."
 
   - task: "Hero Section Implementation"
     implemented: true
