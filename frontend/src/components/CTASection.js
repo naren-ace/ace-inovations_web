@@ -82,6 +82,8 @@ export const CTASection = () => {
                 variant="premium"
                 size="xl"
                 onClick={() => setContactOpen(true)}
+                className="btn-glow"
+                data-testid="about-cta-btn"
               >
                 Start a Project
                 <ArrowRight className="w-4 h-4 ml-1" />
