@@ -3,13 +3,23 @@ import { Separator } from "@/components/ui/separator";
 
 const footerLinks = {
   Services: [
-    "Platform Engineering",
-    "Growth Engineering",
-    "ACE Squads",
-    "Strategic Blueprinting",
+    { label: "Platform Engineering", href: "#services" },
+    { label: "Growth Engineering", href: "#services" },
+    { label: "ACE Squads", href: "#services" },
+    { label: "Strategic Blueprinting", href: "#services" },
   ],
-  Company: ["About", "Careers", "Blog", "Contact"],
-  Resources: ["Documentation", "Case Studies", "Changelog", "Status"],
+  Products: [
+    { label: "ACE Labs", href: "#labs" },
+    { label: "Market Analyst", href: "#labs" },
+    { label: "LeadGen Agent", href: "#labs" },
+    { label: "DevOps Sentinel", href: "#labs" },
+  ],
+  Company: [
+    { label: "About", href: "#about" },
+    { label: "Insights", href: "#insights" },
+    { label: "Careers", href: "#" },
+    { label: "Contact", href: "#about" },
+  ],
 };
 
 export const Footer = () => {
@@ -23,7 +33,7 @@ export const Footer = () => {
               <div className="flex items-center justify-center w-7 h-7 rounded-md bg-primary">
                 <Zap className="w-3.5 h-3.5 text-primary-foreground" />
               </div>
-              <span className="text-sm font-semibold tracking-tight text-foreground">
+              <span className="text-sm font-bold tracking-tight text-foreground">
                 ACE<span className="font-normal text-muted-foreground"> Innovations</span>
               </span>
             </a>
@@ -41,13 +51,13 @@ export const Footer = () => {
               </h4>
               <ul className="space-y-2.5">
                 {links.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="text-sm hover:text-foreground transition-colors duration-200"
                       style={{ color: 'hsl(var(--caption))' }}
                     >
-                      {link}
+                      {link.label}
                     </a>
                   </li>
                 ))}
