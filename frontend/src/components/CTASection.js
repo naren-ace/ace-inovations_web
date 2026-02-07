@@ -45,7 +45,7 @@ export const CTASection = () => {
               variants={fadeUp}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground leading-tight"
+              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tighter text-foreground leading-tight"
             >
               Ready to build{" "}
               <span className="gradient-text">something exceptional</span>?
