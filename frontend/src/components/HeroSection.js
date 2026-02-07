@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { FluidShape } from "@/components/FluidShape";
+import { KeywordMarquee } from "@/components/KeywordMarquee";
 import { ContactModal } from "@/components/ContactModal";
 import { useState } from "react";
 import { ArrowRight, ChevronRight } from "lucide-react";
@@ -56,6 +57,7 @@ export const HeroSection = () => {
                     color: 'hsl(var(--primary))',
                     border: '1px solid hsl(216 100% 50% / 0.12)',
                   }}
+                  data-testid="hero-badge"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                   AI-Augmented Engineering Studio
@@ -69,6 +71,7 @@ export const HeroSection = () => {
                 initial="hidden"
                 animate="visible"
                 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tighter text-foreground"
+                data-testid="hero-headline"
               >
                 Engineering the{" "}
                 <span className="gradient-text">Next Generation</span>{" "}
@@ -83,10 +86,10 @@ export const HeroSection = () => {
                 animate="visible"
                 className="mt-6 text-base md:text-lg leading-relaxed max-w-xl"
                 style={{ color: 'hsl(var(--body))' }}
+                data-testid="hero-subheadline"
               >
                 A modern engineering and growth studio. We integrate world-class
-                software development with agentic AI workflows to deliver
-                end-to-end digital solutions.
+                software development with agentic AI workflows.
               </motion.p>
 
               {/* CTAs */}
@@ -101,6 +104,8 @@ export const HeroSection = () => {
                   variant="premium"
                   size="lg"
                   onClick={() => setContactOpen(true)}
+                  className="btn-glow"
+                  data-testid="hero-start-project-btn"
                 >
                   Start a Project
                   <ArrowRight className="w-4 h-4 ml-1" />
@@ -109,39 +114,22 @@ export const HeroSection = () => {
                   variant="outline-premium"
                   size="lg"
                   onClick={scrollToEngine}
+                  data-testid="hero-explore-btn"
                 >
                   Explore the ACE Engine
                   <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </motion.div>
 
-              {/* Social proof */}
+              {/* Keyword Marquee replacing social proof */}
               <motion.div
                 custom={4}
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
-                className="mt-14 flex items-center gap-6"
+                className="mt-14"
               >
-                <div className="flex -space-x-2">
-                  {["#4F46E5", "#0EA5E9", "#8B5CF6", "#06B6D4"].map((color, i) => (
-                    <div
-                      key={i}
-                      className="w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-medium"
-                      style={{
-                        background: color + '18',
-                        borderColor: 'hsl(var(--background))',
-                        color: color,
-                      }}
-                    >
-                      {["A", "M", "K", "R"][i]}
-                    </div>
-                  ))}
-                </div>
-                <div className="text-xs">
-                  <p className="font-medium text-foreground">Trusted by 40+ teams</p>
-                  <p style={{ color: 'hsl(var(--caption))' }}>from seed to enterprise</p>
-                </div>
+                <KeywordMarquee />
               </motion.div>
             </div>
 

@@ -1,7 +1,9 @@
 import { Navbar } from "@/components/Navbar";
 import { MouseGlow } from "@/components/MouseGlow";
+import { ScrollSpiral } from "@/components/ScrollSpiral";
 import { HeroSection } from "@/components/HeroSection";
 import { TransitionSection } from "@/components/TransitionSection";
+import { PhilosophySection } from "@/components/PhilosophySection";
 import { AceEngineSection } from "@/components/AceEngineSection";
 import { AceSquadsSection } from "@/components/AceSquadsSection";
 import { AceLoop } from "@/components/AceLoop";
@@ -13,6 +15,7 @@ import { StickySection } from "@/components/StickySection";
 export default function HomePage() {
   return (
     <div className="min-h-screen animate-bg-breathe">
+      <ScrollSpiral />
       <MouseGlow />
       <Navbar />
 
@@ -20,6 +23,8 @@ export default function HomePage() {
         <HeroSection />
 
         <TransitionSection />
+
+        <PhilosophySection />
 
         <StickySection zIndex={10}>
           <AceEngineSection />
