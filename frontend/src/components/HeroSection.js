@@ -68,7 +68,7 @@ export const HeroSection = () => {
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
-                className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight text-foreground"
+                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tighter text-foreground"
               >
                 Engineering the{" "}
                 <span className="gradient-text">Next Generation</span>{" "}
