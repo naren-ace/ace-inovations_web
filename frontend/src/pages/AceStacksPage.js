@@ -401,7 +401,7 @@ export default function AceStacksPage() {
                     {/* CTA */}
                     <div className="px-6 py-4" style={{ borderTop: '1px solid hsl(var(--border) / 0.5)' }}>
                       <Button
-                        variant="premium"
+                        variant="violet-shift"
                         size="default"
                         className="w-full btn-glow"
                         onClick={() => setContactOpen(true)}

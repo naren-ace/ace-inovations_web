@@ -162,7 +162,7 @@ export default function AceLabsPage() {
                   className="mt-10"
                 >
                   <Button
-                    variant="premium"
+                    variant="violet-shift"
                     size="lg"
                     onClick={() => setContactOpen(true)}
                     className="btn-glow"
@@ -352,7 +352,7 @@ export default function AceLabsPage() {
                   initial="hidden"
                   animate={storyInView ? "visible" : "hidden"}
                 >
-                  <Button variant="premium" size="lg" onClick={() => setContactOpen(true)} className="btn-glow">
+                  <Button variant="violet-shift" size="lg" onClick={() => setContactOpen(true)} className="btn-glow">
                     Start a Project
                     <ArrowRight className="w-4 h-4 ml-1" />
                   </Button>

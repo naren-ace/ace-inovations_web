@@ -154,7 +154,7 @@ export default function GrowthEngineeringPage() {
                 animate={heroInView ? "visible" : "hidden"}
                 className="mt-10"
               >
-                <Button variant="premium" size="lg" onClick={() => setContactOpen(true)} className="btn-glow">
+                <Button variant="ghost-gradient" size="lg" onClick={() => setContactOpen(true)}>
                   Start a Growth Project
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>
