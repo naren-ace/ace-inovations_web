@@ -91,7 +91,7 @@ export const Footer = () => {
             animate={ctaInView ? "visible" : "hidden"}
             className="mt-10"
           >
-            <Button variant="premium" size="xl" onClick={() => setContactOpen(true)}>
+            <Button variant="premium" size="xl" onClick={() => setContactOpen(true)} className="btn-glow">
               Start a Project
               <ArrowRight className="w-4 h-4 ml-1" />
             </Button>
