@@ -249,6 +249,35 @@
                 0 4px 16px hsl(216 100% 50% / 0.2);
     transform: translateY(-1px);
   }
+
+  /* Stacks article card */
+  .stacks-article-card {
+    background: hsl(var(--card) / 0.9);
+    border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .stacks-article-card:hover {
+    box-shadow: var(--shadow-elevated), 0 8px 30px hsl(222 47% 11% / 0.06);
+    border-color: hsl(var(--border));
+    transform: translateY(-4px);
+  }
+
+  .stacks-article-card:hover .stacks-article-title {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Status pill styling */
+  .status-pill {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
 
 @layer utilities {

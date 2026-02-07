@@ -29,13 +29,13 @@ const footerLinks = {
   ],
   Products: [
     { label: "ACE Labs", href: "/labs", isRoute: true },
+    { label: "ACE Stacks", href: "/stacks", isRoute: true },
     { label: "Velocity Agent", href: "/labs", isRoute: true },
     { label: "Flow-Bot", href: "/labs", isRoute: true },
-    { label: "Friction-Scanner", href: "/labs", isRoute: true },
   ],
   Company: [
     { label: "About", href: "/#about" },
-    { label: "Insights", href: "/#insights" },
+    { label: "ACE Squads", href: "/squads", isRoute: true },
     { label: "Careers", href: "#" },
     { label: "Contact", href: "/#about" },
   ],
