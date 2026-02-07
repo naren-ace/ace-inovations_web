@@ -275,6 +275,39 @@ frontend:
       - working: true
         agent: "testing"
         comment: "Verified animations including fade-up entrance animations for sections, fluid shape morphing animation in the hero section, and card hover effects. All animations are functioning as expected."
+      - working: true
+        agent: "testing"
+        comment: "Verified all visual effects including the subtle living background animation (background color breathing between off-white shades), mouse-following faint purple glow, sticky scroll section transitions with parallax and fade-in effects, and the extra-bold (font-weight 800) headings throughout. All animations are working smoothly and as designed."
+        
+  - task: "ACE Labs Section Implementation"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/AceLabsSection.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented new ACE Labs section with title, badge, 3 premium cards with status badges, features, and 'Explore the Lab' CTA button. Needs testing."
+      - working: true
+        agent: "testing"
+        comment: "Verified ACE Labs section with 'ACE Labs: Engineering the Future.' heading and 'Internal Products' badge with sparkle icon. The section features 3 premium cards (Autonomous Market Analyst with Beta status, LeadGen Agent with v1 status, DevOps Sentinel with Alpha status). Each card has appropriate feature tags and a 'Learn more' link. The section includes an 'Explore the Lab' CTA button at the bottom."
+        
+  - task: "Insights Section Implementation"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/InsightsSection.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented new Insights section with horizontal scrolling blog articles, left/right arrow controls, and responsive layout. Needs testing."
+      - working: true
+        agent: "testing"
+        comment: "Verified Insights section with 'From the Lab.' title and working left/right arrow scroll controls. The section features 5 horizontally scrolling blog article cards with correct titles, category badges, read times, excerpts, dates, and 'Read →' links. Horizontal scrolling functionality works correctly on both desktop and mobile views."
 
 metadata:
   created_by: "testing_agent"
