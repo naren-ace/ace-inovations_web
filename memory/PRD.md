@@ -41,12 +41,15 @@ Build the ACEinovations digital platform as a Next.js 16 + Payload CMS 3.x monol
 - **Media Collection** — Image uploads with thumbnail/card/hero sizes
 - **Stacks (Blog) Collection** — Title, auto-slug, Category (AI Strategy/Engineering/Case Studies/Field Notes), Featured Image, Excerpt, Rich Text Content, Draft/Published status
 - **Affiliates Collection** — Partner Name, Target URL, Slug, Active toggle, Category Tag (Cloud/AI Tools/Software/Infrastructure/Analytics), Internal Description, Click Count (read-only, auto-incremented)
-- **Redirect Route `/go/[slug]`** — 302 redirect, increments clickCount, returns 410 for inactive, 404 for missing
+- **Redirect Route `/go/[slug]`** — 302 redirect, atomic SQL clickCount increment, redirects to home for 404/inactive
 - **Backend Proxy** — FastAPI on port 8001 forwards `/api/*` to Next.js (port 3000) for Payload REST API access
 
-### Iteration 4: Public Frontend — UPCOMING (P2)
-- Home Page: Hero with "Fluid Aura" effect, Service section
-- Blog Page: `/stacks` feed with dark mode design
+### Iteration 4: Public Frontend — COMPLETE
+- **Home Page** — Navbar, Hero with "Fluid Aura" animated gradient blobs (CSS-only), Services section (4 cards)
+- **Stacks Feed (`/stacks`)** — Dark mode (#0C0E14) blog feed with colored category badges, excerpts, dates
+- **Individual Post (`/stacks/[slug]`)** — Dark mode post page with rich text rendering, back navigation
+- **Dark Mode Layout** — Dedicated stacks layout wrapper for "Technical Knowledge Base" vibe
+- **Components** — Navbar, Hero, ServiceGrid, stacks dark navbar
 
 ## Architecture
 ```
