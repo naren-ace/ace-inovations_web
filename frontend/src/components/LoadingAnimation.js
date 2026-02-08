@@ -131,14 +131,14 @@ export const LoadingAnimation = ({ onComplete }) => {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
               <span
-                className="text-3xl sm:text-4xl font-bold tracking-tight"
-                style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#1A202C' }}
+                className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 ACE
               </span>
               <span
-                className="text-3xl sm:text-4xl tracking-tight"
-                style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 200, color: '#1A202C' }}
+                className="text-3xl sm:text-4xl tracking-tight text-foreground"
+                style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 200 }}
               >
                 inovations
               </span>
