@@ -157,8 +157,8 @@ export const LoadingAnimation = ({ onComplete }) => {
                     style={{
                       width: 80 + Math.random() * 120,
                       height: 60 + Math.random() * 80,
-                      background: '#F9FAFB',
-                      border: '1px solid hsla(220, 13%, 91%, 0.5)',
+                      background: 'hsl(var(--background))',
+                      border: '1px solid hsl(var(--border) / 0.5)',
                     }}
                     initial={{ x: 0, y: 0, rotate: 0, opacity: 0.8 }}
                     animate={{
