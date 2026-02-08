@@ -65,6 +65,12 @@ export default async function StacksPage() {
               <p className="mt-6 text-base md:text-lg leading-relaxed max-w-2xl" style={{ color: 'hsl(var(--body))' }}>
                 Deep technical breakdowns of the architectures, toolchains, and agentic workflows that power the products we ship at ACE inovations.
               </p>
+              <div className="mt-8 flex items-center gap-4" data-testid="stacks-hero-cta">
+                <a href="#articles" className="btn-premium inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white btn-glow"
+                  style={{ background: 'hsl(var(--primary))' }}>
+                  Browse Articles <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
         </section>
