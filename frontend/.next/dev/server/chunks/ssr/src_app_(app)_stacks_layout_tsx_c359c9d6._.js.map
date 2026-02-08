@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///app/frontend/src/app/%28app%29/stacks/layout.tsx"],"sourcesContent":["import React from 'react'\nimport { Metadata } from 'next'\n\nexport const metadata: Metadata = {\n  title: 'ACE Stacks | Field Notes from the Frontline',\n  description: 'Deep technical breakdowns of the architectures, toolchains, and agentic workflows that power the products we ship at ACE inovations.',\n}\n\nexport default function StacksLayout({ children }: { children: React.ReactNode }) {\n  return <>{children}</>\n}\n"],"names":[],"mappings":";;;;;;;;AAGO,MAAM,WAAqB;IAChC,OAAO;IACP,aAAa;AACf;AAEe,SAAS,aAAa,EAAE,QAAQ,EAAiC;IAC9E,qBAAO;kBAAG;;AACZ"}}]
+}
