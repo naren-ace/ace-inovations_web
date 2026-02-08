@@ -9,12 +9,12 @@ Build a premium website for "ACEinovations" tech consultancy matching a specific
 ├── app/(app)/              # Public routes: /, /stacks, /labs, /squads, /about
 ├── app/(payload)/          # CMS admin at /admin
 ├── components/brand/       # LogicNodeIcon, BrandWordmark, Logo, LoadingAnimation
-├── components/layout/      # Navbar, Footer (CTAFooter), AppShell
-├── components/home/        # Hero, TransitionSection, PhilosophySection, AceEngineSection, etc.
+├── components/layout/      # Navbar (mega-menu), Footer (CTAFooter), AppShell
+├── components/home/        # Hero, TransitionSection, PhilosophySection, etc.
 ├── components/effects/     # ScrollSpiral, MouseGlow, FluidShape
 ├── components/ui/          # Button, shared components
 ├── collections/            # Payload CMS: Stacks, Media, Affiliates, Users
-└── styles/globals.css      # Design system + dark mode CSS variables
+└── styles/globals.css      # Design system + dark mode CSS vars
 ```
 
 ## What's Been Implemented
@@ -23,24 +23,24 @@ Build a premium website for "ACEinovations" tech consultancy matching a specific
 - Next.js 14 + Payload CMS + PostgreSQL
 - Brand identity, collections, affiliate engine, home page, stacks feed
 
-### Iterations 5-6: Pages + Shared Components (COMPLETE - Dec 2025)
+### Iterations 5-6: Pages + Shared Components (COMPLETE)
 - /squads, /labs, /about pages matching prototype
-- Updated Navbar: Services dropdown, dark mode toggle, active state
-- Updated Footer: CTA section + multi-column footer
-- ScrollSpiral background animation on all pages
+- ScrollSpiral, CTAFooter, Navbar with mega-menu
 
-### Brand Identity Integration (COMPLETE - Dec 2025)
+### Brand Identity Integration (COMPLETE)
 - LogicNodeIcon, BrandWordmark (themed), Logo, LoadingAnimation
-- Space Grotesk font (heading font throughout)
-- SVG favicon, session-based loading animation
+- Space Grotesk font + SVG favicon
 
 ### Prototype Match Pass (COMPLETE - Dec 2025)
-- Space Grotesk replaces Outfit for all headings (globals.css, tailwind.config, layout)
-- Full dark mode: CSS variables in .dark selector, localStorage persistence, toggle in navbar
-- Dark mode covers: background, cards, text, buttons, footer, borders, glass effects
-- Stacks page seeded with 6 blog posts matching prototype content
-- Reading time with Clock icon added to stacks cards
-- ScrollSpiral added to all pages including Stacks
+- Services mega-menu: 2x2 grid with icons (Globe/TrendingUp/Users/Map), descriptions, "Talk to us" footer
+- ScrollSpiral: strokeWidth 1.8, dynamic brightness on scroll (0.4→0.75)
+- MouseGlow: 500px radius, card-proximity detection, inner glow on hover
+- Card hover effects: translateY(-4px), glow shadow, border-color transition
+- Full dark mode: 40+ CSS vars, localStorage persistence, proper text contrast
+- Dark mode covers: bg, cards, text, buttons, footer, borders, glass effects
+- Stacks CTA button "Browse Articles" → #articles anchor
+- 6 blog posts seeded, read time + Clock icon per card
+- All pages verified in both light/dark modes
 
 ## Pending / Backlog
 
@@ -50,7 +50,7 @@ Build a premium website for "ACEinovations" tech consultancy matching a specific
 ### P2: SEO & Meta tags
 - Open Graph, structured data per page
 
-### P2: TypeScript migration
+### P2: TypeScript migration  
 - Convert remaining .js components to .tsx
 
 ## Credentials
@@ -58,4 +58,4 @@ Build a premium website for "ACEinovations" tech consultancy matching a specific
 - Payload Admin: test@test.com / test (may need re-creation after DB refresh)
 
 ## Known Environment Issue
-- PostgreSQL stops after environment refresh. Fix: `apt-get install -y postgresql && service postgresql start`, then recreate user/db.
+- PostgreSQL stops after environment refresh. Fix: `apt-get install -y postgresql && service postgresql start`, recreate user/db.
