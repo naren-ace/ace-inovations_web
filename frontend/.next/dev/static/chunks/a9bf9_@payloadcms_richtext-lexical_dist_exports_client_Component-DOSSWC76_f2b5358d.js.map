@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///app/frontend/node_modules/%40payloadcms/richtext-lexical/src/features/migrations/slateToLexical/nodes/unknownConvertedNode/Component.tsx"],"sourcesContent":["'use client'\nimport React from 'react'\n\nimport type { UnknownConvertedNodeData } from './index.js'\n\nimport './index.scss'\n\ntype Props = {\n  data: UnknownConvertedNodeData\n}\n\nexport const UnknownConvertedNodeComponent: React.FC<Props> = (props) => {\n  const { data } = props\n\n  return (\n    <div>\n      Unknown converted Slate node: <strong>{data?.nodeType}</strong>\n    </div>\n  )\n}\n"],"names":["UnknownConvertedNodeComponent", "props", "data", "_jsxs", "_jsx", "nodeType"],"mappings":";;;;;AACA,MAAkB;;;;AAUX,IAAMA,KAAkDC,GAAA;IAC7D,IAAM,EAAEC,MAAAA,CAAI,EAAA,GAAKD;IAEjB,OACEE,kLAAAA,EAAC,OAAA;QAAA,UAAA;YAAI;gBAC2BC,6KAAAA,EAAC,UAAA;gBAAA,UAAQF,GAAMG;YAAAA;SAAAA;IAAAA;AAGnD"}}]
+}
