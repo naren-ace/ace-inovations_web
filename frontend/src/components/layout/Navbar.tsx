@@ -67,9 +67,7 @@ export const Navbar = () => {
         data-testid="navbar"
       >
         <div className="section-container flex items-center justify-between h-16">
-          <Link href="/">
-            <Logo />
-          </Link>
+          <Logo />
 
           {/* Desktop */}
           <div className="hidden md:flex items-center gap-8">
