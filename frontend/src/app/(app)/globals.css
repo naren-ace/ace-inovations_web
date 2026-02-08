@@ -24,7 +24,7 @@
 }
 
 @layer components {
-  /* Ghost Button gradient border */
+  /* Ghost Button — gradient border */
   .ghost-button {
     background: transparent;
     border: 2px solid transparent;
@@ -36,71 +36,86 @@
     background-image: linear-gradient(rgba(59,111,232,0.06), rgba(123,45,142,0.06)), linear-gradient(135deg, var(--ace-blue), var(--ace-violet));
   }
 
-  /* Fluid Aura blobs */
+  /* Gradient Border Card — service cards */
+  .gradient-border-card {
+    position: relative;
+    padding: 1px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--ace-blue), var(--ace-violet));
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+  }
+  .gradient-border-card:hover {
+    box-shadow: 0 8px 32px rgba(59, 111, 232, 0.12), 0 2px 12px rgba(123, 45, 142, 0.08);
+    transform: translateY(-2px);
+  }
+
+  /* Fluid Aura blobs — larger, bolder, more visible */
   .aura-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.35;
+    filter: blur(100px);
     will-change: transform;
   }
   .aura-blob-1 {
-    width: 600px;
-    height: 600px;
+    width: 720px;
+    height: 720px;
     background: var(--ace-blue);
-    top: -15%;
-    left: -10%;
+    top: -20%;
+    left: -12%;
+    opacity: 0.4;
     animation: aura-drift-1 18s ease-in-out infinite;
   }
   .aura-blob-2 {
-    width: 500px;
-    height: 500px;
+    width: 640px;
+    height: 640px;
     background: var(--ace-violet);
-    bottom: -10%;
-    right: -8%;
+    bottom: -15%;
+    right: -10%;
+    opacity: 0.35;
     animation: aura-drift-2 22s ease-in-out infinite;
   }
   .aura-blob-3 {
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
     background: var(--ace-cobalt);
-    top: 40%;
+    top: 35%;
     left: 50%;
-    opacity: 0.2;
+    opacity: 0.18;
     animation: aura-drift-3 15s ease-in-out infinite;
   }
 }
 
-/* Aura animations */
+/* Aura drift keyframes */
 @keyframes aura-drift-1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(80px, 60px) scale(1.1); }
-  66% { transform: translate(-40px, 30px) scale(0.95); }
+  33% { transform: translate(100px, 70px) scale(1.12); }
+  66% { transform: translate(-50px, 40px) scale(0.94); }
 }
 @keyframes aura-drift-2 {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-60px, -40px) scale(1.05); }
-  66% { transform: translate(50px, -70px) scale(0.9); }
+  33% { transform: translate(-70px, -50px) scale(1.08); }
+  66% { transform: translate(60px, -80px) scale(0.92); }
 }
 @keyframes aura-drift-3 {
   0%, 100% { transform: translate(-50%, 0) scale(1); }
-  50% { transform: translate(-40%, -40px) scale(1.15); }
+  50% { transform: translate(-40%, -50px) scale(1.2); }
 }
 
-/* Fade-in animation */
+/* Fade-in entrance */
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-in {
-  animation: fade-in 0.7s ease-out forwards;
+  animation: fade-in 0.8s ease-out forwards;
   opacity: 0;
 }
 .animation-delay-100 { animation-delay: 0.1s; }
-.animation-delay-200 { animation-delay: 0.2s; }
-.animation-delay-300 { animation-delay: 0.35s; }
+.animation-delay-150 { animation-delay: 0.18s; }
+.animation-delay-200 { animation-delay: 0.28s; }
+.animation-delay-300 { animation-delay: 0.4s; }
 
-/* Line clamp for blog cards */
+/* Line clamp */
 .line-clamp-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;

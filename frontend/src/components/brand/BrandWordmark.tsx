@@ -23,16 +23,16 @@ export const BrandWordmark: React.FC<BrandWordmarkProps> = ({ size = 'lg', class
 
   return (
     <div className={`flex items-baseline ${className ?? ''}`} data-testid="brand-wordmark">
-      <span className={`${textClass} font-bold tracking-tight text-ace-blue font-heading`}>
+      <span className={`${textClass} font-extrabold tracking-tight text-ace-blue font-heading`}>
         ACE
       </span>
-      <span className="relative inline-flex flex-col items-center text-ace-slate">
+      <span className="relative inline-flex flex-col items-center text-gray-400">
         <span className={`absolute rounded-full bg-ace-violet ${dotClass}`} />
         <span className={`${textClass} font-extralight tracking-tight font-heading`}>
           {"\u0131"}
         </span>
       </span>
-      <span className={`${textClass} font-extralight tracking-tight text-ace-slate font-heading`}>
+      <span className={`${textClass} font-extralight tracking-tight text-gray-400 font-heading`}>
         novations
       </span>
     </div>
