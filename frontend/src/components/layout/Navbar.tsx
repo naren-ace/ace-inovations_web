@@ -78,9 +78,9 @@ export const Navbar = () => {
         {/* Mobile menu */}
         {mobileOpen && (
           <div
-            className="md:hidden border-t px-6 py-6 space-y-4"
+            className="md:hidden border-t px-6 py-6 space-y-4 relative z-[60]"
             style={{
-              background: 'hsl(var(--background) / 0.98)',
+              background: 'hsl(var(--background))',
               backdropFilter: 'blur(20px)',
               borderColor: 'hsl(var(--border) / 0.5)',
             }}
