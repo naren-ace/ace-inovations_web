@@ -1,75 +1,81 @@
-# ACEinovations — Product Requirements Document
+# ACEinovations - Product Requirements Document
 
-## Problem Statement
-Build the ACEinovations digital platform as a Next.js 16 + Payload CMS 3.x monolith with PostgreSQL, porting the exact prototype design from the `ace-prototype` GitHub branch.
+## Original Problem Statement
+Build a premium website for "ACEinovations" tech consultancy. The project involves creating a high-fidelity website matching a specific design prototype, with multiple iterations covering scaffolding, brand identity, content engine, and public-facing frontend pages.
 
-## Tech Stack
-- **Framework:** Next.js 16.1.6 (App Router, Turbopack)
-- **CMS:** Payload CMS 3.75+
-- **Database:** PostgreSQL 15
-- **Language:** TypeScript
-- **CSS:** Tailwind CSS 3.4 + CSS Variables design system
-- **Fonts:** Inter (body), Outfit (headings) via `next/font/google`
-- **Animation:** Framer Motion 12
-- **UI Libraries:** class-variance-authority, @radix-ui/react-slot, lucide-react, tailwind-merge
-
-## Brand Identity
-- **Electric Blue:** `#0066FF` (primary accent)
-- **Deep Cobalt:** `#2E5BFF` (logo gradient start)
-- **Royal Violet:** `#6D28D9` (logo gradient end)
-- **Deep Violet:** `#7C3AED` (accent)
-- **Violet Shift:** `#7B2D8E` (Labs/Stacks buttons)
-- **Dark Slate:** `#1A202C` (header-dark buttons, wordmark)
-- **Primary Gradient:** `linear-gradient(135deg, #0066FF, #7C3AED)`
-
-## Completed Iterations
-
-### Iteration 1: Core Architecture — COMPLETE
-- Next.js 16 + Payload CMS 3.x monolith, PostgreSQL, Users with roles, /admin panel
-
-### Iteration 2: Brand Identity — COMPLETE
-- Tailwind design system, Inter + Outfit fonts, Button component (3 variants)
-
-### Iteration 3: Content & Affiliate Engine — COMPLETE
-- Media, Stacks (Blog), Affiliates collections with full CRUD
-- `/go/[slug]` redirect with atomic clickCount, 302 status, 404→home redirect
-
-### Iteration 4: Public Frontend + High-Fidelity Prototype Port — COMPLETE
-- Full visual port from ace-prototype GitHub branch
-- **Hero:** "Engineering the Next Generation of Digital Platforms." — "Next Generation" in gradient-text, "AI-Augmented Engineering Studio" badge, FluidShape glass blob, premium + ghost-gradient CTAs
-- **Homepage sections:** KeywordMarquee, TransitionSection, PhilosophySection, AceEngineSection (4 cards + tech-grid), AceSquadsSection (3 pillars), AceLoop (3-step process), InsightsSection (horizontal scroll article cards), CTASection, Footer
-- **Effects:** MouseGlow cursor, FluidShape animated glass, StickySection parallax, animate-bg-breathe
-- **Stacks pages:** LIGHT theme with white article cards, "// CATEGORY" labels, gradient header areas, "Recommended Stack" sidebar with verified tools
-- **Interactions:** ContactModal, scroll-aware transparent Navbar with backdrop-blur, mobile menu
-- **Nav items:** ACE Labs, ACE Stacks, ACE Squads, About + "Start a Project" CTA
+## Core Requirements
+- Next.js 14 (App Router) + Payload CMS + PostgreSQL
+- High-fidelity UI matching the design prototype
+- Light theme with premium glassmorphism design
+- Framer Motion animations throughout
+- Responsive design (mobile + desktop)
 
 ## Architecture
 ```
 /app/frontend/
-├── payload.config.ts
-├── tailwind.config.ts
 ├── src/
-│   ├── app/(app)/
-│   │   ├── layout.tsx, globals.css, page.tsx
-│   │   ├── go/[slug]/route.ts
-│   │   └── stacks/ (layout, page, [slug]/page)
-│   ├── app/(payload)/
-│   ├── collections/ (Users, Media, Stacks, Affiliates)
+│   ├── app/(app)/           # Public routes
+│   │   ├── page.tsx         # Home
+│   │   ├── squads/page.tsx  # ACE Squads
+│   │   ├── labs/page.tsx    # ACE Labs
+│   │   ├── about/page.tsx   # About
+│   │   ├── stacks/          # Blog feed + slug pages
+│   │   └── go/[slug]/       # Affiliate redirects
+│   ├── app/(payload)/       # CMS admin
 │   ├── components/
-│   │   ├── brand/ (LogicNodeIcon, BrandWordmark, Logo)
-│   │   ├── effects/ (MouseGlow, FluidShape)
-│   │   ├── home/ (Hero, KeywordMarquee, TransitionSection, PhilosophySection, AceEngineSection, AceSquadsSection, AceLoop, CTASection, StickySection, ContactModal)
-│   │   ├── layout/ (Navbar, Footer)
-│   │   └── ui/ (Button)
-│   └── lib/ (utils, payload)
-/app/backend/
-└── server.py (FastAPI proxy)
+│   │   ├── layout/          # Navbar, Footer (CTAFooter)
+│   │   ├── home/            # Home page sections
+│   │   ├── effects/         # ScrollSpiral, MouseGlow, FluidShape
+│   │   ├── brand/           # Logo, brand elements
+│   │   └── ui/              # Shared UI components (Button, etc.)
+│   └── styles/globals.css   # Design system
 ```
 
-## Future/Backlog
-- Role-based access control
-- SEO metadata on Stacks
-- RSS feed for /stacks
-- Affiliate analytics dashboard
-- Dark/light mode toggle
-- Contact form backend integration (email delivery)
+## What's Been Implemented
+
+### Iteration 1-2: Scaffolding & Brand Identity (COMPLETE)
+- Next.js 14 + Payload CMS + PostgreSQL setup
+- Design system: colors, typography, buttons, logos
+
+### Iteration 3: Content & Affiliate Engine (COMPLETE)
+- Payload collections: Stacks, Media, Affiliates
+- `/api/go/[slug]` affiliate redirect with click tracking
+- FastAPI proxy for API routing
+
+### Iteration 4: Home Page & Stacks (COMPLETE)
+- Full home page with all sections
+- Stacks blog feed + individual post pages
+
+### Iteration 5-6: Squads, Labs, About Pages (COMPLETE - Dec 2025)
+- `/squads` page: Hero, 3 role cards, advantage section, CTA
+- `/labs` page: Hero, 3 product cards with status badges, philosophy section
+- `/about` page: Hero section
+- Updated Navbar: Services dropdown, dark mode toggle, active state highlighting
+- Updated Footer: CTA section + multi-column footer (Services, Products, Company)
+- ScrollSpiral: Background SVG line animation on all pages
+- All navigation links wired to correct routes
+
+## Pending / Backlog
+
+### P1: Wire up Contact Modal functionality
+- Form submission (email integration or API)
+- Form validation
+
+### P1: Dark mode implementation
+- Toggle exists but CSS variables for dark theme need full implementation
+
+### P2: Stacks content seeding
+- Add blog content via Payload CMS admin
+
+### P2: TypeScript migration
+- Convert remaining .js components to .tsx
+
+### P2: SEO & Meta tags
+- Add proper meta tags, Open Graph, structured data
+
+## Database Credentials
+- PostgreSQL: aceadmin / acepass2025 @ localhost:5432/ace_cms
+- Payload Admin: test@test.com / test
+
+## Known Environment Issue
+- PostgreSQL may stop after environment refresh. Fix: Check `service postgresql status`, recreate user/db if needed.
