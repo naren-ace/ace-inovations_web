@@ -10,12 +10,19 @@ Build a premium website for "ACEinovations" tech consultancy. The project involv
 - Framer Motion animations throughout
 - Responsive design (mobile + desktop)
 
+## Brand Identity (Logo Integration Kit)
+- **Font**: Space Grotesk (ACE: 700 Bold, inovations: 200 Ultra-Light)
+- **Colors**: Electric Blue #3B6FE8, Deep Cobalt #2E5BFF, Royal Violet #6D28D9, Dark Slate #1A202C
+- **Logo**: Geometric "A" (LogicNodeIcon) + BrandWordmark with themed variants (dark/light)
+- **Loading Animation**: Full-screen: pillars rise → node ignites → violet ripple → logo shrinks → page reveals
+- **Favicon**: SVG with gradient pillars and apex node
+
 ## Architecture
 ```
 /app/frontend/
 ├── src/
 │   ├── app/(app)/           # Public routes
-│   │   ├── page.tsx         # Home
+│   │   ├── page.tsx         # Home (with AppShell loading animation)
 │   │   ├── squads/page.tsx  # ACE Squads
 │   │   ├── labs/page.tsx    # ACE Labs
 │   │   ├── about/page.tsx   # About
@@ -23,10 +30,10 @@ Build a premium website for "ACEinovations" tech consultancy. The project involv
 │   │   └── go/[slug]/       # Affiliate redirects
 │   ├── app/(payload)/       # CMS admin
 │   ├── components/
-│   │   ├── layout/          # Navbar, Footer (CTAFooter)
+│   │   ├── brand/           # LogicNodeIcon, BrandWordmark, Logo, LoadingAnimation
+│   │   ├── layout/          # Navbar, Footer (CTAFooter), AppShell
 │   │   ├── home/            # Home page sections
 │   │   ├── effects/         # ScrollSpiral, MouseGlow, FluidShape
-│   │   ├── brand/           # Logo, brand elements
 │   │   └── ui/              # Shared UI components (Button, etc.)
 │   └── styles/globals.css   # Design system
 ```
@@ -53,7 +60,16 @@ Build a premium website for "ACEinovations" tech consultancy. The project involv
 - Updated Navbar: Services dropdown, dark mode toggle, active state highlighting
 - Updated Footer: CTA section + multi-column footer (Services, Products, Company)
 - ScrollSpiral: Background SVG line animation on all pages
-- All navigation links wired to correct routes
+
+### Brand Identity Integration (COMPLETE - Dec 2025)
+- Full Logo Integration Kit implemented per spec
+- LogicNodeIcon with framer-motion animation support
+- BrandWordmark with theme (dark/light) and size (sm/md/lg/xl/hero) variants
+- Logo component with proper brand colors (#3B6FE8 ACE, #1A202C inovations, #6D28D9 dot)
+- LoadingAnimation: full-screen pillar rise → ignite → ripple → shrink sequence
+- AppShell wrapper with session-based loading (shows once per session)
+- Space Grotesk font integrated (replacing Outfit)
+- SVG favicon with gradient pillars
 
 ## Pending / Backlog
 
