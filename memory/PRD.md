@@ -27,11 +27,13 @@ Build a high-end, minimalist multi-page website for a tech consultancy named "AC
 - Contact modal with form
 - Responsive navbar with mega menu
 - Keyword marquee, EngineCore visual, FluidShape
+- **Dark mode toggle** with localStorage persistence (useTheme hook)
 - Full source code export: `/app/frontend/ACE_INOVATIONS_FULL_SOURCE_EXPORT.md`
 
 ## Completed Tasks
 - Dec 2025: Full prototype built across all pages
 - Dec 2025: Source code export completed (3343 lines, single markdown file)
+- Feb 2026: Dark mode toggle added (Navbar, Logo, LoadingAnimation updated for theme-aware colors)
 
 ## Backlog
 - No pending tasks. Project is feature-complete per user requirements.
