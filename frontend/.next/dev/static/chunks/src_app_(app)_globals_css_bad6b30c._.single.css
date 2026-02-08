@@ -318,6 +318,13 @@ html {
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+}
+
+.dark body {
+  color: #f3f5f7;
+}
+
+body {
   font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -396,13 +403,14 @@ p {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid hsl(var(--border) / .6);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition-smooth), border-color var(--transition-smooth), transform var(--transition-smooth);
+  transition: box-shadow .35s cubic-bezier(.4, 0, .2, 1), border-color .35s cubic-bezier(.4, 0, .2, 1), transform .35s cubic-bezier(.4, 0, .2, 1), background .35s;
 }
 
 .glass-card-hover:hover {
-  box-shadow: var(--shadow-elevated);
-  border-color: hsl(var(--border));
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevated), 0 0 40px #0066ff0f;
+  background: hsl(var(--surface-glass) / .9);
+  border-color: #0066ff40;
+  transform: translateY(-4px);
 }
 
 .tech-grid-bg {
@@ -844,10 +852,6 @@ p {
   height: 3px;
 }
 
-.h-\[400px\] {
-  height: 400px;
-}
-
 .h-\[4px\] {
   height: 4px;
 }
@@ -966,10 +970,6 @@ p {
 
 .w-\[40\%\] {
   width: 40%;
-}
-
-.w-\[400px\] {
-  width: 400px;
 }
 
 .w-\[4px\] {
@@ -2048,7 +2048,45 @@ p {
 
 .dark .glass-card, .dark .glass-card-hover {
   background: #0c1322cc;
-  border-color: #20283c99;
+  border-color: #242d4299;
+}
+
+.dark .glass-card-hover:hover {
+  background: #0f1729f2;
+  border-color: #1a75ff4d;
+  box-shadow: 0 20px 40px -12px #0006, 0 0 40px #1a75ff14;
+}
+
+.dark .text-foreground {
+  color: #f3f5f7;
+}
+
+.dark [style*="color: hsl(var(--body))"] {
+  color: #a6b0bf !important;
+}
+
+.dark [style*="color: hsl(var(--caption))"] {
+  color: #7a899f !important;
+}
+
+.dark [style*="color: hsl(var(--heading))"] {
+  color: #f3f5f7 !important;
+}
+
+.dark .stacks-card-gradient-1 {
+  background: linear-gradient(135deg, #1a75ff26, #005ce614) !important;
+}
+
+.dark .stacks-card-gradient-2 {
+  background: linear-gradient(135deg, #7847e126, #5a22d314) !important;
+}
+
+.dark .stacks-card-gradient-3 {
+  background: linear-gradient(135deg, #1a75ff1f, #7847e114) !important;
+}
+
+.dark .stacks-card-gradient-4 {
+  background: linear-gradient(135deg, #7847e11f, #1a75ff14) !important;
 }
 
 .dark .animate-bg-breathe {
