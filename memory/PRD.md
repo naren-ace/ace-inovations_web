@@ -45,10 +45,10 @@ Build the ACEinovations digital platform as a Next.js 16 + Payload CMS 3.x monol
 - **Backend Proxy** — FastAPI on port 8001 forwards `/api/*` to Next.js (port 3000) for Payload REST API access
 
 ### Iteration 4: Public Frontend — COMPLETE
-- **Home Page** — Navbar, Hero with "Fluid Aura" animated gradient blobs (CSS-only), Services section (4 cards)
+- **Home Page** — Navbar (backdrop-blur-2xl), Hero with "Fluid Aura" animated gradient blobs (720px/640px/400px), Services section (4 cards with gradient border)
+- **Visual Refinements** — ACE font-extrabold blue + inovations font-extralight gray, hero min-h-[85vh], gradient-border-card on service cards (blue→violet 1px border), Outfit extrabold headings
 - **Stacks Feed (`/stacks`)** — Dark mode (#0C0E14) blog feed with colored category badges, excerpts, dates
 - **Individual Post (`/stacks/[slug]`)** — Dark mode post page with rich text rendering, back navigation
-- **Dark Mode Layout** — Dedicated stacks layout wrapper for "Technical Knowledge Base" vibe
 - **Components** — Navbar, Hero, ServiceGrid, stacks dark navbar
 
 ## Architecture
