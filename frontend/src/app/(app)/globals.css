@@ -24,6 +24,7 @@
 }
 
 @layer components {
+  /* Ghost Button gradient border */
   .ghost-button {
     background: transparent;
     border: 2px solid transparent;
@@ -31,8 +32,78 @@
     background-origin: border-box;
     background-clip: padding-box, border-box;
   }
-
   .ghost-button:hover {
     background-image: linear-gradient(rgba(59,111,232,0.06), rgba(123,45,142,0.06)), linear-gradient(135deg, var(--ace-blue), var(--ace-violet));
   }
+
+  /* Fluid Aura blobs */
+  .aura-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    will-change: transform;
+  }
+  .aura-blob-1 {
+    width: 600px;
+    height: 600px;
+    background: var(--ace-blue);
+    top: -15%;
+    left: -10%;
+    animation: aura-drift-1 18s ease-in-out infinite;
+  }
+  .aura-blob-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--ace-violet);
+    bottom: -10%;
+    right: -8%;
+    animation: aura-drift-2 22s ease-in-out infinite;
+  }
+  .aura-blob-3 {
+    width: 350px;
+    height: 350px;
+    background: var(--ace-cobalt);
+    top: 40%;
+    left: 50%;
+    opacity: 0.2;
+    animation: aura-drift-3 15s ease-in-out infinite;
+  }
+}
+
+/* Aura animations */
+@keyframes aura-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(80px, 60px) scale(1.1); }
+  66% { transform: translate(-40px, 30px) scale(0.95); }
+}
+@keyframes aura-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-60px, -40px) scale(1.05); }
+  66% { transform: translate(50px, -70px) scale(0.9); }
+}
+@keyframes aura-drift-3 {
+  0%, 100% { transform: translate(-50%, 0) scale(1); }
+  50% { transform: translate(-40%, -40px) scale(1.15); }
+}
+
+/* Fade-in animation */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.7s ease-out forwards;
+  opacity: 0;
+}
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.35s; }
+
+/* Line clamp for blog cards */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
