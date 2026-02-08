@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function StacksLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="stacks-dark min-h-screen bg-[#0C0E14] text-gray-100">
+    <div className="stacks-dark min-h-screen" style={{ background: 'hsl(222 47% 6%)', color: 'hsl(210 20% 96%)' }}>
       {children}
     </div>
   )
