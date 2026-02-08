@@ -56,6 +56,24 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/(app)/stacks/[slug]/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/stacks/[slug]">> = Specific
+  const handler = {} as typeof import("../../../src/app/(app)/stacks/[slug]/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/(app)/stacks/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/stacks">> = Specific
+  const handler = {} as typeof import("../../../src/app/(app)/stacks/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/(payload)/admin/[[...segments]]/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/admin/[[...segments]]">> = Specific
@@ -91,6 +109,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends LayoutConfig<"/">> = Specific
   const handler = {} as typeof import("../../../src/app/(app)/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/(app)/stacks/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/stacks">> = Specific
+  const handler = {} as typeof import("../../../src/app/(app)/stacks/layout.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
