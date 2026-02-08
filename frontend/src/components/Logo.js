@@ -10,14 +10,14 @@ export const Logo = ({ size = "default" }) => {
       <LogicNodeIcon size={iconSize} glow={!isSmall} />
       <span className={`flex items-baseline ${isSmall ? 'text-sm' : 'text-lg'}`}>
         <span
-          className="font-bold tracking-tight"
-          style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#1A202C' }}
+          className="font-bold tracking-tight text-foreground"
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
           ACE
         </span>
         <span
-          className="tracking-tight"
-          style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 200, color: '#1A202C' }}
+          className="tracking-tight text-foreground"
+          style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 200 }}
         >
           inovations
         </span>
