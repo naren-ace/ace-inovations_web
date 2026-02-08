@@ -53,5 +53,6 @@ export default function HomePage() {
 
       <CTAFooter />
     </div>
+    </AppShell>
   )
 }
