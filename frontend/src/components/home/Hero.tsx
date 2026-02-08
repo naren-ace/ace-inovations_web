@@ -1,49 +1,97 @@
 'use client'
 
-import React from 'react'
-import { LogicNodeIcon } from '@/components/brand/LogicNodeIcon'
-import { BrandWordmark } from '@/components/brand/BrandWordmark'
+import { motion, useInView } from 'framer-motion'
+import { useRef, useState } from 'react'
 import { Button } from '@/components/ui/Button'
+import { LogicNodeIcon } from '@/components/brand/LogicNodeIcon'
+import { FluidShape } from '@/components/effects/FluidShape'
+import { KeywordMarquee } from '@/components/home/KeywordMarquee'
+import { ContactModal } from '@/components/home/ContactModal'
+import { ArrowRight } from 'lucide-react'
 
-export const Hero: React.FC = () => {
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.12, duration: 0.65, ease: [0.4, 0, 0.2, 1] },
+  }),
+}
+
+export const HeroSection = () => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+  const [contactOpen, setContactOpen] = useState(false)
+
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden" data-testid="hero-section">
-      {/* Fluid Aura Background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[#F9FAFB]" />
-        <div className="aura-blob aura-blob-1" />
-        <div className="aura-blob aura-blob-2" />
-        <div className="aura-blob aura-blob-3" />
-        <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }} />
-      </div>
+    <>
+      <section ref={ref} className="relative min-h-[85vh] flex flex-col justify-center overflow-hidden pt-20" data-testid="hero-section">
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full pointer-events-none"
+          style={{ background: 'radial-gradient(circle, hsl(216 100% 50% / 0.05) 0%, transparent 70%)' }}
+        />
 
-      <div className="text-center space-y-8 px-6 pt-20 max-w-3xl mx-auto">
-        <div className="flex justify-center animate-fade-in">
-          <LogicNodeIcon size={112} />
+        <div className="section-container relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+              <motion.div custom={0} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8"
+                style={{ background: 'hsl(216 100% 50% / 0.06)', border: '1px solid hsl(216 100% 50% / 0.12)' }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full animate-status-pulse" style={{ background: 'hsl(142 76% 36%)' }} />
+                <span className="text-xs font-medium tracking-wide" style={{ color: 'hsl(var(--primary))' }}>
+                  Engineering the Next Generation
+                </span>
+              </motion.div>
+
+              <motion.h1 custom={1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
+                className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-extrabold tracking-tighter leading-[1.08] text-foreground"
+                data-testid="hero-headline"
+              >
+                We build digital platforms that{' '}
+                <span className="gradient-text">scale</span>.
+              </motion.h1>
+
+              <motion.p custom={2} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
+                className="mt-6 text-base md:text-lg leading-relaxed max-w-lg"
+                style={{ color: 'hsl(var(--body))' }}
+              >
+                ACE inovations is a modern engineering &amp; growth studio.
+                We combine world-class software development with agentic AI
+                workflows to ship production-grade systems at velocity.
+              </motion.p>
+
+              <motion.div custom={3} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
+                className="mt-10 flex flex-wrap items-center gap-4"
+              >
+                <Button variant="header-dark" size="xl" onClick={() => setContactOpen(true)} className="btn-glow" data-testid="hero-cta-btn">
+                  Start a Project
+                  <ArrowRight className="w-4 h-4 ml-1" />
+                </Button>
+                <Button variant="ghost-gradient" size="xl" asChild data-testid="hero-secondary-btn">
+                  <a href="#engine">Our Capabilities</a>
+                </Button>
+              </motion.div>
+            </div>
+
+            <motion.div custom={2} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
+              className="hidden lg:flex items-center justify-center"
+            >
+              <div className="w-[420px] h-[420px] relative">
+                <FluidShape />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <LogicNodeIcon size={80} />
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
-        <div className="animate-fade-in animation-delay-100">
-          <BrandWordmark size="lg" className="justify-center" />
+        <div className="mt-auto pt-16">
+          <KeywordMarquee />
         </div>
+      </section>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-ace-slate leading-tight animate-fade-in animation-delay-150" data-testid="hero-headline">
-          Engineering the Next Generation
-        </h1>
-
-        <p className="text-base sm:text-lg text-gray-500 font-light max-w-xl mx-auto font-body leading-relaxed animate-fade-in animation-delay-200">
-          We build AI-augmented digital platforms, growth engines, and enterprise systems
-          with the precision of a&nbsp;compiler and the vision of a&nbsp;founder.
-        </p>
-
-        <div className="flex items-center justify-center gap-4 pt-2 flex-wrap animate-fade-in animation-delay-300">
-          <Button variant="secondary" href="/stacks" size="lg">
-            Read the Stacks
-          </Button>
-          <Button variant="ghost" href="/admin" size="lg">
-            Open Admin
-          </Button>
-        </div>
-      </div>
-    </section>
+      <ContactModal open={contactOpen} onOpenChange={setContactOpen} />
+    </>
   )
 }
