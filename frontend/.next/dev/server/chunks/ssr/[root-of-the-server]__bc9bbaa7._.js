@@ -779,6 +779,35 @@ async function StacksPage() {
                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
                                             lineNumber: 65,
                                             columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "mt-8 flex items-center gap-4",
+                                            "data-testid": "stacks-hero-cta",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                href: "#articles",
+                                                className: "btn-premium inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white btn-glow",
+                                                style: {
+                                                    background: 'hsl(var(--primary))'
+                                                },
+                                                children: [
+                                                    "Browse Articles ",
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
+                                                        className: "w-4 h-4"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/app/(app)/stacks/page.tsx",
+                                                        lineNumber: 71,
+                                                        columnNumber: 35
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/app/(app)/stacks/page.tsx",
+                                                lineNumber: 69,
+                                                columnNumber: 17
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/(app)/stacks/page.tsx",
+                                            lineNumber: 68,
+                                            columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
@@ -818,7 +847,7 @@ async function StacksPage() {
                                                     children: "No published stacks yet."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                    lineNumber: 80,
+                                                    lineNumber: 86,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -834,20 +863,20 @@ async function StacksPage() {
                                                             children: "Admin Panel"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                            lineNumber: 81,
+                                                            lineNumber: 87,
                                                             columnNumber: 120
                                                         }, this),
                                                         "."
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                    lineNumber: 81,
+                                                    lineNumber: 87,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                            lineNumber: 79,
+                                            lineNumber: 85,
                                             columnNumber: 19
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "grid sm:grid-cols-2 gap-6",
@@ -875,12 +904,12 @@ async function StacksPage() {
                                                                 }
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                lineNumber: 97,
+                                                                lineNumber: 103,
                                                                 columnNumber: 29
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                            lineNumber: 93,
+                                                            lineNumber: 99,
                                                             columnNumber: 27
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -900,7 +929,7 @@ async function StacksPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                            lineNumber: 102,
+                                                                            lineNumber: 108,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -913,7 +942,7 @@ async function StacksPage() {
                                                                                     className: "w-3 h-3"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                                    lineNumber: 107,
+                                                                                    lineNumber: 113,
                                                                                     columnNumber: 33
                                                                                 }, this),
                                                                                 Math.max(5, Math.floor((post.excerpt?.length || 100) / 20)),
@@ -921,13 +950,13 @@ async function StacksPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                            lineNumber: 106,
+                                                                            lineNumber: 112,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                    lineNumber: 101,
+                                                                    lineNumber: 107,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -935,7 +964,7 @@ async function StacksPage() {
                                                                     children: post.title
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                    lineNumber: 111,
+                                                                    lineNumber: 117,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 post.excerpt && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -946,7 +975,7 @@ async function StacksPage() {
                                                                     children: post.excerpt
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                    lineNumber: 112,
+                                                                    lineNumber: 118,
                                                                     columnNumber: 46
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -966,7 +995,7 @@ async function StacksPage() {
                                                                             })
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                            lineNumber: 114,
+                                                                            lineNumber: 120,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -980,42 +1009,42 @@ async function StacksPage() {
                                                                                     className: "w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                                    lineNumber: 119,
+                                                                                    lineNumber: 125,
                                                                                     columnNumber: 38
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                            lineNumber: 117,
+                                                                            lineNumber: 123,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                    lineNumber: 113,
+                                                                    lineNumber: 119,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                            lineNumber: 100,
+                                                            lineNumber: 106,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, post.id, true, {
                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                    lineNumber: 88,
+                                                    lineNumber: 94,
                                                     columnNumber: 25
                                                 }, this);
                                             })
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                            lineNumber: 84,
+                                            lineNumber: 90,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                        lineNumber: 77,
+                                        lineNumber: 83,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1047,7 +1076,7 @@ async function StacksPage() {
                                                                     children: "Recommended Stack"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                    lineNumber: 138,
+                                                                    lineNumber: 144,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1055,13 +1084,13 @@ async function StacksPage() {
                                                                     children: "The Tools that Power ACE"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                    lineNumber: 139,
+                                                                    lineNumber: 145,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                            lineNumber: 136,
+                                                            lineNumber: 142,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1082,12 +1111,12 @@ async function StacksPage() {
                                                                                 }
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                                lineNumber: 148,
+                                                                                lineNumber: 154,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                            lineNumber: 146,
+                                                                            lineNumber: 152,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1101,7 +1130,7 @@ async function StacksPage() {
                                                                                             children: tool.name
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                                            lineNumber: 152,
+                                                                                            lineNumber: 158,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$up$2d$right$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowUpRight$3e$__["ArrowUpRight"], {
@@ -1111,13 +1140,13 @@ async function StacksPage() {
                                                                                             }
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                                            lineNumber: 153,
+                                                                                            lineNumber: 159,
                                                                                             columnNumber: 31
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                                    lineNumber: 151,
+                                                                                    lineNumber: 157,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1128,7 +1157,7 @@ async function StacksPage() {
                                                                                     children: tool.category
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                                    lineNumber: 155,
+                                                                                    lineNumber: 161,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1139,30 +1168,30 @@ async function StacksPage() {
                                                                                     children: tool.description
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                                    lineNumber: 156,
+                                                                                    lineNumber: 162,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                            lineNumber: 150,
+                                                                            lineNumber: 156,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, tool.name, true, {
                                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                                    lineNumber: 143,
+                                                                    lineNumber: 149,
                                                                     columnNumber: 25
                                                                 }, this))
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                            lineNumber: 141,
+                                                            lineNumber: 147,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                    lineNumber: 133,
+                                                    lineNumber: 139,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1173,34 +1202,34 @@ async function StacksPage() {
                                                     children: "We only recommend tools that power the ACE Engine. Some links may be affiliate links to support our R&D."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                                    lineNumber: 162,
+                                                    lineNumber: 168,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                            lineNumber: 132,
+                                            lineNumber: 138,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                        lineNumber: 131,
+                                        lineNumber: 137,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                                lineNumber: 75,
+                                lineNumber: 81,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                            lineNumber: 74,
+                            lineNumber: 80,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                        lineNumber: 73,
+                        lineNumber: 79,
                         columnNumber: 9
                     }, this)
                 ]
@@ -1211,7 +1240,7 @@ async function StacksPage() {
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$layout$2f$Footer$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CTAFooter"], {}, void 0, false, {
                 fileName: "[project]/src/app/(app)/stacks/page.tsx",
-                lineNumber: 172,
+                lineNumber: 178,
                 columnNumber: 7
             }, this)
         ]

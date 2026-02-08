@@ -86,7 +86,11 @@
   .btn-ghost-gradient { position: relative; background-clip: padding-box; border: 2px solid transparent; background-image: linear-gradient(hsl(var(--background)), hsl(var(--background))), linear-gradient(135deg, #0066FF, #7C3AED); background-origin: padding-box, border-box; }
   .btn-ghost-gradient:hover { background-image: linear-gradient(hsl(259 72% 58% / 0.05), hsl(259 72% 58% / 0.05)), linear-gradient(135deg, #0066FF, #7C3AED); letter-spacing: 0.01em; }
   .labs-card-premium { background: hsl(var(--surface-glass) / 0.8); backdrop-filter: blur(20px); border: 1px solid hsl(var(--border) / 0.5); box-shadow: var(--shadow-sm); transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-  .labs-card-premium:hover { box-shadow: var(--shadow-elevated), 0 0 40px hsl(259 72% 58% / 0.06); border-color: hsl(259 72% 58% / 0.2); transform: translateY(-4px); }
+  .labs-card-premium:hover { box-shadow: var(--shadow-elevated), 0 0 50px hsl(259 72% 58% / 0.08); border-color: hsl(259 72% 58% / 0.25); transform: translateY(-6px); }
+
+  /* Enhanced card lift effect for all interactive cards */
+  .card-lift { transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s ease; }
+  .card-lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-elevated), 0 0 30px hsl(216 100% 50% / 0.05); border-color: hsl(216 100% 50% / 0.2); }
 }
 
 @layer utilities {
