@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { BrandWordmark } from './BrandWordmark';
 
 export const LoadingAnimation = ({ onComplete }) => {
   const [phase, setPhase] = useState('rise');
