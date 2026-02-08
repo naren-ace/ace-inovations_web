@@ -22,3 +22,17 @@
     font-family: var(--font-outfit), 'Outfit', sans-serif;
   }
 }
+
+@layer components {
+  .ghost-button {
+    background: transparent;
+    border: 2px solid transparent;
+    background-image: linear-gradient(#F9FAFB, #F9FAFB), linear-gradient(135deg, var(--ace-blue), var(--ace-violet));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  .ghost-button:hover {
+    background-image: linear-gradient(rgba(59,111,232,0.06), rgba(123,45,142,0.06)), linear-gradient(135deg, var(--ace-blue), var(--ace-violet));
+  }
+}
