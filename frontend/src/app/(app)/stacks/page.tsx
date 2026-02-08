@@ -4,6 +4,7 @@ import config from '@payload-config'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { CTAFooter } from '@/components/layout/Footer'
+import { ScrollSpiral } from '@/components/effects/ScrollSpiral'
 import { ArrowRight, Clock, CheckCircle, ArrowUpRight, Layers } from 'lucide-react'
 
 const categoryLabels: Record<string, string> = {
