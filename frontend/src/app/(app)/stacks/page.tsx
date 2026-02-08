@@ -43,6 +43,7 @@ export default async function StacksPage() {
 
   return (
     <div className="min-h-screen animate-bg-breathe" data-testid="stacks-page">
+      <ScrollSpiral />
       <Navbar />
 
       <main>
