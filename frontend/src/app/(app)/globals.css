@@ -72,8 +72,8 @@
 
 @layer components {
   .glass-card { background: hsl(var(--surface-glass) / 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid hsl(var(--border) / 0.6); box-shadow: var(--shadow-sm); }
-  .glass-card-hover { background: hsl(var(--surface-glass) / 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid hsl(var(--border) / 0.6); box-shadow: var(--shadow-sm); transition: box-shadow var(--transition-smooth), border-color var(--transition-smooth), transform var(--transition-smooth); }
-  .glass-card-hover:hover { box-shadow: var(--shadow-elevated); border-color: hsl(var(--border)); transform: translateY(-2px); }
+  .glass-card-hover { background: hsl(var(--surface-glass) / 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid hsl(var(--border) / 0.6); box-shadow: var(--shadow-sm); transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.35s ease; }
+  .glass-card-hover:hover { box-shadow: var(--shadow-elevated), 0 0 40px hsl(216 100% 50% / 0.06); border-color: hsl(216 100% 50% / 0.25); transform: translateY(-4px); background: hsl(var(--surface-glass) / 0.9); }
   .tech-grid-bg { background-image: linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px); background-size: 60px 60px; }
   .section-container { @apply mx-auto max-w-7xl px-6 sm:px-8 lg:px-12; }
   .gradient-text { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
