@@ -254,7 +254,7 @@ const BrandWordmark = ({ size = 'lg', className })=>{
         "data-testid": "brand-wordmark",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: `${textClass} font-bold tracking-tight text-ace-blue font-heading`,
+                className: `${textClass} font-extrabold tracking-tight text-ace-blue font-heading`,
                 children: "ACE"
             }, void 0, false, {
                 fileName: "[project]/src/components/brand/BrandWordmark.tsx",
@@ -262,7 +262,7 @@ const BrandWordmark = ({ size = 'lg', className })=>{
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: "relative inline-flex flex-col items-center text-ace-slate",
+                className: "relative inline-flex flex-col items-center text-gray-400",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: `absolute rounded-full bg-ace-violet ${dotClass}`
@@ -286,7 +286,7 @@ const BrandWordmark = ({ size = 'lg', className })=>{
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: `${textClass} font-extralight tracking-tight text-ace-slate font-heading`,
+                className: `${textClass} font-extralight tracking-tight text-gray-400 font-heading`,
                 children: "novations"
             }, void 0, false, {
                 fileName: "[project]/src/components/brand/BrandWordmark.tsx",
@@ -377,7 +377,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$B
 ;
 const Hero = ()=>{
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        className: "relative min-h-screen flex items-center justify-center overflow-hidden",
+        className: "relative min-h-[85vh] flex items-center justify-center overflow-hidden",
         "data-testid": "hero-section",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -412,13 +412,13 @@ const Hero = ()=>{
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute inset-0 opacity-[0.03]",
+                        className: "absolute inset-0 opacity-[0.025]",
                         style: {
                             backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")'
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/components/home/Hero.tsx",
-                        lineNumber: 18,
+                        lineNumber: 17,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
@@ -428,20 +428,20 @@ const Hero = ()=>{
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "text-center space-y-8 px-6 pt-16",
+                className: "text-center space-y-8 px-6 pt-20 max-w-3xl mx-auto",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex justify-center animate-fade-in",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$brand$2f$LogicNodeIcon$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["LogicNodeIcon"], {
-                            size: 96
+                            size: 112
                         }, void 0, false, {
                             fileName: "[project]/src/components/home/Hero.tsx",
-                            lineNumber: 23,
+                            lineNumber: 22,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/components/home/Hero.tsx",
-                        lineNumber: 22,
+                        lineNumber: 21,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -451,20 +451,29 @@ const Hero = ()=>{
                             className: "justify-center"
                         }, void 0, false, {
                             fileName: "[project]/src/components/home/Hero.tsx",
-                            lineNumber: 27,
+                            lineNumber: 26,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/components/home/Hero.tsx",
-                        lineNumber: 26,
+                        lineNumber: 25,
+                        columnNumber: 9
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                        className: "text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-ace-slate leading-tight animate-fade-in animation-delay-150",
+                        "data-testid": "hero-headline",
+                        children: "Engineering the Next Generation"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/home/Hero.tsx",
+                        lineNumber: 29,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-lg sm:text-xl text-gray-500 font-light max-w-lg mx-auto font-body animate-fade-in animation-delay-200",
-                        children: "Engineering the Next Generation of Digital Platforms with AI-augmented precision."
+                        className: "text-base sm:text-lg text-gray-500 font-light max-w-xl mx-auto font-body leading-relaxed animate-fade-in animation-delay-200",
+                        children: "We build AI-augmented digital platforms, growth engines, and enterprise systems with the precision of a compiler and the vision of a founder."
                     }, void 0, false, {
                         fileName: "[project]/src/components/home/Hero.tsx",
-                        lineNumber: 30,
+                        lineNumber: 33,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -473,31 +482,33 @@ const Hero = ()=>{
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                 variant: "secondary",
                                 href: "/stacks",
+                                size: "lg",
                                 children: "Read the Stacks"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/Hero.tsx",
-                                lineNumber: 35,
+                                lineNumber: 39,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                 variant: "ghost",
                                 href: "/admin",
+                                size: "lg",
                                 children: "Open Admin"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/Hero.tsx",
-                                lineNumber: 38,
+                                lineNumber: 42,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/home/Hero.tsx",
-                        lineNumber: 34,
+                        lineNumber: 38,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/home/Hero.tsx",
-                lineNumber: 21,
+                lineNumber: 20,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
@@ -526,8 +537,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 const services = [
     {
-        title: 'AI Strategy',
-        description: 'Custom AI architectures designed for scale. From model selection to deployment pipelines.',
+        title: 'AI Strategy & Architecture',
+        description: 'Custom model pipelines, RAG systems, and inference infrastructure — from prototype to production at scale.',
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
             viewBox: "0 0 24 24",
             fill: "none",
@@ -551,7 +562,7 @@ const services = [
     },
     {
         title: 'Platform Engineering',
-        description: 'Full-stack systems built for throughput. Next.js, PostgreSQL, event-driven microservices.',
+        description: 'Full-stack systems engineered for throughput. Next.js, PostgreSQL, event-driven microservices, zero-downtime deploys.',
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
             viewBox: "0 0 24 24",
             fill: "none",
@@ -574,8 +585,8 @@ const services = [
         }, ("TURBOPACK compile-time value", void 0))
     },
     {
-        title: 'Growth Systems',
-        description: 'Affiliate engines, analytics dashboards, and conversion pipelines that compound.',
+        title: 'Growth & Revenue Systems',
+        description: 'Affiliate engines, analytics dashboards, and conversion pipelines built to compound. Tracked. Measured. Optimized.',
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
             viewBox: "0 0 24 24",
             fill: "none",
@@ -599,7 +610,7 @@ const services = [
     },
     {
         title: 'Technical Advisory',
-        description: 'Architecture reviews, stack audits, and CTO-level guidance for early-stage teams.',
+        description: 'Architecture reviews, stack audits, and CTO-level guidance for early-stage teams building their first real system.',
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
             viewBox: "0 0 24 24",
             fill: "none",
@@ -624,16 +635,16 @@ const services = [
 ];
 const ServiceGrid = ()=>{
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        className: "py-24 px-6",
+        className: "py-28 px-6 bg-white",
         "data-testid": "services-section",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "max-w-6xl mx-auto",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "text-center mb-16",
+                    className: "text-center mb-20",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-sm font-semibold text-ace-blue tracking-widest uppercase mb-3",
+                            className: "text-sm font-semibold text-ace-blue tracking-[0.2em] uppercase mb-4 font-body",
                             children: "What We Build"
                         }, void 0, false, {
                             fileName: "[project]/src/components/home/ServiceGrid.tsx",
@@ -641,7 +652,7 @@ const ServiceGrid = ()=>{
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                            className: "text-3xl sm:text-4xl font-heading font-bold text-ace-slate",
+                            className: "text-3xl sm:text-4xl font-heading font-extrabold text-ace-slate",
                             children: "Precision Engineering for Scale"
                         }, void 0, false, {
                             fileName: "[project]/src/components/home/ServiceGrid.tsx",
@@ -655,37 +666,44 @@ const ServiceGrid = ()=>{
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6",
+                    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8",
                     children: services.map((service)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "group p-6 rounded-2xl border border-gray-100 bg-white hover:border-ace-blue/20 hover:shadow-lg hover:shadow-ace-blue/5 transition-all duration-300",
-                            "data-testid": `service-card-${service.title.toLowerCase().replace(/\s+/g, '-')}`,
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-10 h-10 rounded-xl bg-gradient-to-br from-ace-blue/10 to-ace-violet/10 flex items-center justify-center text-ace-blue mb-4 group-hover:from-ace-blue/20 group-hover:to-ace-violet/20 transition-colors duration-300",
-                                    children: service.icon
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/home/ServiceGrid.tsx",
-                                    lineNumber: 62,
-                                    columnNumber: 15
-                                }, ("TURBOPACK compile-time value", void 0)),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "font-heading font-semibold text-ace-slate mb-2",
-                                    children: service.title
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/home/ServiceGrid.tsx",
-                                    lineNumber: 65,
-                                    columnNumber: 15
-                                }, ("TURBOPACK compile-time value", void 0)),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-sm text-gray-500 leading-relaxed",
-                                    children: service.description
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/home/ServiceGrid.tsx",
-                                    lineNumber: 66,
-                                    columnNumber: 15
-                                }, ("TURBOPACK compile-time value", void 0))
-                            ]
-                        }, service.title, true, {
+                            className: "gradient-border-card group",
+                            "data-testid": `service-card-${service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '')}`,
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "p-7 rounded-[15px] bg-white h-full",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "w-11 h-11 rounded-xl bg-gradient-to-br from-ace-blue/10 to-ace-violet/10 flex items-center justify-center text-ace-blue mb-5 group-hover:from-ace-blue/20 group-hover:to-ace-violet/20 transition-all duration-400",
+                                        children: service.icon
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/ServiceGrid.tsx",
+                                        lineNumber: 63,
+                                        columnNumber: 17
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "font-heading font-bold text-ace-slate mb-2 text-base",
+                                        children: service.title
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/ServiceGrid.tsx",
+                                        lineNumber: 66,
+                                        columnNumber: 17
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-sm text-gray-500 leading-relaxed font-body",
+                                        children: service.description
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/ServiceGrid.tsx",
+                                        lineNumber: 67,
+                                        columnNumber: 17
+                                    }, ("TURBOPACK compile-time value", void 0))
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/ServiceGrid.tsx",
+                                lineNumber: 62,
+                                columnNumber: 15
+                            }, ("TURBOPACK compile-time value", void 0))
+                        }, service.title, false, {
                             fileName: "[project]/src/components/home/ServiceGrid.tsx",
                             lineNumber: 57,
                             columnNumber: 13

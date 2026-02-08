@@ -255,7 +255,7 @@ const BrandWordmark = ({ size = 'lg', className })=>{
         "data-testid": "brand-wordmark",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: `${textClass} font-bold tracking-tight text-ace-blue font-heading`,
+                className: `${textClass} font-extrabold tracking-tight text-ace-blue font-heading`,
                 children: "ACE"
             }, void 0, false, {
                 fileName: "[project]/src/components/brand/BrandWordmark.tsx",
@@ -263,7 +263,7 @@ const BrandWordmark = ({ size = 'lg', className })=>{
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: "relative inline-flex flex-col items-center text-ace-slate",
+                className: "relative inline-flex flex-col items-center text-gray-400",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: `absolute rounded-full bg-ace-violet ${dotClass}`
@@ -287,7 +287,7 @@ const BrandWordmark = ({ size = 'lg', className })=>{
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: `${textClass} font-extralight tracking-tight text-ace-slate font-heading`,
+                className: `${textClass} font-extralight tracking-tight text-gray-400 font-heading`,
                 children: "novations"
             }, void 0, false, {
                 fileName: "[project]/src/components/brand/BrandWordmark.tsx",
@@ -319,7 +319,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 const Navbar = ()=>{
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-        className: "fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/70 border-b border-gray-100/80",
+        className: "fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-white/60 border-b border-gray-200/40",
         "data-testid": "navbar",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "max-w-7xl mx-auto px-6 h-16 flex items-center justify-between",
@@ -330,7 +330,7 @@ const Navbar = ()=>{
                     "data-testid": "navbar-home-link",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$brand$2f$LogicNodeIcon$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["LogicNodeIcon"], {
-                            size: 32,
+                            size: 30,
                             className: "transition-transform duration-300 group-hover:scale-110"
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/Navbar.tsx",
@@ -355,7 +355,7 @@ const Navbar = ()=>{
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                             href: "/stacks",
-                            className: "text-sm font-medium text-gray-500 hover:text-ace-blue transition-colors duration-200",
+                            className: "text-sm font-medium text-gray-400 hover:text-ace-blue transition-colors duration-200 tracking-wide",
                             "data-testid": "navbar-stacks-link",
                             children: "Stacks"
                         }, void 0, false, {
@@ -365,7 +365,7 @@ const Navbar = ()=>{
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                             href: "/admin",
-                            className: "text-sm font-medium px-4 py-2 rounded-lg bg-ace-slate text-white hover:bg-ace-slate/85 transition-colors duration-200",
+                            className: "text-sm font-medium px-5 py-2 rounded-lg bg-ace-slate text-white hover:bg-ace-slate/85 transition-all duration-200",
                             "data-testid": "navbar-admin-link",
                             children: "Admin"
                         }, void 0, false, {
