@@ -124,7 +124,7 @@ export const LoadingAnimation = ({ onComplete }) => {
 
             {/* Wordmark */}
             <motion.div
-              className="mt-6 flex items-baseline"
+              className="mt-6"
               initial={{ opacity: 0, y: 10 }}
               animate={{
                 opacity: phase === 'ripple' || phase === 'shrink' ? 1 : 0,
@@ -132,18 +132,7 @@ export const LoadingAnimation = ({ onComplete }) => {
               }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span
-                className="text-3xl sm:text-4xl font-bold tracking-tight"
-                style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#1A202C' }}
-              >
-                ACE
-              </span>
-              <span
-                className="text-3xl sm:text-4xl tracking-tight"
-                style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 200, color: '#1A202C' }}
-              >
-                inovations
-              </span>
+              <BrandWordmark size="xl" theme="dark" />
             </motion.div>
           </motion.div>
 
