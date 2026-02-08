@@ -166,7 +166,7 @@ export default async function StacksPage() {
         </section>
       </main>
 
-      <Footer />
+      <CTAFooter />
     </div>
   )
 }
