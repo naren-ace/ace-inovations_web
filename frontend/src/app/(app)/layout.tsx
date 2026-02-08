@@ -1,6 +1,6 @@
 import React from 'react'
 import { Metadata } from 'next'
-import { Inter, Outfit } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({
@@ -10,10 +10,10 @@ const inter = Inter({
   display: 'swap',
 })
 
-const outfit = Outfit({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-outfit',
-  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-space-grotesk',
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 })
 
