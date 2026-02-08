@@ -2429,52 +2429,537 @@ export const AceEngineSection = () => {
 ### AceSquadsSection.js
 `src/components/AceSquadsSection.js`
 
-*(Full source code already shown in the codebase — copy from the file at `/app/frontend/src/components/AceSquadsSection.js`)*
+```jsx
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Lightbulb, Code2, Rocket } from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.12, duration: 0.65, ease: [0.4, 0, 0.2, 1] } }),
+};
+
+const pillars = [
+  { icon: Lightbulb, title: "Product Strategy", description: "We embed with your team to understand your market, users, and competitive landscape. From discovery to roadmap, every decision is grounded in data and domain expertise.", capabilities: ["Market & user research", "Product roadmapping", "Technical feasibility analysis", "Competitive positioning"], color: "primary" },
+  { icon: Code2, title: "Technical Engineering", description: "Full-stack development powered by AI-augmented workflows. We build scalable, maintainable systems using modern architectures and battle-tested engineering practices.", capabilities: ["Full-stack development", "AI-augmented delivery", "Cloud-native architecture", "CI/CD & DevOps"], color: "accent" },
+  { icon: Rocket, title: "Growth Operations", description: "Launching is only the beginning. We instrument your product for growth, optimizing funnels, performance, and visibility to drive sustainable traction.", capabilities: ["Technical SEO", "Funnel instrumentation", "Performance optimization", "Analytics & attribution"], color: "primary" },
+];
+
+export const AceSquadsSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <section id="squads" ref={ref} className="relative py-24 lg:py-32" style={{ background: 'hsl(var(--surface-subtle))' }}>
+      <div className="absolute left-0 right-0 top-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, hsl(var(--border)), transparent)' }} />
+      <div className="section-container relative z-10">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <motion.p custom={0} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-xs font-medium tracking-[0.2em] uppercase mb-4" style={{ color: 'hsl(var(--primary))' }}>ACE Squads</motion.p>
+          <motion.h2 custom={1} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tighter text-foreground leading-tight">Integrated Expertise.</motion.h2>
+          <motion.p custom={2} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: 'hsl(var(--body))' }}>Our squads combine three disciplines into a single, high-velocity unit. No silos. No handoff friction. Just seamless execution.</motion.p>
+        </div>
+        <div className="grid lg:grid-cols-3 gap-6">
+          {pillars.map((pillar, i) => (
+            <motion.div key={pillar.title} custom={3 + i} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="glass-card-hover rounded-xl p-7 flex flex-col">
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style={{ background: pillar.color === "primary" ? 'hsl(216 100% 50% / 0.08)' : 'hsl(259 72% 58% / 0.08)' }}>
+                <pillar.icon className="w-5 h-5" style={{ color: pillar.color === "primary" ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }} />
+              </div>
+              <h3 className="text-lg font-bold text-foreground tracking-tight mb-3">{pillar.title}</h3>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: 'hsl(var(--body))' }}>{pillar.description}</p>
+              <ul className="mt-auto space-y-2.5">
+                {pillar.capabilities.map((cap) => (
+                  <li key={cap} className="flex items-center gap-2.5 text-sm">
+                    <span className="w-1 h-1 rounded-full shrink-0" style={{ background: pillar.color === "primary" ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }} />
+                    <span style={{ color: 'hsl(var(--body))' }}>{cap}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+```
 
 ### AceLoop.js
 `src/components/AceLoop.js`
 
-*(Full source code at `/app/frontend/src/components/AceLoop.js`)*
+```jsx
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Search, Cog, Rocket } from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.12, duration: 0.6, ease: [0.4, 0, 0.2, 1] } }),
+};
+
+const steps = [
+  { number: "01", title: "Discover", label: "Blueprint", description: "Deep-dive into your business, users, and technical landscape. We map every constraint and opportunity.", icon: Search, color: "primary" },
+  { number: "02", title: "Execute", label: "AI-Augmented Build", description: "Our AI-augmented squads build at velocity. Continuous delivery with industrial-grade quality controls.", icon: Cog, color: "accent" },
+  { number: "03", title: "Optimize", label: "Growth & Scale", description: "Instrument, measure, iterate. Growth engineering and performance optimization drive sustainable scale.", icon: Rocket, color: "primary" },
+];
+
+export const AceLoop = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <section id="process" ref={ref} className="relative py-24 lg:py-32">
+      <div className="section-container relative z-10">
+        <div className="text-center max-w-2xl mx-auto mb-20">
+          <motion.p custom={0} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-xs font-medium tracking-[0.2em] uppercase mb-4" style={{ color: 'hsl(var(--primary))' }}>Our Process</motion.p>
+          <motion.h2 custom={1} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tighter text-foreground leading-tight">The ACE Loop.</motion.h2>
+          <motion.p custom={2} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: 'hsl(var(--body))' }}>A refined, repeatable process that transforms complexity into clarity and vision into production-ready systems.</motion.p>
+        </div>
+        <div className="relative">
+          <div className="hidden lg:block absolute top-[52px] left-[16.67%] right-[16.67%] h-px" style={{ background: 'hsl(var(--border))' }} />
+          <div className="grid lg:grid-cols-3 gap-12 lg:gap-8">
+            {steps.map((step, i) => (
+              <motion.div key={step.number} custom={3 + i} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="relative flex flex-col items-center text-center">
+                <div className="relative z-10 mb-8">
+                  <div className="w-[104px] h-[104px] rounded-full flex flex-col items-center justify-center border" style={{ background: 'hsl(var(--card))', borderColor: step.color === "primary" ? 'hsl(216 100% 50% / 0.2)' : 'hsl(259 72% 58% / 0.2)', boxShadow: step.color === "primary" ? '0 0 30px hsl(216 100% 50% / 0.06)' : '0 0 30px hsl(259 72% 58% / 0.06)' }}>
+                    <span className="text-xs font-mono tracking-widest mb-0.5" style={{ color: step.color === "primary" ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}>{step.number}</span>
+                    <step.icon className="w-5 h-5" style={{ color: step.color === "primary" ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }} />
+                  </div>
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-1">{step.title}</h3>
+                <p className="text-xs font-medium tracking-wide uppercase mb-3" style={{ color: step.color === "primary" ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}>{step.label}</p>
+                <p className="text-sm leading-relaxed max-w-xs" style={{ color: 'hsl(var(--body))' }}>{step.description}</p>
+                {i < steps.length - 1 && (<div className="lg:hidden mt-8 w-px h-12" style={{ background: 'linear-gradient(180deg, hsl(var(--border)), transparent)' }} />)}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+```
 
 ### AceLabsSection.js
 `src/components/AceLabsSection.js`
 
-*(Full source code at `/app/frontend/src/components/AceLabsSection.js`)*
+```jsx
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { BarChart3, UserCheck, Bot, ArrowRight, Sparkles } from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.12, duration: 0.65, ease: [0.4, 0, 0.2, 1] } }),
+};
+
+const labProducts = [
+  { icon: BarChart3, status: "Beta", title: "Autonomous Market Analyst", description: "Real-time competitive intelligence powered by agentic AI. Continuously monitors market signals, competitor moves, and emerging opportunities\u2014delivering actionable briefings to your inbox.", features: ["Real-time monitoring", "Competitor tracking", "Signal detection"], color: "primary", gradient: 'linear-gradient(135deg, hsl(216 100% 50% / 0.06), hsl(216 100% 65% / 0.02))' },
+  { icon: UserCheck, status: "v1", title: "LeadGen Agent", description: "Human-centric outbound automation that combines AI research with personalized outreach. Every touchpoint feels crafted by a human\u2014because the strategy is, the execution is AI-augmented.", features: ["AI personalization", "Multi-channel", "A/B optimization"], color: "accent", gradient: 'linear-gradient(135deg, hsl(259 72% 58% / 0.06), hsl(259 72% 72% / 0.02))' },
+  { icon: Bot, status: "Alpha", title: "DevOps Sentinel", description: "An autonomous agent that watches your infrastructure 24/7. Predicts failures before they happen, auto-remediates common issues, and escalates intelligently when human judgment is needed.", features: ["Predictive alerts", "Auto-remediation", "Smart escalation"], color: "primary", gradient: 'linear-gradient(135deg, hsl(216 100% 50% / 0.06), hsl(259 72% 58% / 0.03))' },
+];
+
+export const AceLabsSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <section id="labs" ref={ref} className="relative py-24 lg:py-32 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 40% at 80% 20%, hsl(259 72% 58% / 0.03), transparent 60%), radial-gradient(ellipse 40% 40% at 10% 80%, hsl(216 100% 50% / 0.025), transparent 50%)' }} />
+      <div className="section-container relative z-10">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <motion.div custom={0} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-medium tracking-wide uppercase mb-6" style={{ background: 'hsl(259 72% 58% / 0.06)', color: 'hsl(var(--accent))', border: '1px solid hsl(259 72% 58% / 0.12)' }}>
+            <Sparkles className="w-3 h-3" />Internal Products
+          </motion.div>
+          <motion.h2 custom={1} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-tight">ACE Labs: Engineering the Future.</motion.h2>
+          <motion.p custom={2} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="mt-5 text-base md:text-lg leading-relaxed" style={{ color: 'hsl(var(--body))' }}>Our internal R&amp;D arm builds autonomous agents and intelligent automations—the same tools we use to deliver at elite velocity for our clients.</motion.p>
+        </div>
+        <div className="grid lg:grid-cols-3 gap-6">
+          {labProducts.map((product, i) => (
+            <motion.div key={product.title} custom={3 + i} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="labs-card-premium rounded-2xl flex flex-col overflow-hidden">
+              <div className="p-6 pb-0">
+                <div className="flex items-start justify-between mb-5">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: product.gradient }}>
+                    <product.icon className="w-5.5 h-5.5" style={{ color: product.color === "primary" ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }} />
+                  </div>
+                  <span className="px-2.5 py-0.5 text-[10px] font-semibold tracking-wider uppercase rounded-full" style={{ background: product.color === "primary" ? 'hsl(216 100% 50% / 0.08)' : 'hsl(259 72% 58% / 0.08)', color: product.color === "primary" ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}>{product.status}</span>
+                </div>
+                <h3 className="text-lg font-bold text-foreground mb-2 tracking-tight">{product.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'hsl(var(--body))' }}>{product.description}</p>
+              </div>
+              <div className="p-6 pt-5 mt-auto">
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {product.features.map((feature) => (<span key={feature} className="px-2.5 py-1 text-[11px] font-medium rounded-md" style={{ background: 'hsl(var(--secondary))', color: 'hsl(var(--muted-foreground))' }}>{feature}</span>))}
+                </div>
+                <button className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 group" style={{ color: product.color === 'primary' ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}>
+                  Learn more<ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        <motion.div custom={7} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-center mt-14">
+          <Button variant="outline-premium" size="lg" asChild><a href="#labs">Explore the Lab<ArrowRight className="w-4 h-4 ml-2" /></a></Button>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+```
 
 ### InsightsSection.js
 `src/components/InsightsSection.js`
 
-*(Full source code at `/app/frontend/src/components/InsightsSection.js`)*
+```jsx
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, ArrowLeft, Clock, Tag } from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.12, duration: 0.65, ease: [0.4, 0, 0.2, 1] } }),
+};
+
+const articles = [
+  { category: "Engineering", title: "Why Agentic Workflows are Replacing Traditional Dev", excerpt: "The shift from linear development to autonomous, agent-driven workflows is reshaping how elite teams ship software. Here\u2019s what\u2019s actually changing.", readTime: "8 min read", date: "Jan 2026", color: "primary", accentBg: 'linear-gradient(135deg, hsl(216 100% 50% / 0.06), hsl(216 100% 65% / 0.02))' },
+  { category: "Case Study", title: "The Engineering of a $1M Marketplace", excerpt: "An inside look at the technical architecture, growth engineering, and AI-augmented processes behind a marketplace that scaled from zero to $1M ARR.", readTime: "12 min read", date: "Dec 2025", color: "accent", accentBg: 'linear-gradient(135deg, hsl(259 72% 58% / 0.06), hsl(259 72% 72% / 0.02))' },
+  { category: "Strategy", title: "Technical Debt is a Growth Problem, Not an Engineering One", excerpt: "Reframing tech debt as a strategic growth constraint changes everything about how you prioritize, allocate resources, and measure success.", readTime: "6 min read", date: "Nov 2025", color: "primary", accentBg: 'linear-gradient(135deg, hsl(216 100% 50% / 0.04), hsl(216 100% 65% / 0.02))' },
+  { category: "AI", title: "Building AI-Native Products: Lessons from the Trenches", excerpt: "What we\u2019ve learned from building 15+ AI-native applications\u2014the architectures that scale, the pitfalls to avoid, and the patterns that actually work.", readTime: "10 min read", date: "Oct 2025", color: "accent", accentBg: 'linear-gradient(135deg, hsl(259 72% 58% / 0.04), hsl(259 72% 72% / 0.02))' },
+  { category: "Growth", title: "The SEO Playbook for Technical Founders", excerpt: "A first-principles approach to technical SEO that goes beyond keyword stuffing\u2014designed for engineers who want to build organic growth into their architecture.", readTime: "7 min read", date: "Sep 2025", color: "primary", accentBg: 'linear-gradient(135deg, hsl(216 100% 50% / 0.04), hsl(216 100% 65% / 0.02))' },
+];
+
+export const InsightsSection = () => {
+  const ref = useRef(null);
+  const scrollContainerRef = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = () => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  };
+
+  const scroll = (direction) => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    el.scrollBy({ left: direction === "left" ? -380 : 380, behavior: "smooth" });
+    setTimeout(checkScroll, 400);
+  };
+
+  return (
+    <section id="insights" ref={ref} className="relative py-24 lg:py-32 overflow-hidden" style={{ background: 'hsl(var(--surface-subtle))' }}>
+      <div className="section-container relative z-10">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+          <div>
+            <motion.p custom={0} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-xs font-medium tracking-[0.2em] uppercase mb-4" style={{ color: 'hsl(var(--primary))' }}>Insights</motion.p>
+            <motion.h2 custom={1} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-tight">From the Lab.</motion.h2>
+            <motion.p custom={2} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="mt-3 text-base md:text-lg leading-relaxed max-w-lg" style={{ color: 'hsl(var(--body))' }}>Deep dives into engineering, AI, and the strategies driving modern digital product development.</motion.p>
+          </div>
+          <motion.div custom={2} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="flex items-center gap-2">
+            <button onClick={() => scroll("left")} disabled={!canScrollLeft} className="w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-200 disabled:opacity-30" style={{ borderColor: 'hsl(var(--border))', color: 'hsl(var(--foreground))', background: canScrollLeft ? 'hsl(var(--card))' : 'transparent' }} aria-label="Scroll left"><ArrowLeft className="w-4 h-4" /></button>
+            <button onClick={() => scroll("right")} disabled={!canScrollRight} className="w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-200 disabled:opacity-30" style={{ borderColor: 'hsl(var(--border))', color: 'hsl(var(--foreground))', background: canScrollRight ? 'hsl(var(--card))' : 'transparent' }} aria-label="Scroll right"><ArrowRight className="w-4 h-4" /></button>
+          </motion.div>
+        </div>
+      </div>
+      <motion.div custom={3} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"}>
+        <div ref={scrollContainerRef} onScroll={checkScroll} className="flex gap-5 overflow-x-auto scrollbar-hide snap-x snap-mandatory pl-6 sm:pl-8 lg:pl-[max(3rem,calc((100vw-80rem)/2+3rem))] pr-6" style={{ scrollPaddingLeft: '1.5rem' }}>
+          {articles.map((article) => (
+            <motion.article key={article.title} className="flex-none w-[340px] sm:w-[360px] snap-start group">
+              <div className="h-full rounded-xl flex flex-col overflow-hidden transition-all duration-300 group-hover:shadow-elevated" style={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border) / 0.6)' }}>
+                <div className="h-1 w-full" style={{ background: article.accentBg }} />
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="px-2.5 py-0.5 text-[10px] font-semibold tracking-wider uppercase rounded-full" style={{ background: article.color === "primary" ? 'hsl(216 100% 50% / 0.08)' : 'hsl(259 72% 58% / 0.08)', color: article.color === "primary" ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}>{article.category}</span>
+                    <span className="text-xs flex items-center gap-1" style={{ color: 'hsl(var(--caption))' }}><Clock className="w-3 h-3" />{article.readTime}</span>
+                  </div>
+                  <h3 className="text-base font-bold text-foreground tracking-tight leading-snug mb-3 group-hover:text-primary transition-colors duration-200">{article.title}</h3>
+                  <p className="text-sm leading-relaxed flex-1" style={{ color: 'hsl(var(--body))' }}>{article.excerpt}</p>
+                  <div className="flex items-center justify-between mt-5 pt-4" style={{ borderTop: '1px solid hsl(var(--border) / 0.4)' }}>
+                    <span className="text-xs" style={{ color: 'hsl(var(--caption))' }}>{article.date}</span>
+                    <span className="text-xs font-medium flex items-center gap-1 transition-colors duration-200 group-hover:gap-2" style={{ color: article.color === 'primary' ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}>Read<ArrowRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" /></span>
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+          <div className="flex-none w-6" aria-hidden="true" />
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+```
 
 ### CTASection.js
 `src/components/CTASection.js`
 
-*(Full source code at `/app/frontend/src/components/CTASection.js`)*
+```jsx
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { ContactModal } from "@/components/ContactModal";
+import { ArrowRight } from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.6, ease: [0.4, 0, 0.2, 1] } }),
+};
+
+export const CTASection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [contactOpen, setContactOpen] = useState(false);
+
+  return (
+    <>
+      <section id="about" ref={ref} className="relative py-24 lg:py-32 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, hsl(216 100% 50% / 0.04) 0%, transparent 70%)' }} />
+        <div className="section-container relative z-10">
+          <div className="max-w-2xl mx-auto text-center">
+            <motion.p custom={0} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-xs font-medium tracking-[0.2em] uppercase mb-4" style={{ color: 'hsl(var(--primary))' }}>About ACE inovations</motion.p>
+            <motion.h2 custom={1} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tighter text-foreground leading-tight">Built by engineers,{" "}<span className="gradient-text">for builders</span>.</motion.h2>
+            <motion.p custom={2} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="mt-5 text-base md:text-lg leading-relaxed" style={{ color: 'hsl(var(--body))' }}>ACE inovations is a modern engineering and growth studio. We combine world-class software development with agentic AI workflows to deliver end-to-end digital solutions that scale.</motion.p>
+            <motion.div custom={3} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button variant="premium" size="xl" onClick={() => setContactOpen(true)} className="btn-glow" data-testid="about-cta-btn">Start a Project<ArrowRight className="w-4 h-4 ml-1" /></Button>
+              <Button variant="outline-premium" size="xl" asChild><a href="mailto:hello@aceinovations.dev">hello@aceinovations.dev</a></Button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      <ContactModal open={contactOpen} onOpenChange={setContactOpen} />
+    </>
+  );
+};
+```
 
 ### ScrollSpiral.js
 `src/components/ScrollSpiral.js`
 
-*(Full source code at `/app/frontend/src/components/ScrollSpiral.js`)*
+```jsx
+import { useEffect, useRef } from "react";
+
+export const ScrollSpiral = () => {
+  const svgRef = useRef(null);
+  const lastScrollY = useRef(0);
+  const velocityRef = useRef(0);
+  const rafRef = useRef(null);
+  const hoverActiveRef = useRef(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!svgRef.current) return;
+      const paths = svgRef.current.querySelectorAll(".spiral-path");
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = Math.min(scrollY / docHeight, 1);
+      const delta = Math.abs(scrollY - lastScrollY.current);
+      velocityRef.current = Math.min(delta / 10, 3);
+      lastScrollY.current = scrollY;
+      const baseWidth = 0.5;
+      const velocityBoost = velocityRef.current * 0.4;
+      const hoverBoost = hoverActiveRef.current ? 0.8 : 0;
+      const strokeW = baseWidth + velocityBoost + hoverBoost;
+      paths.forEach((path, i) => {
+        const length = path.getTotalLength();
+        const offset = length * (1 - progress * 1.2 + i * 0.05);
+        path.style.strokeDasharray = `${length}`;
+        path.style.strokeDashoffset = `${Math.max(offset, 0)}`;
+        path.style.strokeWidth = `${strokeW}`;
+        path.style.opacity = hoverActiveRef.current ? (i === 0 ? '0.55' : '0.4') : (i === 0 ? '0.35' : '0.25');
+      });
+    };
+
+    const tick = () => {
+      if (velocityRef.current > 0.01) {
+        velocityRef.current *= 0.92;
+        if (svgRef.current) {
+          const paths = svgRef.current.querySelectorAll(".spiral-path");
+          const baseWidth = 0.5;
+          const velocityBoost = velocityRef.current * 0.4;
+          const hoverBoost = hoverActiveRef.current ? 0.8 : 0;
+          paths.forEach((path) => { path.style.strokeWidth = `${baseWidth + velocityBoost + hoverBoost}`; });
+        }
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    const handleLabsHover = (e) => {
+      hoverActiveRef.current = e.detail.active;
+      if (svgRef.current) {
+        const paths = svgRef.current.querySelectorAll(".spiral-path");
+        paths.forEach((path, i) => {
+          path.style.transition = 'opacity 0.4s ease, stroke-width 0.4s ease';
+          path.style.opacity = e.detail.active ? (i === 0 ? '0.55' : '0.4') : (i === 0 ? '0.35' : '0.25');
+          path.style.strokeWidth = e.detail.active ? '1.2' : '0.5';
+          if (e.detail.active) { path.style.stroke = i === 0 ? 'hsl(216, 100%, 50%)' : 'hsl(216, 100%, 60%)'; } else { path.style.stroke = ''; }
+        });
+      }
+    };
+
+    handleScroll();
+    rafRef.current = requestAnimationFrame(tick);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    document.addEventListener("labs-card-hover", handleLabsHover);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("labs-card-hover", handleLabsHover);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  return (
+    <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0 }} aria-hidden="true" data-testid="scroll-spiral">
+      <svg ref={svgRef} className="w-full h-full" viewBox="0 0 1440 5000" preserveAspectRatio="xMidYMin slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path className="spiral-path" d="M-50,100 C200,150 400,50 720,200 S1100,100 1490,250 C1200,400 900,300 720,500 S300,400 -50,600 C200,750 500,650 720,800 S1100,700 1490,900 C1200,1050 900,950 720,1150 S300,1050 -50,1250 C200,1400 500,1300 720,1500 S1100,1400 1490,1600 C1200,1750 900,1650 720,1850 S300,1750 -50,1950 C200,2100 500,2000 720,2200 S1100,2100 1490,2300 C1200,2450 900,2350 720,2550 S300,2450 -50,2650 C200,2800 500,2700 720,2900 S1100,2800 1490,3000 C1200,3150 900,3050 720,3250 S300,3150 -50,3350 C200,3500 500,3400 720,3600 S1100,3500 1490,3700 C1200,3850 900,3750 720,3950 S300,3850 -50,4050 C200,4200 500,4100 720,4300 S1100,4200 1490,4400 C1200,4550 900,4450 720,4650 S300,4550 -50,4750" stroke="url(#spiralGradient1)" strokeWidth="0.5" strokeLinecap="round" opacity="0.35" style={{ transition: 'opacity 0.3s ease' }} />
+        <path className="spiral-path" d="M1490,50 C1200,200 900,100 720,300 S300,200 -50,400 C200,550 500,450 720,650 S1100,550 1490,750 C1200,900 900,800 720,1000 S300,900 -50,1100 C200,1250 500,1150 720,1350 S1100,1250 1490,1450 C1200,1600 900,1500 720,1700 S300,1600 -50,1800 C200,1950 500,1850 720,2050 S1100,1950 1490,2150 C1200,2300 900,2200 720,2400 S300,2300 -50,2500 C200,2650 500,2550 720,2750 S1100,2650 1490,2850 C1200,3000 900,2900 720,3100 S300,3000 -50,3200 C200,3350 500,3250 720,3450 S1100,3350 1490,3550 C1200,3700 900,3600 720,3800 S300,3700 -50,3900 C200,4050 500,3950 720,4150 S1100,4050 1490,4250 C1200,4400 900,4300 720,4500 S300,4400 -50,4600" stroke="url(#spiralGradient2)" strokeWidth="0.5" strokeLinecap="round" opacity="0.25" style={{ transition: 'opacity 0.3s ease' }} />
+        <defs>
+          <linearGradient id="spiralGradient1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="hsl(259, 72%, 58%)" stopOpacity="0.6" /><stop offset="50%" stopColor="hsl(216, 100%, 50%)" stopOpacity="0.4" /><stop offset="100%" stopColor="hsl(259, 72%, 58%)" stopOpacity="0.6" /></linearGradient>
+          <linearGradient id="spiralGradient2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stopColor="hsl(216, 100%, 50%)" stopOpacity="0.4" /><stop offset="50%" stopColor="hsl(259, 72%, 58%)" stopOpacity="0.5" /><stop offset="100%" stopColor="hsl(216, 100%, 50%)" stopOpacity="0.4" /></linearGradient>
+        </defs>
+      </svg>
+    </div>
+  );
+};
+```
 
 ### MouseGlow.js
 `src/components/MouseGlow.js`
 
-*(Full source code at `/app/frontend/src/components/MouseGlow.js`)*
+```jsx
+import { useEffect, useRef } from "react";
+
+export const MouseGlow = () => {
+  const glowRef = useRef(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (glowRef.current) {
+        glowRef.current.style.transform = `translate(${e.clientX - 200}px, ${e.clientY - 200}px)`;
+      }
+    };
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  return (
+    <div ref={glowRef} className="fixed top-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none z-[1]" style={{ background: 'radial-gradient(circle, hsl(259 72% 58% / 0.045) 0%, transparent 70%)', transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)', willChange: 'transform' }} aria-hidden="true" />
+  );
+};
+```
 
 ### EngineCore.js
 `src/components/EngineCore.js`
 
-*(Full source code at `/app/frontend/src/components/EngineCore.js`)*
+```jsx
+import { motion } from "framer-motion";
+
+export const EngineCore = () => {
+  return (
+    <div className="relative w-full h-full flex items-center justify-center" data-testid="engine-core-visual">
+      <div className="absolute w-[90%] h-[90%] rounded-full animate-pulse-soft" style={{ background: 'radial-gradient(circle, hsl(216 100% 50% / 0.06) 0%, transparent 70%)' }} />
+      <div className="absolute w-[80%] h-[80%] rounded-full" style={{ background: 'radial-gradient(circle, hsl(259 72% 58% / 0.05) 0%, transparent 60%)', animation: 'pulse-soft 6s ease-in-out infinite reverse' }} />
+      <motion.div className="relative w-[65%] h-[65%] rounded-full overflow-hidden" animate={{ scale: [1, 1.02, 0.99, 1.01, 1] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} style={{ background: 'linear-gradient(145deg, hsl(0 0% 100% / 0.25), hsl(216 100% 50% / 0.08) 40%, hsl(259 72% 58% / 0.12) 70%, hsl(0 0% 100% / 0.15))', backdropFilter: 'blur(40px)', WebkitBackdropFilter: 'blur(40px)', border: '1px solid hsl(0 0% 100% / 0.4)', boxShadow: '0 0 80px hsl(216 100% 50% / 0.1), 0 0 120px hsl(259 72% 58% / 0.06), inset 0 0 60px hsl(216 100% 50% / 0.08), inset 0 -20px 40px hsl(259 72% 58% / 0.06)' }}>
+        <motion.div className="absolute inset-[20%] rounded-full" animate={{ rotate: [0, 360] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} style={{ background: 'conic-gradient(from 0deg, hsl(216 100% 50% / 0.15), hsl(259 72% 58% / 0.12), hsl(216 100% 65% / 0.1), hsl(259 72% 58% / 0.15), hsl(216 100% 50% / 0.15))', filter: 'blur(12px)' }} />
+        <motion.div className="absolute rounded-full" style={{ width: '30%', height: '30%', top: '35%', left: '35%', background: 'radial-gradient(circle, hsl(216 100% 70% / 0.25), hsl(259 72% 68% / 0.15), transparent 70%)', filter: 'blur(8px)' }} animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} />
+        <div className="absolute top-[8%] left-[15%] w-[45%] h-[25%] rounded-full" style={{ background: 'linear-gradient(180deg, hsl(0 0% 100% / 0.35), transparent)', filter: 'blur(10px)' }} />
+        <div className="absolute inset-0 rounded-full opacity-20" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`, mixBlendMode: 'overlay' }} />
+      </motion.div>
+      {[...Array(6)].map((_, i) => (
+        <motion.div key={i} className="absolute rounded-full" style={{ width: 2 + (i % 3), height: 2 + (i % 3), background: i % 2 === 0 ? 'hsl(216 100% 50% / 0.5)' : 'hsl(259 72% 58% / 0.5)' }} animate={{ x: [Math.cos((i * Math.PI) / 3) * 120, Math.cos((i * Math.PI) / 3 + Math.PI) * 120, Math.cos((i * Math.PI) / 3) * 120], y: [Math.sin((i * Math.PI) / 3) * 120, Math.sin((i * Math.PI) / 3 + Math.PI) * 120, Math.sin((i * Math.PI) / 3) * 120], opacity: [0.2, 0.7, 0.2] }} transition={{ duration: 8 + i * 2, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }} />
+      ))}
+    </div>
+  );
+};
+```
 
 ### StickySection.js
 `src/components/StickySection.js`
 
-*(Full source code at `/app/frontend/src/components/StickySection.js`)*
+```jsx
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+export const StickySection = ({ children, className = "", zIndex = 10, overlap = false }) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "start start"] });
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.6, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [60, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.98, 1]);
+
+  return (
+    <div ref={ref} className={`relative ${overlap ? '-mt-8 lg:-mt-12' : ''} ${className}`} style={{ zIndex }}>
+      <motion.div style={{ opacity, y, scale }} transition={{ type: "spring", damping: 30, stiffness: 100 }}>{children}</motion.div>
+    </div>
+  );
+};
+```
 
 ### ServiceArchitecture.js
 `src/components/ServiceArchitecture.js`
 
-*(Full source code at `/app/frontend/src/components/ServiceArchitecture.js`)*
+```jsx
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Globe, TrendingUp, Users, Map } from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.12, duration: 0.6, ease: [0.4, 0, 0.2, 1] } }),
+};
+
+const services = [
+  { icon: Globe, title: "Platform Engineering", subtitle: "Custom SaaS & Marketplaces", description: "Full-stack platform development from architecture to deployment. We build scalable, multi-tenant systems designed for growth.", tags: ["SaaS", "Marketplaces", "APIs"], color: "primary" },
+  { icon: TrendingUp, title: "Growth Engineering", subtitle: "Technical SEO & Funnel Instrumentation", description: "Data-driven growth infrastructure. We instrument every touchpoint to maximize conversion and retention.", tags: ["SEO", "Analytics", "CRO"], color: "accent" },
+  { icon: Users, title: "ACE Squads", subtitle: "High-velocity, on-demand engineering units", description: "Embedded engineering teams that integrate seamlessly with your workflow. Scale up or down as your roadmap demands.", tags: ["Teams", "Agile", "On-Demand"], color: "primary" },
+  { icon: Map, title: "Strategic Blueprinting", subtitle: "Technical audits & Product roadmapping", description: "Deep technical analysis and strategic planning. We map your path from current state to market-leading architecture.", tags: ["Audits", "Roadmaps", "Strategy"], color: "accent" },
+];
+
+export const ServiceArchitecture = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <section id="services" ref={ref} className="relative py-24 lg:py-32" style={{ background: 'hsl(var(--surface-subtle))' }}>
+      <div className="section-container relative z-10">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <motion.p custom={0} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-xs font-medium tracking-[0.2em] uppercase mb-4" style={{ color: 'hsl(var(--primary))' }}>Service Architecture</motion.p>
+          <motion.h2 custom={1} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tighter text-foreground leading-tight">The Four Pillars.</motion.h2>
+          <motion.p custom={2} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"} className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: 'hsl(var(--body))' }}>A systematic approach to building and scaling digital products, powered by intelligence at every layer.</motion.p>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-6">
+          {services.map((service, i) => (
+            <motion.div key={service.title} custom={3 + i} variants={fadeUp} initial="hidden" animate={isInView ? "visible" : "hidden"}>
+              <Card variant="glass-hover" className="h-full flex flex-col">
+                <CardHeader className="pb-3">
+                  <div className="flex items-start justify-between">
+                    <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3" style={{ background: service.color === "primary" ? 'hsl(216 100% 50% / 0.08)' : 'hsl(259 72% 58% / 0.08)' }}>
+                      <service.icon className="w-5 h-5" style={{ color: service.color === "primary" ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }} />
+                    </div>
+                    <span className="text-xs font-mono tracking-wider" style={{ color: 'hsl(var(--caption))' }}>0{i + 1}</span>
+                  </div>
+                  <CardTitle className="text-lg font-semibold text-foreground">{service.title}</CardTitle>
+                  <CardDescription className="text-sm" style={{ color: 'hsl(var(--caption))' }}>{service.subtitle}</CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1 flex flex-col">
+                  <p className="text-sm leading-relaxed flex-1" style={{ color: 'hsl(var(--body))' }}>{service.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-5">
+                    {service.tags.map((tag) => (<span key={tag} className="px-2.5 py-1 text-xs font-medium rounded-md" style={{ background: 'hsl(var(--secondary))', color: 'hsl(var(--muted-foreground))' }}>{tag}</span>))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+```
 
 ---
 
