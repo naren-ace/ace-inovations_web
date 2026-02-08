@@ -3,7 +3,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
-import { Footer } from '@/components/layout/Footer'
+import { CTAFooter } from '@/components/layout/Footer'
 import { ArrowRight, Clock, CheckCircle, ArrowUpRight, Layers } from 'lucide-react'
 
 const categoryLabels: Record<string, string> = {
