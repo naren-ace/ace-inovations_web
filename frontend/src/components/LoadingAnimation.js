@@ -18,8 +18,7 @@ export const LoadingAnimation = ({ onComplete }) => {
     <AnimatePresence>
       {phase !== 'done' && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden"
-          style={{ background: '#F9FAFB' }}
+          className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-background"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
           data-testid="loading-animation"
