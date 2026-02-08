@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import { sql } from 'drizzle-orm'
 
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ slug: string }> },
 ) {
   const { slug } = await params
+  const baseUrl = request.nextUrl.origin
 
   const payload = await getPayload({ config })
 
@@ -21,20 +23,18 @@ export async function GET(
   const affiliate = result.docs[0]
 
   if (!affiliate) {
-    return NextResponse.json({ error: 'Affiliate not found' }, { status: 404 })
+    return NextResponse.redirect(`${baseUrl}/?ref=404&slug=${slug}`, 302)
   }
 
   if (!affiliate.active) {
-    return NextResponse.json({ error: 'This link is currently inactive' }, { status: 410 })
+    return NextResponse.redirect(`${baseUrl}/?ref=inactive&slug=${slug}`, 302)
   }
 
-  await payload.update({
-    collection: 'affiliates',
-    id: affiliate.id,
-    data: {
-      clickCount: (affiliate.clickCount ?? 0) + 1,
-    },
-  })
+  // Atomic increment — safe under concurrent clicks
+  const db = payload.db.drizzle
+  await db.execute(
+    sql`UPDATE affiliates SET click_count = click_count + 1 WHERE id = ${affiliate.id}`
+  )
 
   return NextResponse.redirect(affiliate.targetUrl as string, 302)
 }
