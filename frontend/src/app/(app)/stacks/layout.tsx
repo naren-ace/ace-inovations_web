@@ -2,14 +2,10 @@ import React from 'react'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'ACE Stacks | Technical Knowledge Base',
-  description: 'Deep dives into AI strategy, engineering patterns, and field notes from the ACEinovations team.',
+  title: 'ACE Stacks | Field Notes from the Frontline',
+  description: 'Deep technical breakdowns of the architectures, toolchains, and agentic workflows that power the products we ship at ACE inovations.',
 }
 
 export default function StacksLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="stacks-dark min-h-screen" style={{ background: 'hsl(222 47% 6%)', color: 'hsl(210 20% 96%)' }}>
-      {children}
-    </div>
-  )
+  return <>{children}</>
 }

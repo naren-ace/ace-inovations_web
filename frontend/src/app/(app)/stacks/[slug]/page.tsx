@@ -3,20 +3,15 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { LogicNodeIcon } from '@/components/brand/LogicNodeIcon'
+import { Navbar } from '@/components/layout/Navbar'
+import { Footer } from '@/components/layout/Footer'
+import { ArrowLeft, Clock } from 'lucide-react'
 
 const categoryLabels: Record<string, string> = {
   'ai-strategy': 'AI Strategy',
   'engineering': 'Engineering',
   'case-studies': 'Case Studies',
   'field-notes': 'Field Notes',
-}
-
-const categoryStyles: Record<string, string> = {
-  'ai-strategy': 'bg-blue-500/20 text-blue-400',
-  'engineering': 'bg-emerald-500/20 text-emerald-400',
-  'case-studies': 'bg-amber-500/20 text-amber-400',
-  'field-notes': 'bg-purple-500/20 text-purple-400',
 }
 
 function extractText(node: any): string {
@@ -28,17 +23,16 @@ function extractText(node: any): string {
 
 function renderRichText(content: any): React.ReactNode {
   if (!content?.root?.children) return null
-
   return content.root.children.map((node: any, i: number) => {
     if (node.type === 'paragraph') {
       const text = extractText(node)
       if (!text.trim()) return <br key={i} />
       return (
-        <p key={i} className="text-gray-300 leading-relaxed mb-4">
+        <p key={i} className="leading-relaxed mb-4" style={{ color: 'hsl(var(--body))' }}>
           {node.children?.map((child: any, j: number) => {
-            if (child.bold) return <strong key={j} className="text-white font-semibold">{child.text}</strong>
+            if (child.bold) return <strong key={j} className="text-foreground font-semibold">{child.text}</strong>
             if (child.italic) return <em key={j}>{child.text}</em>
-            if (child.code) return <code key={j} className="bg-white/10 px-1.5 py-0.5 rounded text-blue-400 text-sm">{child.text}</code>
+            if (child.code) return <code key={j} className="bg-secondary px-1.5 py-0.5 rounded text-primary text-sm">{child.text}</code>
             return <span key={j}>{child.text}</span>
           })}
         </p>
@@ -46,7 +40,7 @@ function renderRichText(content: any): React.ReactNode {
     }
     if (node.type === 'heading') {
       const text = extractText(node)
-      return <h2 key={i} className="text-white font-heading font-bold text-2xl mt-8 mb-4">{text}</h2>
+      return <h2 key={i} className="text-2xl font-bold text-foreground mt-8 mb-4">{text}</h2>
     }
     return null
   })
@@ -55,52 +49,55 @@ function renderRichText(content: any): React.ReactNode {
 export default async function StackPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const payload = await getPayload({ config })
-
-  const { docs } = await payload.find({
-    collection: 'stacks',
-    where: { slug: { equals: slug } },
-    limit: 1,
-  })
-
+  const { docs } = await payload.find({ collection: 'stacks', where: { slug: { equals: slug } }, limit: 1 })
   const post = docs[0]
   if (!post) notFound()
 
+  const color = ['ai-strategy', 'case-studies'].includes(post.category as string) ? 'primary' : 'accent'
+
   return (
-    <>
-      <nav className="sticky top-0 z-50 backdrop-blur-xl border-b border-white/5" style={{ background: 'hsl(222 47% 6% / 0.85)' }}>
-        <div className="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <LogicNodeIcon size={28} />
-            <span className="font-heading font-bold text-white text-lg">ACE<span style={{ fontWeight: 200 }}>Stacks</span></span>
-          </Link>
-          <Link href="/stacks" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">All Stacks</Link>
-        </div>
-      </nav>
+    <div className="min-h-screen animate-bg-breathe">
+      <Navbar />
 
-      <article className="max-w-3xl mx-auto px-6 py-16" data-testid="stack-post">
-        <div className="flex items-center gap-3 mb-6">
-          <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${categoryStyles[post.category as string] ?? 'bg-gray-500/20 text-gray-400'}`}>
-            {categoryLabels[post.category as string] ?? post.category}
-          </span>
-          <span className="text-xs text-gray-600">
-            {new Date(post.createdAt).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
-          </span>
-        </div>
+      <main>
+        <article className="relative pt-32 pb-24 lg:pt-40 lg:pb-32">
+          <div className="absolute inset-0 pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse 50% 30% at 50% 10%, hsl(216 100% 50% / 0.03), transparent 60%)' }} />
+          <div className="section-container relative z-10 max-w-3xl" data-testid="stack-post">
+            {/* Back link */}
+            <Link href="/stacks" className="inline-flex items-center gap-1.5 text-sm font-medium mb-8 transition-colors duration-200 hover:text-primary" style={{ color: 'hsl(var(--caption))' }}>
+              <ArrowLeft className="w-4 h-4" /> Back to Stacks
+            </Link>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-white mb-6" data-testid="stack-post-title">{post.title}</h1>
+            {/* Meta */}
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-[11px] font-semibold tracking-wider uppercase"
+                style={{ color: color === 'primary' ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}>
+                // {categoryLabels[post.category as string] ?? post.category}
+              </span>
+              <span className="text-xs" style={{ color: 'hsl(var(--caption))' }}>
+                {new Date(post.createdAt).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
+              </span>
+            </div>
 
-        {post.excerpt && (
-          <p className="text-lg text-gray-400 mb-12 border-l-2 pl-4" style={{ borderColor: 'hsl(216 100% 50% / 0.4)' }}>{post.excerpt}</p>
-        )}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tighter text-foreground leading-[1.1] mb-6" data-testid="stack-post-title">
+              {post.title}
+            </h1>
 
-        <div data-testid="stack-post-content">
-          {renderRichText(post.content)}
-        </div>
+            {post.excerpt && (
+              <p className="text-lg mb-12 pl-4" style={{ color: 'hsl(var(--body))', borderLeft: '2px solid hsl(var(--primary) / 0.3)' }}>
+                {post.excerpt}
+              </p>
+            )}
 
-        <div className="mt-16 pt-8 border-t border-white/5">
-          <Link href="/stacks" className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">&larr; Back to all Stacks</Link>
-        </div>
-      </article>
-    </>
+            <div data-testid="stack-post-content">
+              {renderRichText(post.content)}
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <Footer />
+    </div>
   )
 }
