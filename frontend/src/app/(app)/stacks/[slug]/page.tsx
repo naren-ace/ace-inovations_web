@@ -4,7 +4,7 @@ import config from '@payload-config'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Navbar } from '@/components/layout/Navbar'
-import { Footer } from '@/components/layout/Footer'
+import { CTAFooter } from '@/components/layout/Footer'
 import { ArrowLeft, Clock } from 'lucide-react'
 
 const categoryLabels: Record<string, string> = {
