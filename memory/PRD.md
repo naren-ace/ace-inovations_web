@@ -1,87 +1,74 @@
 # ACEinovations — Product Requirements Document
 
 ## Problem Statement
-Build the ACEinovations digital platform as a Next.js 16 + Payload CMS 3.x monolith with PostgreSQL.
+Build the ACEinovations digital platform as a Next.js 16 + Payload CMS 3.x monolith with PostgreSQL, porting the exact prototype design from the `ace-prototype` GitHub branch.
 
 ## Tech Stack
 - **Framework:** Next.js 16.1.6 (App Router, Turbopack)
 - **CMS:** Payload CMS 3.75+
 - **Database:** PostgreSQL 15
 - **Language:** TypeScript
-- **CSS:** Tailwind CSS 3.4
+- **CSS:** Tailwind CSS 3.4 + CSS Variables design system
 - **Fonts:** Inter (body), Outfit (headings) via `next/font/google`
 - **Animation:** Framer Motion 12
+- **UI Libraries:** class-variance-authority, @radix-ui/react-slot, lucide-react, tailwind-merge
 
 ## Brand Identity
-- **Primary Color (Electric Blue):** `#3B6FE8`
-- **Secondary Color (Deep Violet):** `#7B2D8E`
-- **Accent (Cobalt):** `#2E5BFF`
-- **Dark (Slate):** `#1A202C`
+- **Electric Blue:** `#0066FF` (primary accent)
+- **Deep Cobalt:** `#2E5BFF` (logo gradient start)
+- **Royal Violet:** `#6D28D9` (logo gradient end)
+- **Deep Violet:** `#7C3AED` (accent)
+- **Violet Shift:** `#7B2D8E` (Labs/Stacks buttons)
+- **Dark Slate:** `#1A202C` (header-dark buttons, wordmark)
+- **Primary Gradient:** `linear-gradient(135deg, #0066FF, #7C3AED)`
 
-## Iteration Plan
+## Completed Iterations
 
-### Iteration 1: Core Architecture & Database — COMPLETE
-- Next.js 16 + Payload CMS 3.x monolith initialized
-- PostgreSQL database connected
-- Users collection with `roles` array field
-- `/admin` route serves Payload admin panel
-- Route groups: `(app)` for frontend, `(payload)` for admin
+### Iteration 1: Core Architecture — COMPLETE
+- Next.js 16 + Payload CMS 3.x monolith, PostgreSQL, Users with roles, /admin panel
 
-### Iteration 2: Brand Identity & Theme Engine — COMPLETE
-- Tailwind CSS configured with brand colors (ace-blue, ace-violet, ace-cobalt, ace-slate)
-- Typography: Inter (body) + Outfit (headings) via next/font/google
-- Reusable `LogicNodeIcon` component (`src/components/brand/LogicNodeIcon.tsx`)
-- Reusable `BrandWordmark` component (`src/components/brand/BrandWordmark.tsx`)
-- Reusable `Button` component with 3 variants (`src/components/ui/Button.tsx`):
-  - Primary: Dark Slate background
-  - Secondary: Deep Violet with 0.4s "Power-On" transition to Electric Blue on hover
-  - Ghost: Gradient border (blue → violet)
+### Iteration 2: Brand Identity — COMPLETE
+- Tailwind design system, Inter + Outfit fonts, Button component (3 variants)
 
 ### Iteration 3: Content & Affiliate Engine — COMPLETE
-- **Media Collection** — Image uploads with thumbnail/card/hero sizes
-- **Stacks (Blog) Collection** — Title, auto-slug, Category (AI Strategy/Engineering/Case Studies/Field Notes), Featured Image, Excerpt, Rich Text Content, Draft/Published status
-- **Affiliates Collection** — Partner Name, Target URL, Slug, Active toggle, Category Tag (Cloud/AI Tools/Software/Infrastructure/Analytics), Internal Description, Click Count (read-only, auto-incremented)
-- **Redirect Route `/go/[slug]`** — 302 redirect, atomic SQL clickCount increment, redirects to home for 404/inactive
-- **Backend Proxy** — FastAPI on port 8001 forwards `/api/*` to Next.js (port 3000) for Payload REST API access
+- Media, Stacks (Blog), Affiliates collections with full CRUD
+- `/go/[slug]` redirect with atomic clickCount, 302 status, 404→home redirect
 
-### Iteration 4: Public Frontend — COMPLETE
-- **Home Page** — Navbar (backdrop-blur-2xl), Hero with "Fluid Aura" animated gradient blobs (720px/640px/400px), Services section (4 cards with gradient border)
-- **Visual Refinements** — ACE font-extrabold blue + inovations font-extralight gray, hero min-h-[85vh], gradient-border-card on service cards (blue→violet 1px border), Outfit extrabold headings
-- **Stacks Feed (`/stacks`)** — Dark mode (#0C0E14) blog feed with colored category badges, excerpts, dates
-- **Individual Post (`/stacks/[slug]`)** — Dark mode post page with rich text rendering, back navigation
-- **Components** — Navbar, Hero, ServiceGrid, stacks dark navbar
+### Iteration 4: Public Frontend + Prototype Port — COMPLETE
+- Full visual port from ace-prototype GitHub branch
+- **Homepage sections:** Hero (FluidShape glass blob, gradient text, status pill), KeywordMarquee, TransitionSection, PhilosophySection, AceEngineSection (4 cards + tech-grid), AceSquadsSection (3 pillars), AceLoop (3-step process), CTASection, Footer
+- **Effects:** MouseGlow cursor, FluidShape animated glass, StickySection parallax
+- **Interactions:** ContactModal, scroll-aware Navbar with backdrop-blur
+- **Button variants:** header-dark, violet-shift, ghost-gradient, premium, outline-premium
+- **Stacks pages:** Dark mode blog feed + individual post pages
 
 ## Architecture
 ```
 /app/frontend/
-├── payload.config.ts          # Payload CMS central config (4 collections)
-├── tailwind.config.ts         # Brand colors & fonts
+├── payload.config.ts
+├── tailwind.config.ts
 ├── src/
-│   ├── app/
-│   │   ├── (app)/             # Public frontend
-│   │   │   ├── layout.tsx     # Root layout (Inter + Outfit fonts)
-│   │   │   ├── globals.css    # Fluid Aura + ghost-button + animations
-│   │   │   ├── page.tsx       # Home (Navbar + Hero + Services)
-│   │   │   ├── go/[slug]/route.ts  # Affiliate redirect (302 + atomic click)
-│   │   │   └── stacks/
-│   │   │       ├── layout.tsx      # Dark mode wrapper
-│   │   │       ├── page.tsx        # Blog feed
-│   │   │       └── [slug]/page.tsx # Individual post
-│   │   └── (payload)/         # Payload admin UI
-│   ├── collections/
-│   │   ├── Users.ts, Media.ts, Stacks.ts, Affiliates.ts
-│   └── components/
-│       ├── brand/   (LogicNodeIcon, BrandWordmark)
-│       ├── home/    (Hero, ServiceGrid)
-│       ├── layout/  (Navbar)
-│       └── ui/      (Button)
+│   ├── app/(app)/
+│   │   ├── layout.tsx, globals.css, page.tsx
+│   │   ├── go/[slug]/route.ts
+│   │   └── stacks/ (layout, page, [slug]/page)
+│   ├── app/(payload)/
+│   ├── collections/ (Users, Media, Stacks, Affiliates)
+│   ├── components/
+│   │   ├── brand/ (LogicNodeIcon, BrandWordmark, Logo)
+│   │   ├── effects/ (MouseGlow, FluidShape)
+│   │   ├── home/ (Hero, KeywordMarquee, TransitionSection, PhilosophySection, AceEngineSection, AceSquadsSection, AceLoop, CTASection, StickySection, ContactModal)
+│   │   ├── layout/ (Navbar, Footer)
+│   │   └── ui/ (Button)
+│   └── lib/ (utils, payload)
 /app/backend/
-└── server.py                  # FastAPI proxy (/api/* → Next.js:3000)
+└── server.py (FastAPI proxy)
 ```
 
-## Database Schema
-- `users`: id, email, password (hashed), firstName, lastName, roles[], createdAt, updatedAt
-- `media`: id, filename, alt, mimeType, filesize, width, height, sizes{}, createdAt, updatedAt
-- `stacks`: id, title, slug (unique), category, featuredImage (→media), excerpt, content (richText), status, createdAt, updatedAt
-- `affiliates`: id, partnerName, targetUrl, slug (unique), active, categoryTag, description, clickCount, createdAt, updatedAt
-- `payload_migrations`, `payload_preferences`: Payload internals
+## Future/Backlog
+- Role-based access control
+- SEO metadata on Stacks
+- RSS feed for /stacks
+- Affiliate analytics dashboard
+- Dark/light mode toggle
+- Contact form backend integration (email delivery)
