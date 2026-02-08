@@ -9,39 +9,40 @@ import { PhilosophySection } from '@/components/home/PhilosophySection'
 import { AceEngineSection } from '@/components/home/AceEngineSection'
 import { AceSquadsSection } from '@/components/home/AceSquadsSection'
 import { AceLoop } from '@/components/home/AceLoop'
+import { InsightsSection } from '@/components/home/InsightsSection'
 import { CTASection } from '@/components/home/CTASection'
 import { StickySection } from '@/components/home/StickySection'
 
 export default function HomePage() {
   return (
-    <div className="relative overflow-x-hidden" data-testid="home-page">
+    <div className="min-h-screen animate-bg-breathe" data-testid="home-page">
       <MouseGlow />
       <Navbar />
 
       <main>
         <HeroSection />
 
+        <TransitionSection />
+
+        <PhilosophySection />
+
         <StickySection zIndex={10}>
-          <TransitionSection />
-        </StickySection>
-
-        <StickySection zIndex={20}>
-          <PhilosophySection />
-        </StickySection>
-
-        <StickySection zIndex={30}>
           <AceEngineSection />
         </StickySection>
 
-        <StickySection zIndex={40}>
+        <StickySection zIndex={11} overlap>
           <AceSquadsSection />
         </StickySection>
 
-        <StickySection zIndex={50}>
+        <StickySection zIndex={12}>
           <AceLoop />
         </StickySection>
 
-        <StickySection zIndex={60}>
+        <StickySection zIndex={13} overlap>
+          <InsightsSection />
+        </StickySection>
+
+        <StickySection zIndex={14}>
           <CTASection />
         </StickySection>
       </main>
