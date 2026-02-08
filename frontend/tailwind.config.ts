@@ -9,7 +9,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        heading: ['var(--font-outfit)', 'Outfit', 'sans-serif'],
+        heading: ['var(--font-space-grotesk)', "'Space Grotesk'", 'sans-serif'],
       },
       borderRadius: {
         lg: 'var(--radius)',
