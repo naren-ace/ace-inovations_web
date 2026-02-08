@@ -49,9 +49,25 @@ export const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  // Initialize dark mode from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('ace-dark-mode')
+    if (saved === 'true') {
+      setDarkMode(true)
+      document.documentElement.classList.add('dark')
+    }
+  }, [])
+
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
-    document.documentElement.classList.toggle('dark')
+    const next = !darkMode
+    setDarkMode(next)
+    if (next) {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('ace-dark-mode', 'true')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('ace-dark-mode', 'false')
+    }
   }
 
   return (
