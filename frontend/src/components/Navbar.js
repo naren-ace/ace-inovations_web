@@ -283,10 +283,18 @@ export const Navbar = () => {
                     </Wrapper>
                   );
                 })}
-                <div className="pt-3 mt-2 border-t border-border/40">
-                  <Button variant="header-dark" size="default" className="w-full" onClick={() => { setContactOpen(true); setMobileOpen(false); }} data-testid="nav-mobile-start-project-btn">
+                <div className="pt-3 mt-2 border-t border-border/40 flex items-center gap-3">
+                  <Button variant="header-dark" size="default" className="flex-1" onClick={() => { setContactOpen(true); setMobileOpen(false); }} data-testid="nav-mobile-start-project-btn">
                     Start a Project
                   </Button>
+                  <button
+                    onClick={toggleTheme}
+                    className="p-2.5 rounded-lg border border-border/60 text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors duration-200"
+                    aria-label="Toggle theme"
+                    data-testid="theme-toggle-mobile-btn"
+                  >
+                    {theme === "dark" ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
+                  </button>
                 </div>
               </div>
             </motion.div>
