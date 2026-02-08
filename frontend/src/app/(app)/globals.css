@@ -112,3 +112,85 @@
 
 /* Stacks dark mode overrides */
 .stacks-dark { --background: 222 47% 6%; --foreground: 210 20% 96%; --card: 222 47% 9%; --card-foreground: 210 20% 96%; --border: 222 30% 18%; --muted: 222 30% 14%; --muted-foreground: 215 16% 57%; --heading: 210 20% 96%; --body: 215 16% 70%; --caption: 215 16% 50%; }
+
+/* Dark theme */
+.dark {
+  --background: 222 47% 6%;
+  --foreground: 210 20% 96%;
+  --card: 222 47% 9%;
+  --card-foreground: 210 20% 96%;
+  --popover: 222 47% 9%;
+  --popover-foreground: 210 20% 96%;
+  --primary: 216 100% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 222 30% 14%;
+  --secondary-foreground: 210 20% 96%;
+  --muted: 222 30% 14%;
+  --muted-foreground: 215 16% 57%;
+  --accent: 259 72% 62%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 222 30% 18%;
+  --input: 222 30% 18%;
+  --ring: 216 100% 55%;
+  --primary-glow: 216 100% 65%;
+  --accent-glow: 259 72% 72%;
+  --surface-elevated: 222 47% 10%;
+  --surface-glass: 222 47% 9%;
+  --surface-subtle: 222 47% 7%;
+  --heading: 210 20% 96%;
+  --body: 215 16% 70%;
+  --caption: 215 16% 50%;
+  --gradient-primary: linear-gradient(135deg, hsl(216 100% 55%), hsl(259 72% 62%));
+  --gradient-primary-light: linear-gradient(135deg, hsl(216 100% 55% / 0.12), hsl(259 72% 62% / 0.12));
+  --gradient-subtle: linear-gradient(180deg, hsl(222 47% 6%), hsl(222 30% 10%));
+  --gradient-hero-shape: linear-gradient(135deg, hsl(216 100% 55% / 0.4), hsl(259 72% 62% / 0.4));
+  --shadow-xs: 0 1px 2px 0 hsl(0 0% 0% / 0.2);
+  --shadow-sm: 0 1px 3px 0 hsl(0 0% 0% / 0.3), 0 1px 2px -1px hsl(0 0% 0% / 0.3);
+  --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.3), 0 2px 4px -2px hsl(0 0% 0% / 0.3);
+  --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.3), 0 4px 6px -4px hsl(0 0% 0% / 0.3);
+  --shadow-elevated: 0 20px 40px -12px hsl(0 0% 0% / 0.4);
+  --shadow-glow-primary: 0 0 30px hsl(216 100% 55% / 0.2);
+  --shadow-glow-accent: 0 0 30px hsl(259 72% 62% / 0.2);
+}
+
+.dark body {
+  background-color: hsl(222 47% 6%);
+  color: hsl(210 20% 96%);
+}
+
+.dark .btn-header-dark {
+  background-color: hsl(0 0% 100%);
+  color: hsl(222 47% 6%);
+  border-color: hsl(216 100% 55% / 0.5);
+}
+
+.dark .btn-header-dark:hover {
+  background-color: hsl(0 0% 95%);
+}
+
+.dark .btn-ghost-gradient {
+  color: hsl(210 20% 96%);
+  background-image: linear-gradient(hsl(222 47% 6%), hsl(222 47% 6%)), linear-gradient(135deg, #4D94FF, #9B6FFF);
+}
+
+.dark .btn-ghost-gradient:hover {
+  background-image: linear-gradient(hsl(259 72% 62% / 0.1), hsl(259 72% 62% / 0.1)), linear-gradient(135deg, #4D94FF, #9B6FFF);
+  color: hsl(210 20% 96%);
+}
+
+.dark .glass-card,
+.dark .glass-card-hover {
+  background: hsl(222 47% 9% / 0.8);
+  border-color: hsl(222 30% 18% / 0.6);
+}
+
+.dark .animate-bg-breathe {
+  animation: bg-breathe-dark 20s ease-in-out infinite;
+}
+
+@keyframes bg-breathe-dark {
+  0%, 100% { background-color: hsl(222 47% 6%); }
+  50% { background-color: hsl(222 47% 7%); }
+}
