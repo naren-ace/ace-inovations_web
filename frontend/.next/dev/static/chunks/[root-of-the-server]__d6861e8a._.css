@@ -1172,6 +1172,10 @@ p {
   margin-left: .5rem;
 }
 
+.mt-0 {
+  margin-top: 0;
+}
+
 .mt-0\.5 {
   margin-top: .125rem;
 }
@@ -1416,10 +1420,6 @@ p {
   width: 1.25rem;
 }
 
-.w-56 {
-  width: 14rem;
-}
-
 .w-6 {
   width: 1.5rem;
 }
@@ -1630,6 +1630,10 @@ p {
   justify-content: space-between;
 }
 
+.gap-0 {
+  gap: 0;
+}
+
 .gap-1 {
   gap: .25rem;
 }
@@ -1832,6 +1836,10 @@ p {
   padding: .75rem;
 }
 
+.p-3\.5 {
+  padding: .875rem;
+}
+
 .p-6 {
   padding: 1.5rem;
 }
@@ -1920,11 +1928,6 @@ p {
   padding-bottom: .5rem;
 }
 
-.py-2\.5 {
-  padding-top: .625rem;
-  padding-bottom: .625rem;
-}
-
 .py-20 {
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -1938,6 +1941,11 @@ p {
 .py-28 {
   padding-top: 7rem;
   padding-bottom: 7rem;
+}
+
+.py-3 {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
 }
 
 .py-32 {
@@ -1968,8 +1976,8 @@ p {
   padding-bottom: 6rem;
 }
 
-.pl-3 {
-  padding-left: .75rem;
+.pl-1 {
+  padding-left: .25rem;
 }
 
 .pl-4 {
@@ -2621,6 +2629,10 @@ p {
 
 .hover\:underline:hover {
   text-decoration-line: underline;
+}
+
+.hover\:opacity-80:hover {
+  opacity: .8;
 }
 
 .hover\:shadow-\[0_0_24px_hsl\(259_72\%_58\%\/0\.45\)\,0_0_48px_hsl\(259_72\%_58\%\/0\.2\)\]:hover {
