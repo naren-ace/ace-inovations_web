@@ -1044,6 +1044,10 @@ p {
   top: -4px;
 }
 
+.-top-\[1\.5px\] {
+  top: -1.5px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1334,6 +1338,10 @@ p {
   height: 8px;
 }
 
+.h-\[2px\] {
+  height: 2px;
+}
+
 .min-h-\[calc\(100vh-4rem\)\] {
   min-height: calc(100vh - 4rem);
 }
@@ -1456,6 +1464,10 @@ p {
 
 .w-\[8px\] {
   width: 8px;
+}
+
+.w-\[2px\] {
+  width: 2px;
 }
 
 .min-w-0 {
