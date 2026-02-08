@@ -3,9 +3,11 @@ import { useLocation, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/Logo";
+import { useTheme } from "@/hooks/use-theme";
 import {
   Menu, X, Globe, TrendingUp, Users, Map,
-  ChevronDown, FlaskConical, BookOpen, Info, Layers
+  ChevronDown, FlaskConical, BookOpen, Info, Layers,
+  Sun, Moon
 } from "lucide-react";
 import { ContactModal } from "@/components/ContactModal";
 
@@ -46,6 +48,7 @@ export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   const megaMenuTimeoutRef = useRef(null);
   const location = useLocation();
 
@@ -212,6 +215,14 @@ export const Navbar = () => {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors duration-200"
+                aria-label="Toggle theme"
+                data-testid="theme-toggle-btn"
+              >
+                {theme === "dark" ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
+              </button>
               <Button variant="header-dark" size="default" onClick={() => setContactOpen(true)} data-testid="nav-start-project-btn">
                 Start a Project
               </Button>
