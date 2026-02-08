@@ -722,6 +722,18 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-outfit), "Outfit", sans-serif;
 }
 
+.ghost-button {
+  background: none;
+  background-image: linear-gradient(#f9fafb, #f9fafb), linear-gradient(135deg, var(--ace-blue), var(--ace-violet));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  border: 2px solid #0000;
+}
+
+.ghost-button:hover {
+  background-image: linear-gradient(#3b6fe80f, #7b2d8e0f), linear-gradient(135deg, var(--ace-blue), var(--ace-violet));
+}
+
 .absolute {
   position: absolute;
 }
@@ -809,6 +821,10 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .items-center {
   align-items: center;
 }
@@ -833,10 +849,6 @@ h1, h2, h3, h4, h5, h6 {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
-}
-
-.overflow-visible {
-  overflow: visible;
 }
 
 .rounded-full {
@@ -1042,17 +1054,6 @@ h1, h2, h3, h4, h5, h6 {
 .hover\:text-ace-blue:hover {
   --tw-text-opacity: 1;
   color: rgb(59 111 232 / var(--tw-text-opacity, 1));
-}
-
-.hover\:shadow-lg:hover {
-  --tw-shadow: 0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a;
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.hover\:shadow-ace-blue\/25:hover {
-  --tw-shadow-color: #3b6fe840;
-  --tw-shadow: var(--tw-shadow-colored);
 }
 
 .focus\:outline-none:focus {
