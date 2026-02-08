@@ -76,7 +76,7 @@ export default async function StacksPage() {
         </section>
 
         {/* Articles + Sidebar */}
-        <section className="relative pb-24 lg:pb-32">
+        <section className="relative pb-24 lg:pb-32" id="articles">
           <div className="section-container relative z-10">
             <div className="grid lg:grid-cols-3 gap-10">
               {/* Articles */}
