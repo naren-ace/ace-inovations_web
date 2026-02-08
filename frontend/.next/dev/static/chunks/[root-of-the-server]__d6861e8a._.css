@@ -1787,11 +1787,6 @@ p {
   background-color: rgb(123 45 142 / var(--tw-bg-opacity, 1));
 }
 
-.bg-\[\#F9FAFB\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
-}
-
 .bg-accent {
   background-color: hsl(var(--accent));
 }
