@@ -103,8 +103,9 @@ export default async function StacksPage() {
                                 style={{ color: color === 'primary' ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}>
                                 // {categoryLabels[post.category] ?? post.category}
                               </span>
-                              <span className="text-xs" style={{ color: 'hsl(var(--caption))' }}>
-                                {new Date(post.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                              <span className="flex items-center gap-1 text-xs" style={{ color: 'hsl(var(--caption))' }}>
+                                <Clock className="w-3 h-3" />
+                                {Math.max(5, Math.floor((post.excerpt?.length || 100) / 20))} min read
                               </span>
                             </div>
                             <h3 className="text-base font-bold text-foreground tracking-tight leading-snug mb-3 group-hover:text-primary transition-colors duration-200">{post.title}</h3>
