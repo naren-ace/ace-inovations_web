@@ -97,7 +97,7 @@ export default async function StackPostPage({ params }: { params: Promise<{ slug
         </article>
       </main>
 
-      <Footer />
+      <CTAFooter />
     </div>
   )
 }
