@@ -37,38 +37,48 @@ Build the ACEinovations digital platform as a Next.js 16 + Payload CMS 3.x monol
   - Secondary: Deep Violet with 0.4s "Power-On" transition to Electric Blue on hover
   - Ghost: Gradient border (blue → violet)
 
-### Iteration 3: Content & Affiliate Engine — UPCOMING (P1)
-- Create "Blog (Stacks)" Payload collection (Title, Slug, Content, Featured Image, Category)
-- Create "Affiliates" Payload collection (Partner Name, Target URL, Slug, Click Count)
-- Dynamic affiliate redirect route `/go/[slug]` with click counter increment
+### Iteration 3: Content & Affiliate Engine — COMPLETE
+- **Media Collection** — Image uploads with thumbnail/card/hero sizes
+- **Stacks (Blog) Collection** — Title, auto-slug, Category (AI Strategy/Engineering/Case Studies/Field Notes), Featured Image, Excerpt, Rich Text Content, Draft/Published status
+- **Affiliates Collection** — Partner Name, Target URL, Slug, Active toggle, Category Tag (Cloud/AI Tools/Software/Infrastructure/Analytics), Internal Description, Click Count (read-only, auto-incremented)
+- **Redirect Route `/go/[slug]`** — 302 redirect, increments clickCount, returns 410 for inactive, 404 for missing
+- **Backend Proxy** — FastAPI on port 8001 forwards `/api/*` to Next.js (port 3000) for Payload REST API access
 
-### Iteration 4: Public Frontend — FUTURE (P2)
+### Iteration 4: Public Frontend — UPCOMING (P2)
 - Home Page: Hero with "Fluid Aura" effect, Service section
 - Blog Page: `/stacks` feed with dark mode design
 
 ## Architecture
 ```
 /app/frontend/
-├── payload.config.ts          # Payload CMS central config
+├── payload.config.ts          # Payload CMS central config (4 collections)
 ├── tailwind.config.ts         # Brand colors & fonts
 ├── src/
 │   ├── app/
 │   │   ├── (app)/             # Public frontend
 │   │   │   ├── layout.tsx     # Root layout (Inter + Outfit fonts)
 │   │   │   ├── globals.css    # CSS variables + ghost-button styles
-│   │   │   └── page.tsx       # Home page
+│   │   │   ├── page.tsx       # Home page
+│   │   │   └── go/[slug]/route.ts  # Affiliate redirect (302 + click tracking)
 │   │   └── (payload)/         # Payload admin UI
 │   ├── collections/
-│   │   └── Users.ts           # Users collection with roles
+│   │   ├── Users.ts           # Users with roles
+│   │   ├── Media.ts           # Image uploads
+│   │   ├── Stacks.ts          # Blog posts
+│   │   └── Affiliates.ts      # Partner links + click tracking
 │   └── components/
 │       ├── brand/
 │       │   ├── LogicNodeIcon.tsx
 │       │   └── BrandWordmark.tsx
 │       └── ui/
 │           └── Button.tsx
+/app/backend/
+└── server.py                  # FastAPI proxy (/api/* → Next.js:3000)
 ```
 
 ## Database Schema
 - `users`: id, email, password (hashed), firstName, lastName, roles[], createdAt, updatedAt
-- `payload_migrations`: Migration tracking
-- `payload_preferences`: Admin UI preferences
+- `media`: id, filename, alt, mimeType, filesize, width, height, sizes{}, createdAt, updatedAt
+- `stacks`: id, title, slug (unique), category, featuredImage (→media), excerpt, content (richText), status, createdAt, updatedAt
+- `affiliates`: id, partnerName, targetUrl, slug (unique), active, categoryTag, description, clickCount, createdAt, updatedAt
+- `payload_migrations`, `payload_preferences`: Payload internals
