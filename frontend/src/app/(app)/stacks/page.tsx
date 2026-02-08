@@ -112,7 +112,7 @@ export default async function StacksPage() {
                             {post.excerpt && <p className="text-sm leading-relaxed flex-1" style={{ color: 'hsl(var(--body))' }}>{post.excerpt}</p>}
                             <div className="flex items-center justify-between mt-5 pt-4" style={{ borderTop: '1px solid hsl(var(--border) / 0.4)' }}>
                               <span className="text-xs" style={{ color: 'hsl(var(--caption))' }}>
-                                {new Date(post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                {new Date(post.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                               </span>
                               <span className="text-xs font-medium flex items-center gap-1 transition-all duration-200 group-hover:gap-2"
                                 style={{ color: color === 'primary' ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}>
