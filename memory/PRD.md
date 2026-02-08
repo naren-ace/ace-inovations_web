@@ -1,46 +1,74 @@
-# ACE inovations - Product Requirements Document
+# ACEinovations — Product Requirements Document
 
-## Original Problem Statement
-Build and continuously enhance a multi-page tech consultancy website for "ACE inovations" with a "Clean Premium White / Scientific White" aesthetic, similar to Apple or Stripe.
+## Problem Statement
+Build the ACEinovations digital platform as a Next.js 16 + Payload CMS 3.x monolith with PostgreSQL.
 
-## Brand Guidelines
-- **Name**: ACE inovations (strictly ONE "n", lowercase "i" in inovations)
-- **Logo**: LogicNodeIcon — two gradient pillars (blue→violet) forming an inverted V with a glowing white apex node
-- **Wordmark**: Space Grotesk — "ACE" weight 700, "inovations" weight 200, Dark Slate (#1A202C)
-- **Favicon**: SVG version of LogicNodeIcon
-- **Loading**: Pillars rise → node ignites → violet ripple → shatter → page reveals
-- **Palette**: #F9FAFB (bg), #2E5BFF (Deep Cobalt), #6D28D9 (Royal Violet), #1A202C (Dark Slate)
-- **Typography**: Inter (body), Space Grotesk (brand wordmark)
+## Tech Stack
+- **Framework:** Next.js 16.1.6 (App Router, Turbopack)
+- **CMS:** Payload CMS 3.75+
+- **Database:** PostgreSQL 15
+- **Language:** TypeScript
+- **CSS:** Tailwind CSS 3.4
+- **Fonts:** Inter (body), Outfit (headings) via `next/font/google`
+- **Animation:** Framer Motion 12
 
-## Button System (3 Variants)
-1. **Header Dark** (`header-dark`): Dark Slate bg, blue border, violet glow hover → Header/Footer CTAs
-2. **Violet Shift** (`violet-shift`): Deep Violet bg, mechanical glass, blue hover → Labs/Stacks
-3. **Gradient Ghost** (`ghost-gradient`): Transparent, gradient border, violet tint hover → Home/Services secondary
+## Brand Identity
+- **Primary Color (Electric Blue):** `#3B6FE8`
+- **Secondary Color (Deep Violet):** `#7B2D8E`
+- **Accent (Cobalt):** `#2E5BFF`
+- **Dark (Slate):** `#1A202C`
 
-## Routes
-- `/` - Homepage
-- `/labs` - ACE Labs (Engine Core hero + Bento Grid)
-- `/stacks` - ACE Stacks (Engineering blog + tools sidebar)
-- `/squads` - ACE Squads (High-Velocity Units)
-- `/growth-engineering` - Growth Engineering service
+## Iteration Plan
 
-## Key Components
-- `LogicNodeIcon.js` — Reusable SVG logo (navbar size=26, footer size=20 glow=false)
-- `LoadingAnimation.js` — Full-screen loading with 5 phases (rise→ignite→ripple→shrink→done)
-- `EngineCore.js` — 3D glass sphere for Labs hero
-- `ScrollSpiral.js` — SVG spiral with scroll-speed reactivity + Labs hover pulsation
-- `KeywordMarquee.js` — CSS-animated horizontal keyword ticker
+### Iteration 1: Core Architecture & Database — COMPLETE
+- Next.js 16 + Payload CMS 3.x monolith initialized
+- PostgreSQL database connected
+- Users collection with `roles` array field
+- `/admin` route serves Payload admin panel
+- Route groups: `(app)` for frontend, `(payload)` for admin
 
-## Completed Features
-- [x] Phase 1: Multi-page app, Premium White aesthetic, all core sections
-- [x] Phase 2: SVG Spiral, Keyword Marquee, Philosophy Section, ACE Squads Page
-- [x] Phase 3: Labs redesign (Engine Core), ACE Stacks page, ScrollSpiral enhancement
-- [x] Phase 4: 3-variant button system (header-dark, violet-shift, ghost-gradient)
-- [x] Phase 5: Logo Integration Kit (LogicNodeIcon, LoadingAnimation, favicon, Space Grotesk wordmark)
+### Iteration 2: Brand Identity & Theme Engine — COMPLETE
+- Tailwind CSS configured with brand colors (ace-blue, ace-violet, ace-cobalt, ace-slate)
+- Typography: Inter (body) + Outfit (headings) via next/font/google
+- Reusable `LogicNodeIcon` component (`src/components/brand/LogicNodeIcon.tsx`)
+- Reusable `BrandWordmark` component (`src/components/brand/BrandWordmark.tsx`)
+- Reusable `Button` component with 3 variants (`src/components/ui/Button.tsx`):
+  - Primary: Dark Slate background
+  - Secondary: Deep Violet with 0.4s "Power-On" transition to Electric Blue on hover
+  - Ghost: Gradient border (blue → violet)
 
-## Backlog
-- P1: Individual article pages (clicking ACE Stacks articles)
-- P1: Contact page with real email integration
-- P2: About page, Case Studies page
-- P2: SEO optimization (meta, OG, sitemap)
-- P3: Dark mode, Performance optimization, Careers page
+### Iteration 3: Content & Affiliate Engine — UPCOMING (P1)
+- Create "Blog (Stacks)" Payload collection (Title, Slug, Content, Featured Image, Category)
+- Create "Affiliates" Payload collection (Partner Name, Target URL, Slug, Click Count)
+- Dynamic affiliate redirect route `/go/[slug]` with click counter increment
+
+### Iteration 4: Public Frontend — FUTURE (P2)
+- Home Page: Hero with "Fluid Aura" effect, Service section
+- Blog Page: `/stacks` feed with dark mode design
+
+## Architecture
+```
+/app/frontend/
+├── payload.config.ts          # Payload CMS central config
+├── tailwind.config.ts         # Brand colors & fonts
+├── src/
+│   ├── app/
+│   │   ├── (app)/             # Public frontend
+│   │   │   ├── layout.tsx     # Root layout (Inter + Outfit fonts)
+│   │   │   ├── globals.css    # CSS variables + ghost-button styles
+│   │   │   └── page.tsx       # Home page
+│   │   └── (payload)/         # Payload admin UI
+│   ├── collections/
+│   │   └── Users.ts           # Users collection with roles
+│   └── components/
+│       ├── brand/
+│       │   ├── LogicNodeIcon.tsx
+│       │   └── BrandWordmark.tsx
+│       └── ui/
+│           └── Button.tsx
+```
+
+## Database Schema
+- `users`: id, email, password (hashed), firstName, lastName, roles[], createdAt, updatedAt
+- `payload_migrations`: Migration tracking
+- `payload_preferences`: Admin UI preferences
