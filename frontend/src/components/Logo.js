@@ -1,27 +1,16 @@
 import { Link } from "react-router-dom";
 import { LogicNodeIcon } from "@/components/LogicNodeIcon";
+import { BrandWordmark } from "@/components/BrandWordmark";
 
-export const Logo = ({ size = "default" }) => {
+export const Logo = ({ size = "default", theme = "dark" }) => {
   const isSmall = size === "small";
   const iconSize = isSmall ? 20 : 26;
+  const wordmarkSize = isSmall ? "sm" : "md";
 
   return (
     <Link to="/" className="flex items-center gap-2.5 group" data-testid="logo-link">
       <LogicNodeIcon size={iconSize} glow={!isSmall} />
-      <span className={`flex items-baseline ${isSmall ? 'text-sm' : 'text-lg'}`}>
-        <span
-          className="font-bold tracking-tight"
-          style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#1A202C' }}
-        >
-          ACE
-        </span>
-        <span
-          className="tracking-tight"
-          style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 200, color: '#1A202C' }}
-        >
-          inovations
-        </span>
-      </span>
+      <BrandWordmark size={wordmarkSize} theme={theme} />
     </Link>
   );
 };
