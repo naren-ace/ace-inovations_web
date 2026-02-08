@@ -17,10 +17,11 @@ import { StickySection } from '@/components/home/StickySection'
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen animate-bg-breathe" data-testid="home-page">
-      <ScrollSpiral />
-      <MouseGlow />
-      <Navbar />
+    <AppShell>
+      <div className="min-h-screen animate-bg-breathe" data-testid="home-page">
+        <ScrollSpiral />
+        <MouseGlow />
+        <Navbar />
 
       <main>
         <HeroSection />
