@@ -1,52 +1,84 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: ['class'],
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
-      colors: {
-        'ace-blue': {
-          DEFAULT: '#3B6FE8',
-          50: '#EBF0FD',
-          100: '#D6E1FB',
-          200: '#ADC3F7',
-          300: '#85A5F3',
-          400: '#5C87EF',
-          500: '#3B6FE8',
-          600: '#1A52D6',
-          700: '#1440A5',
-          800: '#0E2E75',
-          900: '#081C45',
-        },
-        'ace-violet': {
-          DEFAULT: '#7B2D8E',
-          50: '#F5ECFA',
-          100: '#EBDAF5',
-          200: '#D6B4EB',
-          300: '#C28FE1',
-          400: '#9E4DB8',
-          500: '#7B2D8E',
-          600: '#652476',
-          700: '#4F1B5D',
-          800: '#391345',
-          900: '#230A2C',
-        },
-        'ace-cobalt': '#2E5BFF',
-        'ace-slate': '#1A202C',
-      },
       fontFamily: {
-        heading: ['var(--font-outfit)', 'sans-serif'],
-        body: ['var(--font-inter)', 'sans-serif'],
+        sans: ['var(--font-inter)', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        heading: ['var(--font-outfit)', 'Outfit', 'sans-serif'],
       },
-      transitionDuration: {
-        '400': '400ms',
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
+      colors: {
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        heading: 'hsl(var(--heading))',
+        body: 'hsl(var(--body))',
+        caption: 'hsl(var(--caption))',
+      },
+      boxShadow: {
+        'xs': 'var(--shadow-xs)',
+        'elevated': 'var(--shadow-elevated)',
+        'glow-primary': 'var(--shadow-glow-primary)',
+        'glow-accent': 'var(--shadow-glow-accent)',
+      },
+      keyframes: {
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+      },
+      animation: {
+        'fade-up': 'fade-up 0.6s ease-out forwards',
+        'fade-in': 'fade-in 0.5s ease-out forwards',
       },
     },
   },
   plugins: [
     require('@tailwindcss/typography'),
+    require('tailwindcss-animate'),
   ],
 }
 
