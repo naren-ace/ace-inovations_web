@@ -60,21 +60,21 @@ Build the ACEinovations digital platform as a Next.js 16 + Payload CMS 3.x monol
 │   ├── app/
 │   │   ├── (app)/             # Public frontend
 │   │   │   ├── layout.tsx     # Root layout (Inter + Outfit fonts)
-│   │   │   ├── globals.css    # CSS variables + ghost-button styles
-│   │   │   ├── page.tsx       # Home page
-│   │   │   └── go/[slug]/route.ts  # Affiliate redirect (302 + click tracking)
+│   │   │   ├── globals.css    # Fluid Aura + ghost-button + animations
+│   │   │   ├── page.tsx       # Home (Navbar + Hero + Services)
+│   │   │   ├── go/[slug]/route.ts  # Affiliate redirect (302 + atomic click)
+│   │   │   └── stacks/
+│   │   │       ├── layout.tsx      # Dark mode wrapper
+│   │   │       ├── page.tsx        # Blog feed
+│   │   │       └── [slug]/page.tsx # Individual post
 │   │   └── (payload)/         # Payload admin UI
 │   ├── collections/
-│   │   ├── Users.ts           # Users with roles
-│   │   ├── Media.ts           # Image uploads
-│   │   ├── Stacks.ts          # Blog posts
-│   │   └── Affiliates.ts      # Partner links + click tracking
+│   │   ├── Users.ts, Media.ts, Stacks.ts, Affiliates.ts
 │   └── components/
-│       ├── brand/
-│       │   ├── LogicNodeIcon.tsx
-│       │   └── BrandWordmark.tsx
-│       └── ui/
-│           └── Button.tsx
+│       ├── brand/   (LogicNodeIcon, BrandWordmark)
+│       ├── home/    (Hero, ServiceGrid)
+│       ├── layout/  (Navbar)
+│       └── ui/      (Button)
 /app/backend/
 └── server.py                  # FastAPI proxy (/api/* → Next.js:3000)
 ```
