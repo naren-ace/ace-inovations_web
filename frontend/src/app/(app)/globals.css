@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ace-blue: #3B6FE8;
+    --ace-violet: #6D28D9;
+    --ace-cobalt: #2E5BFF;
+    --ace-slate: #1A202C;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--ace-slate);
+    background: #F9FAFB;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
