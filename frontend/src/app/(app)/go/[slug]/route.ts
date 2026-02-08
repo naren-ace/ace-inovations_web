@@ -8,7 +8,9 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> },
 ) {
   const { slug } = await params
-  const baseUrl = request.nextUrl.origin
+  const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || request.nextUrl.host
+  const proto = request.headers.get('x-forwarded-proto') || 'https'
+  const baseUrl = `${proto}://${host}`
 
   const payload = await getPayload({ config })
 
