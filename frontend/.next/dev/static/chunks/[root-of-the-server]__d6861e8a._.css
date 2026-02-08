@@ -1036,6 +1036,14 @@ p {
   top: 100%;
 }
 
+.-top-\[1px\] {
+  top: -1px;
+}
+
+.-top-\[4px\] {
+  top: -4px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1318,6 +1326,14 @@ p {
   height: 1px;
 }
 
+.h-\[3px\] {
+  height: 3px;
+}
+
+.h-\[8px\] {
+  height: 8px;
+}
+
 .min-h-\[calc\(100vh-4rem\)\] {
   min-height: calc(100vh - 4rem);
 }
@@ -1432,6 +1448,14 @@ p {
 
 .w-px {
   width: 1px;
+}
+
+.w-\[3px\] {
+  width: 3px;
+}
+
+.w-\[8px\] {
+  width: 8px;
 }
 
 .min-w-0 {

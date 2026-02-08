@@ -1,18 +1,24 @@
 'use client'
 
 import React from 'react'
+import { motion } from 'framer-motion'
 
 interface LogicNodeIconProps {
   size?: number
+  animate?: boolean
   glow?: boolean
   className?: string
 }
 
-export const LogicNodeIcon: React.FC<LogicNodeIconProps> = ({ size = 28, glow = true, className = '' }) => {
+export const LogicNodeIcon: React.FC<LogicNodeIconProps> = ({ size = 28, animate = false, glow = true, className = '' }) => {
   const uid = `ln-${size}`
+  const Wrapper = animate ? motion.svg : 'svg'
+  const wrapperProps = animate
+    ? { initial: { opacity: 0, scale: 0.8 }, animate: { opacity: 1, scale: 1 }, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+    : {}
 
   return (
-    <svg
+    <Wrapper
       width={size}
       height={size}
       viewBox="0 0 160 160"
@@ -20,6 +26,7 @@ export const LogicNodeIcon: React.FC<LogicNodeIconProps> = ({ size = 28, glow = 
       xmlns="http://www.w3.org/2000/svg"
       className={`overflow-visible flex-shrink-0 ${className}`}
       data-testid="logic-node-icon"
+      {...wrapperProps}
     >
       <defs>
         <linearGradient id={`${uid}-gl`} x1="30%" y1="100%" x2="50%" y2="0%">
@@ -46,6 +53,6 @@ export const LogicNodeIcon: React.FC<LogicNodeIconProps> = ({ size = 28, glow = 
       {glow && <circle cx="80" cy="10" r="10" fill="#6D28D9" filter={`url(#${uid}-ng)`} opacity="0.4" />}
       <circle cx="80" cy="10" r="4.5" fill="#FFFFFF" />
       <circle cx="80" cy="10" r="2" fill="#F0F4FF" opacity="0.8" />
-    </svg>
+    </Wrapper>
   )
 }
