@@ -1,3 +1,0 @@
-module.exports=[36517,a=>{"use strict";var b=a.i(907997);function c({children:a}){return(0,b.jsx)("div",{className:"stacks-dark min-h-screen bg-[#0C0E14] text-gray-100",children:a})}a.s(["default",()=>c,"metadata",0,{title:"ACE Stacks | Technical Knowledge Base",description:"Deep dives into AI strategy, engineering patterns, and field notes from the ACEinovations team."}])}];
-
-//# sourceMappingURL=src_app_%28app%29_stacks_layout_tsx_c359c9d6._.js.map
