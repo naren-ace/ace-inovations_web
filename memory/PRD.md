@@ -34,13 +34,14 @@ Build the ACEinovations digital platform as a Next.js 16 + Payload CMS 3.x monol
 - Media, Stacks (Blog), Affiliates collections with full CRUD
 - `/go/[slug]` redirect with atomic clickCount, 302 status, 404→home redirect
 
-### Iteration 4: Public Frontend + Prototype Port — COMPLETE
+### Iteration 4: Public Frontend + High-Fidelity Prototype Port — COMPLETE
 - Full visual port from ace-prototype GitHub branch
-- **Homepage sections:** Hero (FluidShape glass blob, gradient text, status pill), KeywordMarquee, TransitionSection, PhilosophySection, AceEngineSection (4 cards + tech-grid), AceSquadsSection (3 pillars), AceLoop (3-step process), CTASection, Footer
-- **Effects:** MouseGlow cursor, FluidShape animated glass, StickySection parallax
-- **Interactions:** ContactModal, scroll-aware Navbar with backdrop-blur
-- **Button variants:** header-dark, violet-shift, ghost-gradient, premium, outline-premium
-- **Stacks pages:** Dark mode blog feed + individual post pages
+- **Hero:** "Engineering the Next Generation of Digital Platforms." — "Next Generation" in gradient-text, "AI-Augmented Engineering Studio" badge, FluidShape glass blob, premium + ghost-gradient CTAs
+- **Homepage sections:** KeywordMarquee, TransitionSection, PhilosophySection, AceEngineSection (4 cards + tech-grid), AceSquadsSection (3 pillars), AceLoop (3-step process), InsightsSection (horizontal scroll article cards), CTASection, Footer
+- **Effects:** MouseGlow cursor, FluidShape animated glass, StickySection parallax, animate-bg-breathe
+- **Stacks pages:** LIGHT theme with white article cards, "// CATEGORY" labels, gradient header areas, "Recommended Stack" sidebar with verified tools
+- **Interactions:** ContactModal, scroll-aware transparent Navbar with backdrop-blur, mobile menu
+- **Nav items:** ACE Labs, ACE Stacks, ACE Squads, About + "Start a Project" CTA
 
 ## Architecture
 ```
