@@ -1,5 +1,6 @@
 {
   "/(app)/labs/page": "app/(app)/labs/page.js",
   "/(app)/page": "app/(app)/page.js",
-  "/(app)/stacks/page": "app/(app)/stacks/page.js"
+  "/(app)/stacks/page": "app/(app)/stacks/page.js",
+  "/(payload)/api/[...slug]/route": "app/(payload)/api/[...slug]/route.js"
 }
