@@ -1101,6 +1101,14 @@ p {
   margin-bottom: .25rem;
 }
 
+.-mt-8 {
+  margin-top: -2rem;
+}
+
+.mt-12 {
+  margin-top: 3rem;
+}
+
 .line-clamp-3 {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -1232,6 +1240,10 @@ p {
   height: 104px;
 }
 
+.h-\[600px\] {
+  height: 600px;
+}
+
 .min-h-\[85vh\] {
   min-height: 85vh;
 }
@@ -1330,6 +1342,10 @@ p {
 
 .w-px {
   width: 1px;
+}
+
+.w-\[600px\] {
+  width: 600px;
 }
 
 .max-w-2xl {
@@ -2412,6 +2428,10 @@ p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
   .sm\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -2458,6 +2478,10 @@ p {
 }
 
 @media (min-width: 1024px) {
+  .lg\:-mt-12 {
+    margin-top: -3rem;
+  }
+
   .lg\:block {
     display: block;
   }
