@@ -3,6 +3,7 @@ import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { fileURLToPath } from 'url'
+import sharp from 'sharp'
 import { Users } from './src/collections/Users'
 
 const filename = fileURLToPath(import.meta.url)
