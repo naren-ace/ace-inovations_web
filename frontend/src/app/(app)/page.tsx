@@ -1,8 +1,9 @@
 'use client'
 
 import { Navbar } from '@/components/layout/Navbar'
-import { Footer } from '@/components/layout/Footer'
+import { CTAFooter } from '@/components/layout/Footer'
 import { MouseGlow } from '@/components/effects/MouseGlow'
+import { ScrollSpiral } from '@/components/effects/ScrollSpiral'
 import { HeroSection } from '@/components/home/Hero'
 import { TransitionSection } from '@/components/home/TransitionSection'
 import { PhilosophySection } from '@/components/home/PhilosophySection'
@@ -16,6 +17,7 @@ import { StickySection } from '@/components/home/StickySection'
 export default function HomePage() {
   return (
     <div className="min-h-screen animate-bg-breathe" data-testid="home-page">
+      <ScrollSpiral />
       <MouseGlow />
       <Navbar />
 
@@ -47,7 +49,7 @@ export default function HomePage() {
         </StickySection>
       </main>
 
-      <Footer />
+      <CTAFooter />
     </div>
   )
 }
