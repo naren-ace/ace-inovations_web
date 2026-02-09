@@ -5,20 +5,35 @@ import httpx
 import os
 import logging
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 app = FastAPI()
 
 NEXTJS_URL = "http://127.0.0.1:3000"
 
+origins_env = os.environ.get("CORS_ORIGINS", "*")
+origins = [origin.strip() for origin in origins_env.split(",") if origin.strip()]
+allow_credentials = True
+if not origins:
+    logger.warning("CORS_ORIGINS is empty; defaulting to '*' and disabling credentials.")
+    origins = ["*"]
+    allow_credentials = False
+if "*" in origins:
+    if len(origins) > 1:
+        logger.warning(
+            "CORS_ORIGINS contains '*', ignoring other origins and disabling credentials."
+        )
+    origins = ["*"]
+    allow_credentials = False
+
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_credentials=allow_credentials,
+    allow_origins=origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 @app.api_route("/api/{path:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"])
 async def proxy_to_nextjs(request: Request, path: str):
