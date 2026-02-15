@@ -1,7 +1,7 @@
 # ACEinovations Website — PRD
 
 ## Original Problem Statement
-Build and refine a public-facing website for "ACEinovations" — an AI-augmented engineering studio. The homepage must be fully manageable through a CMS admin panel.
+Build and refine a public-facing website for "ACEinovations" — an AI-augmented engineering studio. The homepage must be fully manageable through a CMS admin panel. Upgraded to elite high-end consultant aesthetic.
 
 ## Business Focus
 - Custom platform and marketplace development
@@ -13,68 +13,67 @@ Build and refine a public-facing website for "ACEinovations" — an AI-augmented
 
 ## Tech Stack
 - **Frontend**: Next.js 16 (App Router), React, TypeScript, Tailwind CSS
-- **CMS**: Payload CMS v3 with **MongoDB** (migrated from PostgreSQL on Feb 15, 2026)
-- **Database**: MongoDB (managed by Supervisor — auto-restarts on failure)
+- **CMS**: Payload CMS v3 with **MongoDB**
+- **Database**: MongoDB (managed by Supervisor)
 - **Animation**: Matter.js, Framer Motion
+- **Fonts**: Space Grotesk (headings), Inter (body)
+
+## Design System (Updated Feb 15, 2026)
+- **Light Mode**: Off-white background (#F6F7F9), navy heading text, high-contrast body
+- **Dark Mode**: #0B0C15 background, Electric Blue + Neon Purple radial glows
+- **Typography**: Hero H1 at 120px, Space Grotesk, letter-spacing -0.04em, Extra Bold
+- **Cards**: Bento grid layout, 24px border-radius, glassmorphism (20px backdrop-blur)
+- **Navbar**: Glassmorphism with blur(24px) + saturate(180%) on scroll
+- **CTAs**: Electric Blue gradient with neon outer-glow shadow on hover
+- **Borders**: 1px hsl(white/6%) in dark mode for subtle glass effect
 
 ## What's Been Implemented
 
-### Homepage (6 CMS-Driven Sections)
-- Hero → Transition → Philosophy → What We Build (6 cards) → ACE Loop (4 steps) → Lead Magnet
+### Homepage (CMS-Driven Sections)
+- **Hero**: 120px extreme typography, gradient text, NeuralLab + AntigravityHero effects
+- **Transition**: Animated keyword reveal
+- **Philosophy**: CMS-editable AI-first messaging
+- **What We Build**: Bento grid (6 caps) — asymmetric with wide first/last cards
+- **ACE Loop (Our Process)**: Bento grid (4 steps) — asymmetric with wide first/last
+- **Lead Magnet**: Free audit CTA with form
 
-### About Page (CMS-Editable via `/api/globals/about`)
-- Hero, Mission & Vision (side-by-side), Values (6 cards), Contact form
-- All text editable from admin under "Globals > About Page"
-
-### Services (6 Services — CMS Collection)
-- **Platform & Marketplace Development** (`/services/platform-development`)
-- **Mobile App Development** (`/services/mobile-development`)
-- **AI-Powered Automation** (`/services/ai-automation`)
-- **Platform Optimization & Scaling** (`/services/platform-optimization`)
-- **SaaS Product Engineering** (`/services/saas-engineering`)
-- **Marketplace Customization** (`/services/marketplace-customization`)
-- Each service page: Hero, Features (4 cards), Why Us + Deliverables, CTA
-- All content editable from admin under "Content > Services"
-- Dynamic navbar dropdown pulls services from CMS
-
-### Navigation (Updated Feb 15, 2026)
-- Order: **Home** → Services (dropdown) → ACE Labs → **Insights** → About
-- "Home" is first nav item
-- "ACE Stacks" renamed to "Insights"
+### Services
+- **Listing page** (`/services`): NEW — 6 bento card tiles linking to individual service pages
+- **Detail pages** (`/services/[slug]`): Hero, Features, Why Us, single CTAFooter (duplicate removed)
+- **Navbar dropdown**: Shows all 6 services + "View All Services" link
+- 6 services: Platform Dev, Mobile Dev, AI Automation, Platform Optimization, SaaS Engineering, Marketplace Customization
 
 ### Insights Section (Redesigned Feb 15, 2026)
-- **Listing Page** (`/stacks`): Editorial hero, category filter pills (All, AI Strategy, Engineering, Case Studies, Field Notes), 3-column article grid, newsletter CTA
-- **Article Pages** (`/stacks/[slug]`): Full rich text rendering (headings, paragraphs, lists, blockquotes, inline formatting), category badge, reading time, related articles section
-- 6 sample articles seeded across 4 categories
-- All content manageable via CMS admin panel under "Content > Insights"
-- Removed old "ACE Engine" tool sidebar — no longer relevant
+- **Listing** (`/stacks`): Editorial hero, category filter pills, 3-column card grid with hover animations, newsletter CTA
+- **Article Pages** (`/stacks/[slug]`): Rich text rendering, category badge, reading time, related articles
+- 6 sample articles across 4 categories
+- Enhanced `.insight-card` CSS class with lift + glow hover effect
 
-### Other Pages
-- **ACE Labs** (`/labs`): Hero + Bento Grid
+### About Page
+- Hero, Mission & Vision, Values (6 cards), Contact form
+
+### Navigation
+- Order: Home → Services (dropdown) → ACE Labs → Insights → About
+- Glassmorphism effect when scrolled
+- "View All Services" in dropdown
 
 ### Admin Panel
 - URL: `/ace-control-center`
 - Email: admin@aceinovations.com | Password: AceAdmin2025!
-- Globals: About Page, Homepage
-- Collections: Services, Stacks (Insights), Media, Leads, Affiliates, Users
-
-## Database Migration (Feb 15, 2026)
-- Migrated from PostgreSQL to MongoDB to permanently fix recurring database instability
-- MongoDB is managed by Supervisor (auto-restarts), eliminating the PostgreSQL crash issue
-- All CMS content re-seeded via API
 
 ## Resolved Issues
-- PostgreSQL instability (P0) — permanently fixed by migrating to MongoDB
-- "ACE Stacks" → "Insights" rename completed
+- PostgreSQL instability → migrated to MongoDB
+- "ACE Stacks" → "Insights" rename
 - "Home" button added as first nav item
-- Insights page redesigned — removed "ACE Engine" tool references, added category filters and newsletter CTA
-- Individual article pages built with rich text rendering
-- Footer updated: "ACE Stacks" → "Insights"
+- Insights redesigned — removed "ACE Engine" tool references
+- Duplicate CTA removed from service detail pages
+- Auto-refresh issue fixed (allowedDevOrigins updated)
+- Major design overhaul to elite consultant aesthetic
 
 ## Backlog (P1)
-- SEO metadata optimization (meta tags, Open Graph, page titles per page)
-- Newsletter subscription backend (currently frontend-only CTA)
+- SEO metadata optimization (meta tags, Open Graph per page)
+- Newsletter subscription backend (currently frontend-only)
 
 ## Backlog (P2)
 - Contact form email notifications
-- Secure CMS update access for production
+- Secure CMS access for production
