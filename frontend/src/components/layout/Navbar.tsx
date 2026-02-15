@@ -178,14 +178,22 @@ export const Navbar = () => {
                   </div>
 
                   <div className="flex items-center justify-between px-4 py-2" style={{ borderTop: '1px solid hsl(var(--border) / 0.3)' }}>
-                    <span className="text-[11px]" style={{ color: 'hsl(var(--caption))' }}>Need a custom solution?</span>
-                    <button
+                    <Link
+                      href="/services"
                       className="text-[11px] font-semibold flex items-center gap-1 transition-colors hover:opacity-80"
                       style={{ color: 'hsl(var(--primary))' }}
+                      onClick={() => setServicesOpen(false)}
+                      data-testid="services-view-all"
+                    >
+                      View All Services <ArrowRight className="w-3 h-3" />
+                    </Link>
+                    <button
+                      className="text-[11px] font-semibold flex items-center gap-1 transition-colors hover:opacity-80"
+                      style={{ color: 'hsl(var(--caption))' }}
                       onClick={() => { setServicesOpen(false); setContactOpen(true) }}
                       data-testid="services-talk-to-us"
                     >
-                      Talk to us <ArrowRight className="w-3 h-3" />
+                      Custom solution? Talk to us
                     </button>
                   </div>
                 </div>
