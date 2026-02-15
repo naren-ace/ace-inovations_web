@@ -19,10 +19,31 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'ACE inovations | Engineering the Next Generation',
-  description: 'Engineering the Next Generation of Digital Platforms with AI-augmented precision.',
+  title: {
+    default: 'AceInovations - Enterprise Marketplace Development',
+    template: '%s | AceInovations - Enterprise Marketplace Development',
+  },
+  description: 'We build scalable platforms that redefine industries. Specialists in Marketplace Development, Custom Integrations, and Strategic Innovation.',
   icons: {
     icon: '/favicon.svg',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'AceInovations',
+    title: 'AceInovations - Enterprise Marketplace Development',
+    description: 'We build scalable platforms that redefine industries. Specialists in Marketplace Development, Custom Integrations, and Strategic Innovation.',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'AceInovations' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AceInovations - Enterprise Marketplace Development',
+    description: 'We build scalable platforms that redefine industries. Specialists in Marketplace Development, Custom Integrations, and Strategic Innovation.',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 
