@@ -86,8 +86,8 @@ export function InsightsClient({ posts, categoryLabels }: { posts: Post[]; categ
                 <Link
                   key={post.id}
                   href={`/stacks/${post.slug}`}
-                  className="group rounded-xl overflow-hidden flex flex-col cursor-pointer transition-all duration-300 hover:shadow-elevated"
-                  style={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border) / 0.6)' }}
+                  className="group insight-card rounded-xl overflow-hidden flex flex-col cursor-pointer"
+                  style={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border) / 0.5)' }}
                   data-testid={`insight-card-${i}`}
                 >
                   {/* Gradient header */}

@@ -273,7 +273,6 @@ export default function ServicePage() {
             deliverables={service.page.deliverables || []}
           />
         )}
-        <ServiceCTA />
       </main>
       <CTAFooter />
     </div>
