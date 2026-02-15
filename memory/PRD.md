@@ -50,15 +50,13 @@ Migrate the "ACE Labs" website content to a manageable CMS and fix recurring dat
 - [x] **Newsletter**: NewsletterForm component on Insights page AND footer with toast
 - [x] **Code Cleanup**: Fixed `<img>` -> Next.js `<Image>` in CustomSection
 
-### Phase 4 - Hero Redesign: IDE/Developer Aesthetic (Feb 15, 2026)
-- [x] **Centered Typewriter Headline**: Character-by-character typing with blinking cursor `|` (40ms/char, 530ms blink)
-- [x] **Floating Code Cards**: Two glass "code window" cards (deploy.ts + useAI.ts) with syntax highlighting
-  - Primary card: 3D tilt (rotateY -8deg, rotateX 4deg), blue neon border, 4s float cycle
-  - Secondary card: Parallax depth (rotateY 5deg, rotateX -3deg), purple neon border, 5.5s float cycle
-  - Both: backdrop-blur(24px), dark glass background, window chrome (traffic light dots)
-- [x] **Dark Mode Neon Enhancement**: Enhanced box-shadow glow on code cards via CSS
-- [x] **Ambient Glow Orbs**: Blurred gradient orbs behind cards for depth
-- [x] **Responsive**: Code cards hidden on mobile, centered text-only hero
+## Phase 4 - Hero Redesign: IDE/Developer Aesthetic (Feb 15, 2026)
+- [x] **Centered Typewriter Headline**: Slow character-by-character typing (70ms/char) with blinking cursor `|`, split across two lines
+  - Line 1: "Engineering the Next Generation" (gradient highlight on "Next Generation")
+  - Line 2: "of Digital Platforms." (starts after line 1 completes + 200ms delay)
+  - Cursor hides on line 1 after it finishes, stays blinking on line 2
+- [x] **Clean centered layout**: Badge, headline, subtitle, CTAs, marquee all centered
+- [x] Code cards removed per user request
 
 ## Key Architecture
 ```
