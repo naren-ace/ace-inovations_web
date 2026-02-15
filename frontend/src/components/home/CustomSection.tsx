@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/Button'
 import { ContactModal } from '@/components/home/ContactModal'
 import { ArrowRight } from 'lucide-react'
@@ -82,7 +83,7 @@ export function CustomSection({ cms }: { cms?: any }) {
             </div>
             {image?.url && !isCentered && (
               <motion.div custom={3} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="flex justify-center">
-                <img src={image.url} alt={image.alt || heading} className="rounded-xl max-w-full h-auto shadow-lg" />
+                <Image src={image.url} alt={image.alt || heading} width={600} height={400} className="rounded-xl max-w-full h-auto shadow-lg" />
               </motion.div>
             )}
           </div>
