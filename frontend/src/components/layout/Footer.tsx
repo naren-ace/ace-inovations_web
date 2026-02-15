@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Logo } from '@/components/brand/Logo'
 import { Button } from '@/components/ui/Button'
 import { ContactModal } from '@/components/home/ContactModal'
+import { NewsletterForm } from '@/components/home/NewsletterForm'
 import { ArrowRight } from 'lucide-react'
 
 const fadeUp = {
