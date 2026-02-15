@@ -290,6 +290,16 @@
 .dark [style*="color: hsl(var(--caption))"] { color: hsl(215 16% 55%) !important; }
 .dark [style*="color: hsl(var(--heading))"] { color: hsl(210 20% 96%) !important; }
 
+/* Dark mode code card neon glow enhancement */
+.dark [data-testid="code-card-primary"] {
+  border-color: hsl(216 100% 55% / 0.35) !important;
+  box-shadow: 0 0 50px hsl(216 100% 55% / 0.18), 0 0 100px hsl(216 100% 55% / 0.06), 0 20px 60px -15px hsl(0 0% 0% / 0.6), inset 0 1px 0 hsl(0 0% 100% / 0.06) !important;
+}
+.dark [data-testid="code-card-secondary"] {
+  border-color: hsl(270 80% 65% / 0.3) !important;
+  box-shadow: 0 0 40px hsl(270 80% 65% / 0.14), 0 0 80px hsl(270 80% 65% / 0.05), 0 15px 40px -10px hsl(0 0% 0% / 0.5), inset 0 1px 0 hsl(0 0% 100% / 0.04) !important;
+}
+
 .dark .animate-bg-breathe {
   animation: bg-breathe-dark 20s ease-in-out infinite;
 }
