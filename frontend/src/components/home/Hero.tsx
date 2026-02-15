@@ -74,16 +74,16 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
             </motion.div>
 
             {/* Typewriter headline — two lines, slow typing */}
-            <motion.div custom={1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="max-w-5xl">
+            <motion.div custom={1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="w-full">
               <h1
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] text-foreground"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-extrabold leading-[1.12] text-foreground"
                 style={{ letterSpacing: '-0.04em' }}
                 data-testid="hero-headline"
               >
-                <span className="block">
+                <span className="block whitespace-nowrap">
                   <TypewriterText parts={line1Parts} speed={70} showCursorWhenDone={false} />
                 </span>
-                <span className="block mt-1">
+                <span className="block whitespace-nowrap mt-1">
                   <TypewriterText parts={line2Parts} speed={70} delayMs={line1Length * 70 + 200} />
                 </span>
               </h1>
