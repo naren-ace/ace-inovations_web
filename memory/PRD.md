@@ -44,17 +44,21 @@ Migrate the "ACE Labs" website content to a manageable CMS and fix recurring dat
 - [x] Sample articles seeded for Insights
 
 ### Phase 3 - Final Polish (Feb 15, 2026)
-- [x] **Page Transitions**: Fade + Slide Up animation (0.4s ease-out entry, instant exit) via Framer Motion AnimatePresence
-- [x] **SEO Metadata**: Title template `%s | AceInovations - Enterprise Marketplace Development` on all pages
-  - Open Graph tags with og-image.jpg placeholder
-  - Twitter card metadata
-  - Dynamic `generateMetadata` for insight articles
-  - Per-route layout.tsx files for client component pages
-- [x] **Contact Form**: Saves to Payload CMS `/api/leads` + logs via server action + sonner toast notification
-- [x] **Newsletter**: Client component with server action (console log) + success toast + visual state change
-  - Present on Insights page AND footer
-- [x] **Code Cleanup**: Fixed `<img>` -> `<Image>` in CustomSection
-- [x] **OG Image**: Placeholder at `/public/og-image.jpg` (1200x630)
+- [x] **Page Transitions**: Fade + Slide Up animation (0.4s ease-out entry, instant exit)
+- [x] **SEO Metadata**: Title template on all pages, Open Graph + Twitter card tags, og-image.jpg
+- [x] **Contact Form**: Server action (console log) + saves to Payload CMS + sonner toast
+- [x] **Newsletter**: NewsletterForm component on Insights page AND footer with toast
+- [x] **Code Cleanup**: Fixed `<img>` -> Next.js `<Image>` in CustomSection
+
+### Phase 4 - Hero Redesign: IDE/Developer Aesthetic (Feb 15, 2026)
+- [x] **Centered Typewriter Headline**: Character-by-character typing with blinking cursor `|` (40ms/char, 530ms blink)
+- [x] **Floating Code Cards**: Two glass "code window" cards (deploy.ts + useAI.ts) with syntax highlighting
+  - Primary card: 3D tilt (rotateY -8deg, rotateX 4deg), blue neon border, 4s float cycle
+  - Secondary card: Parallax depth (rotateY 5deg, rotateX -3deg), purple neon border, 5.5s float cycle
+  - Both: backdrop-blur(24px), dark glass background, window chrome (traffic light dots)
+- [x] **Dark Mode Neon Enhancement**: Enhanced box-shadow glow on code cards via CSS
+- [x] **Ambient Glow Orbs**: Blurred gradient orbs behind cards for depth
+- [x] **Responsive**: Code cards hidden on mobile, centered text-only hero
 
 ## Key Architecture
 ```
@@ -62,26 +66,21 @@ src/
   app/(app)/
     layout.tsx          - Root layout with SEO metadata template
     actions.ts          - Server actions (contact form, newsletter)
-    page.tsx            - Homepage (client component)
-    services/
-      layout.tsx        - SEO metadata for services
-      page.tsx          - Services listing
-      [slug]/page.tsx   - Service detail
-    stacks/
-      page.tsx          - Insights listing (server component)
-      [slug]/page.tsx   - Article detail (server component, generateMetadata)
-    about/layout.tsx    - SEO metadata
-    labs/layout.tsx     - SEO metadata
-    squads/layout.tsx   - SEO metadata
+    globals.css         - Full theme with dark mode neon card styles
   components/
-    layout/
-      PageTransition.tsx     - Framer Motion fade+slide
-      TransitionProvider.tsx - AnimatePresence + Toaster
-      Footer.tsx             - CTA + newsletter + footer links
-      Navbar.tsx             - Glassmorphism nav with services dropdown
+    effects/
+      TypewriterText.tsx    - Character-by-character typing animation
+      NeuralLab.tsx         - Background neural network animation
+      AntigravityHero.tsx   - Matter.js physics (legacy, still mounted)
     home/
-      ContactModal.tsx       - Contact form with server action + toast
-      NewsletterForm.tsx     - Newsletter subscription with toast
+      Hero.tsx              - Centered hero with typewriter + floating code cards
+      ContactModal.tsx      - Contact form with server action + toast
+      NewsletterForm.tsx    - Newsletter subscription with toast
+    layout/
+      PageTransition.tsx    - Framer Motion fade+slide
+      TransitionProvider.tsx- AnimatePresence + Toaster
+      Footer.tsx            - CTA + newsletter + footer links
+      Navbar.tsx            - Glassmorphism nav
 ```
 
 ## Admin Credentials
@@ -90,11 +89,11 @@ src/
 - Password: `AceAdmin2025!`
 
 ## Mocked Integrations
-- **Newsletter**: `subscribeNewsletter` server action logs to console only (no email provider)
-- **Contact Form**: `submitContactForm` server action logs to console (actual data also saved to Payload CMS)
+- **Newsletter**: `subscribeNewsletter` server action logs to console only
+- **Contact Form**: `submitContactForm` server action logs to console (data also saved to Payload CMS)
 
 ## Remaining / Future Tasks
-- [ ] **(P2) Connect newsletter to real email service** (e.g., SendGrid, Resend)
+- [ ] **(P2) Connect newsletter to real email service** (SendGrid/Resend)
 - [ ] **(P2) Replace og-image.jpg placeholder** with branded image
 - [ ] **(P3) SEO: Structured data (JSON-LD)** for services and articles
-- [ ] **(P3) Performance audit** - analyze and optimize Core Web Vitals
+- [ ] **(P3) Performance audit** - Core Web Vitals optimization
