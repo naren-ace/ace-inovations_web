@@ -1,4 +1,5 @@
 import React from 'react'
+import { Metadata } from 'next'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import Link from 'next/link'
@@ -7,6 +8,12 @@ import { CTAFooter } from '@/components/layout/Footer'
 import { ScrollSpiral } from '@/components/effects/ScrollSpiral'
 import { ArrowRight, Clock, Sparkles, BookOpen } from 'lucide-react'
 import { InsightsClient } from './InsightsClient'
+import { NewsletterForm } from '@/components/home/NewsletterForm'
+
+export const metadata: Metadata = {
+  title: 'Insights',
+  description: 'Strategy, engineering & lessons from the field. Deep dives, case studies, and field notes from the ACE team.',
+}
 
 const categoryLabels: Record<string, string> = {
   'ai-strategy': 'AI Strategy',
