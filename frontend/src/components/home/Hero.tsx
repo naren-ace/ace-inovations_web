@@ -65,7 +65,8 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
               </motion.div>
 
               <motion.h1 custom={1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tighter text-foreground"
+                className="text-5xl sm:text-6xl lg:text-[100px] xl:text-[120px] font-extrabold leading-[0.95] text-foreground"
+                style={{ letterSpacing: '-0.04em' }}
                 data-testid="hero-headline"
               >
                 {h1p1}{' '}

@@ -98,10 +98,10 @@ export const Navbar = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-[999] transition-all duration-300 ${scrolled ? 'shadow-xs' : ''}`}
         style={{
-          background: scrolled ? 'hsl(var(--background) / 0.85)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(24px)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(24px)' : 'none',
-          borderBottom: scrolled ? '1px solid hsl(var(--border) / 0.5)' : 'none',
+          background: scrolled ? 'hsl(var(--background) / 0.7)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(24px) saturate(180%)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(24px) saturate(180%)' : 'none',
+          borderBottom: scrolled ? '1px solid hsl(var(--border) / 0.3)' : 'none',
         }}
         data-testid="navbar"
       >
