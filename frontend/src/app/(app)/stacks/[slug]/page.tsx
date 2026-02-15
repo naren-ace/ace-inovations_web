@@ -1,4 +1,5 @@
 import React from 'react'
+import { Metadata } from 'next'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import Link from 'next/link'
@@ -13,6 +14,18 @@ const categoryLabels: Record<string, string> = {
   'engineering': 'Engineering',
   'case-studies': 'Case Studies',
   'field-notes': 'Field Notes',
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const payload = await getPayload({ config })
+  const { docs } = await payload.find({ collection: 'stacks', where: { slug: { equals: slug } }, limit: 1 })
+  const post = docs[0]
+  if (!post) return { title: 'Article Not Found' }
+  return {
+    title: post.title as string,
+    description: (post.excerpt as string) || `Read ${post.title} on AceInovations Insights.`,
+  }
 }
 
 function extractText(node: any): string {
