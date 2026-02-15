@@ -18,52 +18,71 @@ const defaultCapabilities = [
   { icon: 'growth', title: 'Growth Engineering', description: 'Technical SEO, funnel instrumentation, and performance optimization to drive sustainable traction post-launch.' },
 ]
 
-function CapCard({ cap, index, isInView }: { cap: any; index: number; isInView: boolean }) {
+// Bento grid span definitions — creates asymmetric layout
+const bentoSpans = [
+  'sm:col-span-2', // Wide card
+  'sm:col-span-1', // Normal
+  'sm:col-span-1', // Normal
+  'sm:col-span-1', // Normal
+  'sm:col-span-1', // Normal
+  'sm:col-span-2', // Wide card
+]
+
+function BentoCard({ cap, index, isInView }: { cap: any; index: number; isInView: boolean }) {
   const Icon = iconMap[cap.icon] || Cpu
+  const isWide = index === 0 || index === 5
   const isEven = index % 2 === 0
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.5, delay: 0.15 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative p-6 rounded-xl border transition-all duration-300 hover:shadow-lg"
-      style={{
-        background: 'hsl(var(--card) / 0.6)',
-        borderColor: 'hsl(var(--border) / 0.5)',
-        backdropFilter: 'blur(8px)',
-      }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 0.6, delay: 0.1 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      className={`bento-card group relative p-7 ${isWide ? 'lg:p-9' : ''} ${bentoSpans[index]}`}
       data-testid={`engine-card-${index}`}
     >
-      {/* Hover glow */}
+      {/* Hover glow overlay */}
       <div
-        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        className="absolute inset-0 rounded-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none"
         style={{
           background: isEven
-            ? 'radial-gradient(ellipse at 30% 20%, hsl(var(--primary) / 0.04), transparent 70%)'
-            : 'radial-gradient(ellipse at 30% 20%, hsl(var(--accent) / 0.04), transparent 70%)',
+            ? 'radial-gradient(ellipse at 20% 20%, hsl(216 100% 50% / 0.06), transparent 60%)'
+            : 'radial-gradient(ellipse at 20% 20%, hsl(270 80% 65% / 0.06), transparent 60%)',
         }}
       />
 
+      {/* Corner accent line */}
       <div
-        className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 relative z-10"
+        className="absolute top-0 left-6 right-6 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
-          background: isEven ? 'hsl(var(--primary) / 0.08)' : 'hsl(var(--accent) / 0.08)',
+          background: isEven
+            ? 'linear-gradient(90deg, transparent, hsl(216 100% 50% / 0.4), transparent)'
+            : 'linear-gradient(90deg, transparent, hsl(270 80% 65% / 0.4), transparent)',
         }}
-      >
-        <Icon
-          className="w-5 h-5"
-          strokeWidth={1.5}
-          style={{ color: isEven ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}
-        />
-      </div>
+      />
 
-      <h3 className="text-sm font-bold text-foreground mb-2 relative z-10 tracking-tight">
-        {cap.title}
-      </h3>
-      <p className="text-sm leading-relaxed relative z-10" style={{ color: 'hsl(var(--caption))' }}>
-        {cap.description}
-      </p>
+      <div className="relative z-10">
+        <div
+          className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-400 group-hover:scale-110"
+          style={{
+            background: isEven ? 'hsl(216 100% 50% / 0.08)' : 'hsl(270 80% 65% / 0.08)',
+            border: `1px solid ${isEven ? 'hsl(216 100% 50% / 0.12)' : 'hsl(270 80% 65% / 0.12)'}`,
+          }}
+        >
+          <Icon
+            className="w-5 h-5"
+            strokeWidth={1.5}
+            style={{ color: isEven ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}
+          />
+        </div>
+
+        <h3 className="text-base font-bold text-foreground mb-2 tracking-tight">
+          {cap.title}
+        </h3>
+        <p className={`text-sm leading-relaxed ${isWide ? 'max-w-md' : ''}`} style={{ color: 'hsl(var(--caption))' }}>
+          {cap.description}
+        </p>
+      </div>
     </motion.div>
   )
 }
@@ -81,17 +100,13 @@ export const AceEngineSection = ({ cms }: { cms?: any }) => {
     <section
       id="engine"
       ref={ref}
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-24 lg:py-36 overflow-hidden"
       data-testid="engine-section"
     >
-      {/* Subtle dot pattern background */}
-      <div
-        className="absolute inset-0 opacity-[0.025]"
-        style={{
-          backgroundImage: 'radial-gradient(circle, hsl(var(--foreground)) 0.5px, transparent 0.5px)',
-          backgroundSize: '32px 32px',
-        }}
-      />
+      {/* Ambient glow */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: 'radial-gradient(ellipse 50% 40% at 20% 50%, hsl(216 100% 50% / 0.03), transparent 60%), radial-gradient(ellipse 40% 40% at 80% 60%, hsl(270 80% 65% / 0.025), transparent 50%)',
+      }} />
 
       <div className="section-container relative z-10">
         {/* Header */}
@@ -126,10 +141,10 @@ export const AceEngineSection = ({ cms }: { cms?: any }) => {
           </motion.p>
         </div>
 
-        {/* 6-card grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Bento Grid — 2 col base, asymmetric */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {caps.map((cap: any, i: number) => (
-            <CapCard key={cap.title || i} cap={cap} index={i} isInView={isInView} />
+            <BentoCard key={cap.title || i} cap={cap} index={i} isInView={isInView} />
           ))}
         </div>
       </div>

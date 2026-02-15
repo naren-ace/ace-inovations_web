@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Compass, PenTool, Zap, Rocket } from 'lucide-react'
 
@@ -38,98 +38,88 @@ const defaultSteps = [
   },
 ]
 
-function StepCard({ step, index, total }: { step: any; index: number; total: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-60px' })
+// Bento layout: first step spans full width, last step spans full width, middle two side by side
+const bentoCols = [
+  'md:col-span-2',  // Full width
+  'md:col-span-1',  // Half
+  'md:col-span-1',  // Half
+  'md:col-span-2',  // Full width
+]
+
+function StepBentoCard({ step, index, isInView }: { step: any; index: number; isInView: boolean }) {
   const Icon = iconMap[step.number] || Compass
   const isEven = index % 2 === 0
+  const isWide = index === 0 || index === 3
 
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.6, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-      className="relative group"
+      transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+      className={`bento-card group relative p-7 ${isWide ? 'lg:p-9' : ''} ${bentoCols[index]}`}
       data-testid={`process-step-${step.number}`}
     >
-      {/* Connector line — hidden on last card and on mobile */}
-      {index < total - 1 && (
-        <div className="hidden lg:block absolute top-[36px] left-[calc(50%+36px)] right-0 translate-x-[0] h-px z-0"
-          style={{ width: 'calc(100% - 72px)', left: 'calc(50% + 36px)' }}>
-          <motion.div
-            className="h-full w-full"
-            initial={{ scaleX: 0 }}
-            animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.15 + 0.4, ease: [0.22, 1, 0.36, 1] }}
-            style={{
-              transformOrigin: 'left',
-              background: 'linear-gradient(90deg, hsl(var(--primary) / 0.4), hsl(var(--accent) / 0.2))',
-            }}
-          />
-        </div>
-      )}
+      {/* Hover glow */}
+      <div
+        className="absolute inset-0 rounded-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none"
+        style={{
+          background: isEven
+            ? 'radial-gradient(ellipse at 10% 10%, hsl(216 100% 50% / 0.06), transparent 50%)'
+            : 'radial-gradient(ellipse at 10% 10%, hsl(270 80% 65% / 0.06), transparent 50%)',
+        }}
+      />
 
-      {/* Step number badge */}
-      <div className="flex justify-center mb-6">
-        <motion.div
-          whileHover={{ scale: 1.08 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-          className="relative w-[72px] h-[72px] rounded-2xl flex items-center justify-center z-10"
-          style={{
-            background: isEven
-              ? 'linear-gradient(135deg, hsl(var(--primary) / 0.12), hsl(var(--primary) / 0.04))'
-              : 'linear-gradient(135deg, hsl(var(--accent) / 0.12), hsl(var(--accent) / 0.04))',
-            border: `1px solid ${isEven ? 'hsl(var(--primary) / 0.2)' : 'hsl(var(--accent) / 0.2)'}`,
-          }}
-        >
-          <Icon
-            className="w-7 h-7"
-            style={{ color: isEven ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}
-            strokeWidth={1.5}
-          />
-          {/* Glow ring on hover */}
+      <div className={`relative z-10 ${isWide ? 'flex items-start gap-6' : ''}`}>
+        {/* Step icon + number */}
+        <div className={`${isWide ? '' : 'mb-5'}`}>
           <div
-            className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            className="w-16 h-16 rounded-2xl flex items-center justify-center relative transition-transform duration-400 group-hover:scale-105"
             style={{
-              boxShadow: isEven
-                ? '0 0 24px hsl(var(--primary) / 0.15), inset 0 0 12px hsl(var(--primary) / 0.05)'
-                : '0 0 24px hsl(var(--accent) / 0.15), inset 0 0 12px hsl(var(--accent) / 0.05)',
+              background: isEven
+                ? 'linear-gradient(135deg, hsl(216 100% 50% / 0.10), hsl(216 100% 50% / 0.03))'
+                : 'linear-gradient(135deg, hsl(270 80% 65% / 0.10), hsl(270 80% 65% / 0.03))',
+              border: `1px solid ${isEven ? 'hsl(216 100% 50% / 0.15)' : 'hsl(270 80% 65% / 0.15)'}`,
             }}
-          />
-        </motion.div>
+          >
+            <Icon
+              className="w-7 h-7"
+              style={{ color: isEven ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}
+              strokeWidth={1.5}
+            />
+          </div>
+        </div>
+
+        <div className={`flex-1 ${isWide ? '' : ''}`}>
+          <div className="flex items-center gap-3 mb-2">
+            <span
+              className="text-[11px] font-mono font-semibold tracking-[0.25em] uppercase"
+              style={{ color: isEven ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}
+            >
+              Step {step.number}
+            </span>
+            <span
+              className="text-[10px] font-semibold tracking-[0.15em] uppercase px-2 py-0.5 rounded-full"
+              style={{
+                color: isEven ? 'hsl(var(--primary))' : 'hsl(var(--accent))',
+                background: isEven ? 'hsl(216 100% 50% / 0.06)' : 'hsl(270 80% 65% / 0.06)',
+              }}
+            >
+              {step.stepLabel}
+            </span>
+          </div>
+
+          <h3 className="text-lg font-bold text-foreground tracking-tight mb-2">
+            {step.title}
+          </h3>
+
+          <p
+            className={`text-sm leading-relaxed ${isWide ? 'max-w-lg' : ''}`}
+            style={{ color: 'hsl(var(--body))' }}
+          >
+            {step.description}
+          </p>
+        </div>
       </div>
-
-      {/* Step number */}
-      <div className="text-center mb-2">
-        <span
-          className="text-[11px] font-mono font-semibold tracking-[0.25em] uppercase"
-          style={{ color: isEven ? 'hsl(var(--primary))' : 'hsl(var(--accent))' }}
-        >
-          Step {step.number}
-        </span>
-      </div>
-
-      {/* Title */}
-      <h3 className="text-lg font-bold text-foreground text-center mb-1 tracking-tight">
-        {step.title}
-      </h3>
-
-      {/* Step label */}
-      <p
-        className="text-xs font-semibold tracking-[0.15em] uppercase text-center mb-4"
-        style={{ color: isEven ? 'hsl(var(--primary) / 0.7)' : 'hsl(var(--accent) / 0.7)' }}
-      >
-        {step.stepLabel}
-      </p>
-
-      {/* Description */}
-      <p
-        className="text-sm leading-relaxed text-center max-w-[280px] mx-auto"
-        style={{ color: 'hsl(var(--body))' }}
-      >
-        {step.description}
-      </p>
     </motion.div>
   )
 }
@@ -151,18 +141,14 @@ export const AceLoop = ({ cms }: { cms?: any }) => {
       className="relative py-24 lg:py-36 overflow-hidden"
       data-testid="process-section"
     >
-      {/* Subtle background — very faint dot pattern instead of heavy grid */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: 'radial-gradient(circle, hsl(var(--foreground)) 0.5px, transparent 0.5px)',
-          backgroundSize: '24px 24px',
-        }}
-      />
+      {/* Ambient glow */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: 'radial-gradient(ellipse 45% 35% at 60% 40%, hsl(270 80% 65% / 0.025), transparent 50%), radial-gradient(ellipse 40% 30% at 30% 70%, hsl(216 100% 50% / 0.03), transparent 50%)',
+      }} />
 
       <div className="section-container relative z-10">
         {/* Header */}
-        <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-20 lg:mb-24">
+        <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-16 lg:mb-20">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
@@ -193,24 +179,12 @@ export const AceLoop = ({ cms }: { cms?: any }) => {
           </motion.p>
         </div>
 
-        {/* Steps grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {steps.map((step: any, i: number) => (
-            <StepCard key={step.number || i} step={step} index={i} total={steps.length} />
+            <StepBentoCard key={step.number || i} step={step} index={i} isInView={headerInView} />
           ))}
         </div>
-
-        {/* Bottom accent line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={headerInView ? { scaleX: 1 } : { scaleX: 0 }}
-          transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-20 lg:mt-24 mx-auto max-w-xs h-px"
-          style={{
-            transformOrigin: 'center',
-            background: 'linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), hsl(var(--accent) / 0.3), transparent)',
-          }}
-        />
       </div>
     </section>
   )
