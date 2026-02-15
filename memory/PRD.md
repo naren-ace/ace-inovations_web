@@ -42,15 +42,21 @@ Build and refine a public-facing website for "ACEinovations" — an AI-augmented
 - "Home" is first nav item
 - "ACE Stacks" renamed to "Insights"
 
+### Insights Section (Redesigned Feb 15, 2026)
+- **Listing Page** (`/stacks`): Editorial hero, category filter pills (All, AI Strategy, Engineering, Case Studies, Field Notes), 3-column article grid, newsletter CTA
+- **Article Pages** (`/stacks/[slug]`): Full rich text rendering (headings, paragraphs, lists, blockquotes, inline formatting), category badge, reading time, related articles section
+- 6 sample articles seeded across 4 categories
+- All content manageable via CMS admin panel under "Content > Insights"
+- Removed old "ACE Engine" tool sidebar — no longer relevant
+
 ### Other Pages
 - **ACE Labs** (`/labs`): Hero + Bento Grid
-- **Insights** (`/stacks`): Articles section (formerly "ACE Stacks")
 
 ### Admin Panel
 - URL: `/ace-control-center`
 - Email: admin@aceinovations.com | Password: AceAdmin2025!
 - Globals: About Page, Homepage
-- Collections: Services, Stacks, Media, Leads, Affiliates, Users
+- Collections: Services, Stacks (Insights), Media, Leads, Affiliates, Users
 
 ## Database Migration (Feb 15, 2026)
 - Migrated from PostgreSQL to MongoDB to permanently fix recurring database instability
@@ -61,11 +67,13 @@ Build and refine a public-facing website for "ACEinovations" — an AI-augmented
 - PostgreSQL instability (P0) — permanently fixed by migrating to MongoDB
 - "ACE Stacks" → "Insights" rename completed
 - "Home" button added as first nav item
+- Insights page redesigned — removed "ACE Engine" tool references, added category filters and newsletter CTA
+- Individual article pages built with rich text rendering
+- Footer updated: "ACE Stacks" → "Insights"
 
 ## Backlog (P1)
-- Individual article pages (`/stacks/[slug]`)
-- SEO metadata optimization
-- CMS editability for Insights section
+- SEO metadata optimization (meta tags, Open Graph, page titles per page)
+- Newsletter subscription backend (currently frontend-only CTA)
 
 ## Backlog (P2)
 - Contact form email notifications
