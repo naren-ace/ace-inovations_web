@@ -1,79 +1,100 @@
-# ACEinovations Website — PRD
+# AceInovations - Product Requirements Document
 
 ## Original Problem Statement
-Build and refine a public-facing website for "ACEinovations" — an AI-augmented engineering studio. The homepage must be fully manageable through a CMS admin panel. Upgraded to elite high-end consultant aesthetic.
-
-## Business Focus
-- Custom platform and marketplace development
-- Mobile app development (native & cross-platform)
-- AI-powered automation (dashboards, assistants, workflows)
-- Platform optimization & scaling for existing systems
-- SaaS product engineering (MVP to scale)
-- Marketplace customization for existing SaaS-based marketplaces
+Migrate the "ACE Labs" website content to a manageable CMS and fix recurring database failures. This evolved into a complete redesign and rebranding with an "elite High-End Consultant aesthetic" including extreme typography, Bento Grid layouts, glassmorphism, and specific lighting/depth effects for dark mode.
 
 ## Tech Stack
-- **Frontend**: Next.js 16 (App Router), React, TypeScript, Tailwind CSS
-- **CMS**: Payload CMS v3 with **MongoDB**
-- **Database**: MongoDB (managed by Supervisor)
-- **Animation**: Matter.js, Framer Motion
-- **Fonts**: Space Grotesk (headings), Inter (body)
+- **Frontend**: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS
+- **CMS**: Payload CMS v3
+- **Database**: MongoDB
+- **Animation**: Framer Motion 12
+- **Styling**: Tailwind CSS + custom CSS variables (dark/light mode)
+- **Toast**: Sonner
 
-## Design System (Updated Feb 15, 2026)
-- **Light Mode**: Off-white background (#F6F7F9), navy heading text, high-contrast body
-- **Dark Mode**: #0B0C15 background, Electric Blue + Neon Purple radial glows
-- **Typography**: Hero H1 at 120px, Space Grotesk, letter-spacing -0.04em, Extra Bold
-- **Cards**: Bento grid layout, 24px border-radius, glassmorphism (20px backdrop-blur)
-- **Navbar**: Glassmorphism with blur(24px) + saturate(180%) on scroll
-- **CTAs**: Electric Blue gradient with neon outer-glow shadow on hover
-- **Borders**: 1px hsl(white/6%) in dark mode for subtle glass effect
+## Core Pages
+| Page | Route | Type | SEO |
+|------|-------|------|-----|
+| Homepage | `/` | Client | Default title |
+| Services | `/services` | Client | Layout metadata |
+| Service Detail | `/services/[slug]` | Client | Layout metadata |
+| Insights | `/stacks` | Server | Page metadata |
+| Insight Article | `/stacks/[slug]` | Server | generateMetadata |
+| About | `/about` | Client | Layout metadata |
+| ACE Labs | `/labs` | Client | Layout metadata |
+| ACE Squads | `/squads` | Client | Layout metadata |
+| Admin | `/ace-control-center` | Payload CMS |
 
-## What's Been Implemented
+## Completed Features
 
-### Homepage (CMS-Driven Sections)
-- **Hero**: 120px extreme typography, gradient text, NeuralLab + AntigravityHero effects
-- **Transition**: Animated keyword reveal
-- **Philosophy**: CMS-editable AI-first messaging
-- **What We Build**: Bento grid (6 caps) — asymmetric with wide first/last cards
-- **ACE Loop (Our Process)**: Bento grid (4 steps) — asymmetric with wide first/last
-- **Lead Magnet**: Free audit CTA with form
+### Phase 1 - CMS & Database (Previous sessions)
+- [x] Payload CMS integration with MongoDB
+- [x] Content collections: Services, Stacks (Insights), Leads, Users, Media
+- [x] Homepage global content management
+- [x] CMS admin panel at `/ace-control-center`
 
-### Services
-- **Listing page** (`/services`): NEW — 6 bento card tiles linking to individual service pages
-- **Detail pages** (`/services/[slug]`): Hero, Features, Why Us, single CTAFooter (duplicate removed)
-- **Navbar dropdown**: Shows all 6 services + "View All Services" link
-- 6 services: Platform Dev, Mobile Dev, AI Automation, Platform Optimization, SaaS Engineering, Marketplace Customization
+### Phase 2 - "Elite" UI Redesign (Previous session)
+- [x] Complete dark/light mode theme with CSS variables
+- [x] Glassmorphism navbar with backdrop blur
+- [x] Bento Grid layouts for homepage sections
+- [x] Extreme typography with Space Grotesk headings
+- [x] Hover animations on all interactive cards
+- [x] Dedicated services listing page
+- [x] Redesigned Insights page with category filters
+- [x] Content-flicker bug fix (Suspense loader)
+- [x] Sample articles seeded for Insights
 
-### Insights Section (Redesigned Feb 15, 2026)
-- **Listing** (`/stacks`): Editorial hero, category filter pills, 3-column card grid with hover animations, newsletter CTA
-- **Article Pages** (`/stacks/[slug]`): Rich text rendering, category badge, reading time, related articles
-- 6 sample articles across 4 categories
-- Enhanced `.insight-card` CSS class with lift + glow hover effect
+### Phase 3 - Final Polish (Feb 15, 2026)
+- [x] **Page Transitions**: Fade + Slide Up animation (0.4s ease-out entry, instant exit) via Framer Motion AnimatePresence
+- [x] **SEO Metadata**: Title template `%s | AceInovations - Enterprise Marketplace Development` on all pages
+  - Open Graph tags with og-image.jpg placeholder
+  - Twitter card metadata
+  - Dynamic `generateMetadata` for insight articles
+  - Per-route layout.tsx files for client component pages
+- [x] **Contact Form**: Saves to Payload CMS `/api/leads` + logs via server action + sonner toast notification
+- [x] **Newsletter**: Client component with server action (console log) + success toast + visual state change
+  - Present on Insights page AND footer
+- [x] **Code Cleanup**: Fixed `<img>` -> `<Image>` in CustomSection
+- [x] **OG Image**: Placeholder at `/public/og-image.jpg` (1200x630)
 
-### About Page
-- Hero, Mission & Vision, Values (6 cards), Contact form
+## Key Architecture
+```
+src/
+  app/(app)/
+    layout.tsx          - Root layout with SEO metadata template
+    actions.ts          - Server actions (contact form, newsletter)
+    page.tsx            - Homepage (client component)
+    services/
+      layout.tsx        - SEO metadata for services
+      page.tsx          - Services listing
+      [slug]/page.tsx   - Service detail
+    stacks/
+      page.tsx          - Insights listing (server component)
+      [slug]/page.tsx   - Article detail (server component, generateMetadata)
+    about/layout.tsx    - SEO metadata
+    labs/layout.tsx     - SEO metadata
+    squads/layout.tsx   - SEO metadata
+  components/
+    layout/
+      PageTransition.tsx     - Framer Motion fade+slide
+      TransitionProvider.tsx - AnimatePresence + Toaster
+      Footer.tsx             - CTA + newsletter + footer links
+      Navbar.tsx             - Glassmorphism nav with services dropdown
+    home/
+      ContactModal.tsx       - Contact form with server action + toast
+      NewsletterForm.tsx     - Newsletter subscription with toast
+```
 
-### Navigation
-- Order: Home → Services (dropdown) → ACE Labs → Insights → About
-- Glassmorphism effect when scrolled
-- "View All Services" in dropdown
-
-### Admin Panel
+## Admin Credentials
 - URL: `/ace-control-center`
-- Email: admin@aceinovations.com | Password: AceAdmin2025!
+- Email: `admin@aceinovations.com`
+- Password: `AceAdmin2025!`
 
-## Resolved Issues
-- PostgreSQL instability → migrated to MongoDB
-- "ACE Stacks" → "Insights" rename
-- "Home" button added as first nav item
-- Insights redesigned — removed "ACE Engine" tool references
-- Duplicate CTA removed from service detail pages
-- Auto-refresh issue fixed (allowedDevOrigins updated)
-- Major design overhaul to elite consultant aesthetic
+## Mocked Integrations
+- **Newsletter**: `subscribeNewsletter` server action logs to console only (no email provider)
+- **Contact Form**: `submitContactForm` server action logs to console (actual data also saved to Payload CMS)
 
-## Backlog (P1)
-- SEO metadata optimization (meta tags, Open Graph per page)
-- Newsletter subscription backend (currently frontend-only)
-
-## Backlog (P2)
-- Contact form email notifications
-- Secure CMS access for production
+## Remaining / Future Tasks
+- [ ] **(P2) Connect newsletter to real email service** (e.g., SendGrid, Resend)
+- [ ] **(P2) Replace og-image.jpg placeholder** with branded image
+- [ ] **(P3) SEO: Structured data (JSON-LD)** for services and articles
+- [ ] **(P3) Performance audit** - analyze and optimize Core Web Vitals
