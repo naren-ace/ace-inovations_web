@@ -104,8 +104,21 @@ export const CTAFooter = () => {
             ))}
           </div>
 
+          {/* Newsletter */}
           <motion.div custom={4} variants={fadeUp} initial="hidden" animate={footerInView ? 'visible' : 'hidden'}
-            className="mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+            className="mt-10 pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+            style={{ borderTop: '1px solid hsl(var(--border) / 0.4)' }}>
+            <div className="shrink-0">
+              <h4 className="text-xs font-semibold tracking-[0.15em] uppercase text-foreground mb-1">Stay Updated</h4>
+              <p className="text-xs" style={{ color: 'hsl(var(--caption))' }}>Get insights delivered to your inbox.</p>
+            </div>
+            <div className="w-full md:max-w-sm">
+              <NewsletterForm />
+            </div>
+          </motion.div>
+
+          <motion.div custom={5} variants={fadeUp} initial="hidden" animate={footerInView ? 'visible' : 'hidden'}
+            className="mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
             style={{ borderTop: '1px solid hsl(var(--border) / 0.4)' }}>
             <p className="text-xs" style={{ color: 'hsl(var(--caption))' }}>&copy; {new Date().getFullYear()} ACE inovations. All rights reserved.</p>
             <div className="flex items-center gap-6">
