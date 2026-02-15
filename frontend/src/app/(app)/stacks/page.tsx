@@ -88,22 +88,7 @@ export default async function InsightsPage() {
               <p className="text-sm leading-relaxed mb-6" style={{ color: 'hsl(var(--body))' }}>
                 Get our latest insights on AI engineering, platform architecture, and product strategy — delivered to your inbox.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="you@company.com"
-                  className="flex-1 h-11 px-4 rounded-lg border bg-background text-foreground text-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                  style={{ borderColor: 'hsl(var(--border))' }}
-                  data-testid="newsletter-email-input"
-                />
-                <button
-                  className="h-11 px-6 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 shrink-0"
-                  style={{ background: 'hsl(var(--primary))' }}
-                  data-testid="newsletter-subscribe-btn"
-                >
-                  Subscribe <ArrowRight className="w-3.5 h-3.5 inline ml-1" />
-                </button>
-              </div>
+              <NewsletterForm />
               <p className="text-[11px] mt-4" style={{ color: 'hsl(var(--caption))' }}>
                 No spam. Unsubscribe anytime.
               </p>
