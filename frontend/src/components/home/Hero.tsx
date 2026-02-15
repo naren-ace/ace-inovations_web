@@ -3,7 +3,8 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Button } from '@/components/ui/Button'
-import { AntigravityHero } from '@/components/effects/AntigravityHero'
+import { FloatingCodeCards } from '@/components/effects/FloatingCodeCards'
+import { TypewriterText } from '@/components/effects/TypewriterText'
 import { NeuralLab } from '@/components/effects/NeuralLab'
 import { KeywordMarquee } from '@/components/home/KeywordMarquee'
 import { ContactModal } from '@/components/home/ContactModal'
@@ -23,12 +24,15 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
   const [contactOpen, setContactOpen] = useState(false)
 
   const badge = cms?.badgeText || 'INNOVATE. ELEVATE. ACE IT.'
-  const h1p1 = cms?.headlinePart1 || 'Engineering the'
-  const h1hl = cms?.headlineHighlight || 'Next Generation'
-  const h1p2 = cms?.headlinePart2 || 'of Digital Platforms.'
-  const narrative = cms?.narrative || "We partner with founders to build intelligent marketplace systems\u2014platforms that don\u2019t just connect buyers and sellers, but automate support, predict issues, and continuously improve. From rapid SaaS implementations to fully custom AI-native architectures, we deliver production-ready systems. Where traditional agencies build static platforms, we build systems that evolve with your business. This is the future of marketplace engineering. And it\u2019s available today."
   const ctaText = cms?.ctaButtonText || 'Start a Project'
   const secText = cms?.secondaryButtonText || 'Explore the ACE Engine'
+  const subtitle = cms?.narrative || 'ACE inovations is a modern engineering and growth studio. We combine world-class software development with agentic AI workflows to deliver end-to-end digital solutions that scale.'
+
+  const headlineParts = [
+    { text: cms?.headlinePart1 || 'Engineering the ' },
+    { text: cms?.headlineHighlight || 'Next Generation', highlight: true },
+    { text: ' ' + (cms?.headlinePart2 || 'of Digital Platforms.') },
+  ]
 
   const scrollToEngine = () => {
     const el = document.getElementById('engine')
@@ -38,21 +42,23 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
   return (
     <>
       <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden pt-16" data-testid="hero-section">
+        {/* Background */}
         <div className="absolute inset-0" style={{ zIndex: 0 }}>
           <NeuralLab />
         </div>
-
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             zIndex: 1,
-            background: 'radial-gradient(ellipse 80% 60% at 70% 40%, hsl(216 100% 50% / 0.04), transparent 60%), radial-gradient(ellipse 50% 50% at 20% 80%, hsl(259 72% 58% / 0.03), transparent 50%)',
+            background: 'radial-gradient(ellipse 80% 60% at 50% 40%, hsl(216 100% 50% / 0.04), transparent 60%), radial-gradient(ellipse 50% 50% at 80% 80%, hsl(259 72% 58% / 0.03), transparent 50%)',
           }}
         />
 
         <div className="section-container relative w-full" style={{ zIndex: 10 }}>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[calc(100vh-4rem)]">
-            <div className="flex flex-col justify-center py-16 lg:py-0">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-6 items-center min-h-[calc(100vh-4rem)]">
+            {/* Left: Centered headline area */}
+            <div className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left py-16 lg:py-0">
+              {/* Badge */}
               <motion.div custom={0} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="mb-8">
                 <span
                   className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide uppercase"
@@ -64,26 +70,29 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
                 </span>
               </motion.div>
 
-              <motion.h1 custom={1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-                className="text-5xl sm:text-6xl lg:text-[100px] xl:text-[120px] font-extrabold leading-[0.95] text-foreground"
-                style={{ letterSpacing: '-0.04em' }}
-                data-testid="hero-headline"
-              >
-                {h1p1}{' '}
-                <span className="gradient-text">{h1hl}</span>{' '}
-                {h1p2}
-              </motion.h1>
+              {/* Typewriter headline */}
+              <motion.div custom={1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
+                <h1
+                  className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.05] text-foreground"
+                  style={{ letterSpacing: '-0.04em' }}
+                  data-testid="hero-headline"
+                >
+                  <TypewriterText parts={headlineParts} speed={40} />
+                </h1>
+              </motion.div>
 
+              {/* Subtitle */}
               <motion.p custom={2} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
                 className="mt-6 text-base md:text-lg leading-relaxed max-w-xl"
                 style={{ color: 'hsl(var(--body))' }}
                 data-testid="hero-subheadline"
               >
-                {narrative}
+                {subtitle}
               </motion.p>
 
+              {/* CTAs */}
               <motion.div custom={3} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-                className="mt-10 flex flex-wrap gap-4"
+                className="mt-10 flex flex-wrap gap-4 justify-center lg:justify-start"
               >
                 <Button variant="premium" size="lg" onClick={() => setContactOpen(true)} className="btn-glow" data-testid="hero-start-project-btn">
                   {ctaText}
@@ -95,19 +104,21 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
                 </Button>
               </motion.div>
 
-              <motion.div custom={4} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="mt-14">
+              {/* Marquee */}
+              <motion.div custom={4} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="mt-14 w-full">
                 <KeywordMarquee />
               </motion.div>
             </div>
 
+            {/* Right: Floating code cards */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: 0.9, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
               className="hidden lg:flex items-center justify-center"
             >
-              <div className="relative w-full aspect-square max-w-lg">
-                <AntigravityHero />
+              <div className="relative w-full max-w-lg" style={{ minHeight: '420px' }}>
+                <FloatingCodeCards />
               </div>
             </motion.div>
           </div>
