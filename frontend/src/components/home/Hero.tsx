@@ -117,7 +117,7 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
             {/* Secondary card — bottom right, parallax speed */}
             <motion.div
               className="absolute"
-              style={{ bottom: '18%', right: '8%', width: '260px' }}
+              style={{ bottom: '28%', right: '6%', width: '260px' }}
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, delay: 0.9, ease: [0.4, 0, 0.2, 1] }}
