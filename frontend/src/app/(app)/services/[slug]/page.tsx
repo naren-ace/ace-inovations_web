@@ -177,44 +177,6 @@ function WhyUsSection({ heading, body, deliverables }: { heading: string; body: 
   )
 }
 
-function ServiceCTA() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
-  const [contactOpen, setContactOpen] = useState(false)
-
-  return (
-    <>
-      <section ref={ref} className="relative py-16 lg:py-20 text-center" data-testid="service-cta-bottom">
-        <div className="section-container relative z-10">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-2xl sm:text-3xl font-extrabold tracking-tighter text-foreground leading-tight"
-          >Ready to get started?</motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-3 text-sm leading-relaxed max-w-lg mx-auto" style={{ color: 'hsl(var(--body))' }}
-          >Tell us about your project and we&apos;ll put together a tailored proposal within 48 hours.</motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 flex justify-center gap-4"
-          >
-            <Button variant="premium" size="xl" onClick={() => setContactOpen(true)} className="btn-glow">
-              Start a Project <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-      <ContactModal open={contactOpen} onOpenChange={setContactOpen} />
-    </>
-  )
-}
-
 export default function ServicePage() {
   const params = useParams()
   const slug = params?.slug as string
