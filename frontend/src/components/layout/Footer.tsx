@@ -27,7 +27,7 @@ const footerColumns = [
     title: 'Products',
     links: [
       { label: 'ACE Labs', href: '/labs' },
-      { label: 'ACE Stacks', href: '/stacks' },
+      { label: 'Insights', href: '/stacks' },
       { label: 'Velocity Agent', href: '/labs' },
       { label: 'Flow-Bot', href: '/labs' },
     ],
