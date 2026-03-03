@@ -47,12 +47,9 @@ function GlobeDots({ count = 2000, radius = 2.0, isDark }: { count?: number; rad
   )
 }
 
-// --- Connection arcs between points ---
-function ConnectionArcs({ radius = 2.0, isDark }: { radius?: number; isDark: boolean }) {
-  const groupRef = useRef<THREE.Group>(null)
-
-  const arcs = useMemo(() => {
-    // Key "cities" as lat/lng -> 3D coordinates
+// --- Shared arc curve generator ---
+function useArcCurves(radius: number) {
+  return useMemo(() => {
     const cityCoords = [
       [40.7, -74.0], [51.5, -0.1], [35.7, 139.7], [28.6, 77.2],
       [-33.9, 151.2], [37.8, -122.4], [1.3, 103.8], [48.9, 2.3],
@@ -69,7 +66,6 @@ function ConnectionArcs({ radius = 2.0, isDark }: { radius?: number; isDark: boo
       )
     }
 
-    // Create arc pairs
     const pairs: { start: THREE.Vector3; end: THREE.Vector3 }[] = []
     const usedPairs = new Set<string>()
     for (let i = 0; i < 8; i++) {
@@ -84,24 +80,29 @@ function ConnectionArcs({ radius = 2.0, isDark }: { radius?: number; isDark: boo
         })
       }
     }
-    return pairs
-  }, [radius])
 
-  const curveLines = useMemo(() => {
-    return arcs.map(({ start, end }) => {
+    const curves = pairs.map(({ start, end }) => {
       const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5)
       const dist = start.distanceTo(end)
       mid.normalize().multiplyScalar(radius + dist * 0.35)
-      const curve = new THREE.QuadraticBezierCurve3(start, mid, end)
-      return curve.getPoints(48)
+      return new THREE.QuadraticBezierCurve3(start, mid, end)
     })
-  }, [arcs, radius])
 
+    const curvePoints = curves.map(c => c.getPoints(48))
+
+    return { curves, curvePoints }
+  }, [radius])
+}
+
+// --- Connection arcs between points ---
+function ConnectionArcs({ radius = 2.0, isDark }: { radius?: number; isDark: boolean }) {
+  const groupRef = useRef<THREE.Group>(null)
+  const { curvePoints } = useArcCurves(radius)
   const color = isDark ? '#6366f1' : '#818cf8'
 
   return (
     <group ref={groupRef}>
-      {curveLines.map((pts, i) => (
+      {curvePoints.map((pts, i) => (
         <line key={i}>
           <bufferGeometry>
             <bufferAttribute
@@ -115,6 +116,54 @@ function ConnectionArcs({ radius = 2.0, isDark }: { radius?: number; isDark: boo
         </line>
       ))}
     </group>
+  )
+}
+
+// --- Data pulse dots traveling along arcs ---
+function DataPulses({ radius = 2.0, isDark }: { radius?: number; isDark: boolean }) {
+  const { curves } = useArcCurves(radius)
+  const meshRef = useRef<THREE.InstancedMesh>(null)
+  const dummy = useMemo(() => new THREE.Object3D(), [])
+
+  // Each arc gets 2 pulses at staggered offsets
+  const pulseCount = curves.length * 2
+
+  const pulseMeta = useMemo(() => {
+    return Array.from({ length: pulseCount }, (_, i) => ({
+      curveIdx: Math.floor(i / 2),
+      speed: 0.15 + Math.random() * 0.1,
+      offset: (i % 2) * 0.5, // stagger the two pulses per arc
+    }))
+  }, [pulseCount])
+
+  useFrame(({ clock }) => {
+    if (!meshRef.current) return
+    const t = clock.getElapsedTime()
+
+    for (let i = 0; i < pulseCount; i++) {
+      const { curveIdx, speed, offset } = pulseMeta[i]
+      const curve = curves[curveIdx]
+      // Progress along curve (0 -> 1, looping)
+      const progress = ((t * speed + offset) % 1)
+      const point = curve.getPoint(progress)
+
+      dummy.position.copy(point)
+      // Scale pulse: larger in the middle of the arc, smaller at ends
+      const scaleFactor = Math.sin(progress * Math.PI) * 1.5 + 0.5
+      dummy.scale.setScalar(scaleFactor)
+      dummy.updateMatrix()
+      meshRef.current.setMatrixAt(i, dummy.matrix)
+    }
+    meshRef.current.instanceMatrix.needsUpdate = true
+  })
+
+  const color = isDark ? '#60a5fa' : '#818cf8'
+
+  return (
+    <instancedMesh ref={meshRef} args={[undefined, undefined, pulseCount]}>
+      <sphereGeometry args={[0.025, 8, 8]} />
+      <meshBasicMaterial color={color} transparent opacity={isDark ? 0.9 : 0.5} />
+    </instancedMesh>
   )
 }
 
@@ -229,6 +278,7 @@ function GlobeScene({ isDark }: { isDark: boolean }) {
 
       <GlobeDots isDark={isDark} />
       <ConnectionArcs isDark={isDark} />
+      <DataPulses isDark={isDark} />
       <OrbitingParticles isDark={isDark} />
       <GlowRing isDark={isDark} />
     </group>
