@@ -4,12 +4,14 @@ import { AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import { PageTransition } from './PageTransition'
 import { Toaster } from 'sonner'
+import { ScrollProgress } from '@/components/effects/ScrollProgress'
 
 export function TransitionProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
   return (
     <>
+      <ScrollProgress />
       <Toaster
         position="bottom-right"
         toastOptions={{

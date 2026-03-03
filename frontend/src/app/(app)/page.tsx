@@ -4,6 +4,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { CTAFooter } from '@/components/layout/Footer'
 import { MouseGlow } from '@/components/effects/MouseGlow'
 import { ScrollSpiral } from '@/components/effects/ScrollSpiral'
+import { ScrollReveal } from '@/components/effects/ScrollReveal'
 import { AppShell } from '@/components/layout/AppShell'
 import { HeroSection } from '@/components/home/Hero'
 import { TransitionSection } from '@/components/home/TransitionSection'
@@ -21,6 +22,12 @@ const CustomSection = dynamic(() => import('@/components/home/CustomSection').th
 
 const stickyTypes = new Set(['engine', 'loop', 'cta'])
 const overlapTypes = new Set([])
+
+// Sections that should NOT get a scroll reveal (hero handles its own entrance)
+const noRevealTypes = new Set(['hero'])
+
+// Alternate directions for visual variety
+const directionCycle: Array<'up' | 'left' | 'right'> = ['up', 'left', 'right']
 
 function BlockRenderer({ block, index }: { block: any; index: number }) {
   const type = block.blockType
@@ -48,6 +55,16 @@ function BlockRenderer({ block, index }: { block: any; index: number }) {
       <StickySection zIndex={10 + index} overlap={overlapTypes.has(type)}>
         {component}
       </StickySection>
+    )
+  }
+
+  // Wrap non-hero sections with scroll reveal
+  if (!noRevealTypes.has(type)) {
+    const dir = directionCycle[index % directionCycle.length]
+    return (
+      <ScrollReveal direction={dir} blur scale>
+        {component}
+      </ScrollReveal>
     )
   }
 
