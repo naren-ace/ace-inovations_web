@@ -213,29 +213,38 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* Theme toggle — always visible */}
-          <button
-            onClick={toggleDarkMode}
-            className="w-9 h-9 flex items-center justify-center rounded-lg transition-colors duration-200 hover:bg-primary/5"
-            style={{ color: 'hsl(var(--caption))' }}
-            data-testid="dark-mode-toggle"
-            aria-label="Toggle dark mode"
-          >
-            {darkMode ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
-          </button>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Desktop: CTA + toggle grouped together */}
+          <div className="hidden md:flex items-center gap-2">
+            <button
+              onClick={toggleDarkMode}
+              className="w-9 h-9 flex items-center justify-center rounded-lg transition-colors duration-200 hover:bg-primary/5"
+              style={{ color: 'hsl(var(--caption))' }}
+              data-testid="dark-mode-toggle"
+              aria-label="Toggle dark mode"
+            >
+              {darkMode ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
+            </button>
             <Button variant="header-dark" size="default" onClick={() => setContactOpen(true)} data-testid="nav-cta-btn">
               Start a Project
             </Button>
           </div>
 
-          {/* Mobile hamburger */}
-          <button className="md:hidden w-10 h-10 flex items-center justify-center text-foreground"
-            onClick={() => setMobileOpen(!mobileOpen)} data-testid="mobile-menu-toggle">
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          {/* Mobile: theme toggle + hamburger */}
+          <div className="md:hidden flex items-center gap-1">
+            <button
+              onClick={toggleDarkMode}
+              className="w-9 h-9 flex items-center justify-center rounded-lg transition-colors duration-200"
+              style={{ color: 'hsl(var(--caption))' }}
+              data-testid="dark-mode-toggle-mobile"
+              aria-label="Toggle dark mode"
+            >
+              {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+            <button className="w-10 h-10 flex items-center justify-center text-foreground"
+              onClick={() => setMobileOpen(!mobileOpen)} data-testid="mobile-menu-toggle">
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
