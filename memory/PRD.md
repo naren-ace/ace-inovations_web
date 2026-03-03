@@ -91,10 +91,12 @@ src/
 - **Contact Form**: `submitContactForm` server action logs to console (data also saved to Payload CMS)
 
 ### Phase 5 - Scroll Effects & Auto-Refresh Fix (Mar 3, 2026)
-- [x] **Scroll Progress Bar**: Fixed gradient bar (blue->purple) at top of page, scales with scroll position
-- [x] **Scroll Reveal Animations**: Non-hero sections fade in with blur, scale, and directional slide (up/left/right alternating)
-- [x] **Smooth Scroll**: Global `scroll-behavior: smooth` on html element
-- [x] **Auto-Refresh Fix**: Added `premium-cms-hub` domains to `allowedDevOrigins` in `next.config.mjs`
+- [x] **Scroll Progress Bar**: Fixed gradient bar at top of page
+- [x] **Scroll Reveal**: Sections slide in on scroll (position only, no opacity dimming)
+- [x] **Smooth Scroll**: Global `scroll-behavior: smooth`
+- [x] **Auto-Refresh Fix**: Added `premium-cms-hub` to `allowedDevOrigins`
+- [x] **Hero Gradient Mesh**: Replaced NeuralLab dots with Stripe-inspired animated gradient blobs (indigo/blue/violet/cyan/purple, 80px blur, dark-mode aware)
+- [x] **Section Visibility Fix**: Removed opacity/blur from ScrollReveal to prevent dim sections
 
 ## Remaining / Future Tasks
 - [ ] **(P2) Connect newsletter to real email service** (SendGrid/Resend)

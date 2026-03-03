@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { TypewriterText } from '@/components/effects/TypewriterText'
-import { NeuralLab } from '@/components/effects/NeuralLab'
+import { GradientMesh } from '@/components/effects/GradientMesh'
 import { KeywordMarquee } from '@/components/home/KeywordMarquee'
 import { ContactModal } from '@/components/home/ContactModal'
 import { ArrowRight, ChevronRight } from 'lucide-react'
@@ -46,17 +46,10 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
   return (
     <>
       <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden pt-16" data-testid="hero-section">
-        {/* Background */}
+        {/* Background — animated gradient mesh */}
         <div className="absolute inset-0" style={{ zIndex: 0 }}>
-          <NeuralLab />
+          <GradientMesh />
         </div>
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            zIndex: 1,
-            background: 'radial-gradient(ellipse 80% 60% at 50% 40%, hsl(216 100% 50% / 0.04), transparent 60%), radial-gradient(ellipse 50% 50% at 80% 80%, hsl(259 72% 58% / 0.03), transparent 50%)',
-          }}
-        />
 
         {/* Content */}
         <div className="section-container relative w-full" style={{ zIndex: 10 }}>
