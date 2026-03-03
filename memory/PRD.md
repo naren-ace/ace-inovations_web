@@ -90,13 +90,18 @@ src/
 - **Newsletter**: `subscribeNewsletter` server action logs to console only
 - **Contact Form**: `submitContactForm` server action logs to console (data also saved to Payload CMS)
 
-### Phase 5 - Scroll Effects & Auto-Refresh Fix (Mar 3, 2026)
+### Phase 5 - Scroll Effects, Auto-Refresh Fix & 3D Globe (Mar 3, 2026)
+- [x] **3D Interactive Globe**: Three.js globe with 2000 Fibonacci-distributed dots, 8 city connection arcs, 120 orbiting particles, equator glow ring
+  - Mouse-reactive rotation + slow auto-rotation
+  - Dark mode: bright blue dots, purple particles, enhanced neon glow
+  - Light mode: subtle semi-transparent dots for text readability
+  - Dynamically imported (ssr: false) to avoid SSR issues
+- [x] **Gradient Mesh Background**: Canvas-based animated gradient blobs (5 colors) behind globe
 - [x] **Scroll Progress Bar**: Fixed gradient bar at top of page
 - [x] **Scroll Reveal**: Sections slide in on scroll (position only, no opacity dimming)
 - [x] **Smooth Scroll**: Global `scroll-behavior: smooth`
-- [x] **Auto-Refresh Fix**: Added `premium-cms-hub` to `allowedDevOrigins`
-- [x] **Hero Gradient Mesh**: Replaced NeuralLab dots with Stripe-inspired animated gradient blobs (indigo/blue/violet/cyan/purple, 80px blur, dark-mode aware)
-- [x] **Section Visibility Fix**: Removed opacity/blur from ScrollReveal to prevent dim sections
+- [x] **Auto-Refresh Fix**: Cleaned up `allowedDevOrigins` in `next.config.mjs`
+- [x] **Section Visibility Fix**: Removed opacity/blur from ScrollReveal
 
 ## Remaining / Future Tasks
 - [ ] **(P2) Connect newsletter to real email service** (SendGrid/Resend)
