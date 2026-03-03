@@ -94,7 +94,7 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
                 style={{ letterSpacing: '-0.03em', lineHeight: 1.2 }}
                 data-testid="hero-headline"
               >
-                <span className="block lg:whitespace-nowrap mb-3 sm:mb-4 md:mb-5 lg:mb-7">
+                <span className="block lg:whitespace-nowrap mb-2 sm:mb-2.5 md:mb-3 lg:mb-4">
                   <TypewriterText parts={line1Parts} speed={120} showCursorWhenDone={false} />
                 </span>
                 <span className="block lg:whitespace-nowrap">
