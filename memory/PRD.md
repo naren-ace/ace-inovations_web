@@ -51,9 +51,9 @@ Migrate the "ACE Labs" website content to a manageable CMS and fix recurring dat
 - [x] **Code Cleanup**: Fixed `<img>` -> Next.js `<Image>` in CustomSection
 
 ## Phase 4 - Hero Redesign: IDE/Developer Aesthetic (Feb 15, 2026)
-- [x] **Centered Typewriter Headline**: Slow character-by-character typing (70ms/char) with blinking cursor `|`, split across two lines
+- [x] **Centered Typewriter Headline**: Slow character-by-character typing (120ms/char, antigravity-style) with blinking cursor `|`, split across two lines
   - Line 1: "Engineering the Next Generation" (gradient highlight on "Next Generation")
-  - Line 2: "of Digital Platforms." (starts after line 1 completes + 200ms delay)
+  - Line 2: "of Digital Platforms." (starts after line 1 completes + 400ms delay)
   - Cursor hides on line 1 after it finishes, stays blinking on line 2
 - [x] **Clean centered layout**: Badge, headline, subtitle, CTAs, marquee all centered
 - [x] Code cards removed per user request
@@ -102,6 +102,15 @@ src/
 - [x] **Smooth Scroll**: Global `scroll-behavior: smooth`
 - [x] **Auto-Refresh Fix**: Cleaned up `allowedDevOrigins` in `next.config.mjs`
 - [x] **Section Visibility Fix**: Removed opacity/blur from ScrollReveal
+
+### Phase 6 - SEO Structured Data & Performance (Mar 3, 2026)
+- [x] **JSON-LD Organization schema** on all pages (name, description, knowsAbout, contactPoint)
+- [x] **JSON-LD WebSite schema** with SearchAction
+- [x] **JSON-LD ItemList** on Services page (5 services listed)
+- [x] **JSON-LD Article** on each Insights article (headline, author, datePublished, category)
+- [x] **Marquee slowed** from 50s to 80s cycle
+- [x] **Typewriter slowed** from 70ms to 120ms/char (antigravity pacing)
+- [x] **Performance**: Fonts use display:swap, Three.js is dynamic-imported, no raw `<img>` tags, unused NeuralLab removed from imports
 
 ## Remaining / Future Tasks
 - [ ] **(P2) Connect newsletter to real email service** (SendGrid/Resend)

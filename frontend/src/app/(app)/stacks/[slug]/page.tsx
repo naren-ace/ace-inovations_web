@@ -131,6 +131,18 @@ export default async function InsightArticlePage({ params }: { params: Promise<{
 
   return (
     <div className="min-h-screen animate-bg-breathe" data-testid="insight-article-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: post.title,
+        description: post.excerpt || `Read ${post.title} on AceInovations Insights.`,
+        author: { '@type': 'Organization', name: 'AceInovations' },
+        publisher: { '@type': 'Organization', name: 'AceInovations', logo: { '@type': 'ImageObject', url: 'https://aceinovations.com/favicon.svg' } },
+        datePublished: post.createdAt,
+        dateModified: post.updatedAt || post.createdAt,
+        mainEntityOfPage: { '@type': 'WebPage' },
+        articleSection: categoryLabels[post.category as string] ?? post.category,
+      }) }} />
       <ScrollSpiral />
       <Navbar />
 

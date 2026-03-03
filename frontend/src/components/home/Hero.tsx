@@ -91,10 +91,10 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
                   data-testid="hero-headline"
                 >
                   <span className="block whitespace-nowrap">
-                    <TypewriterText parts={line1Parts} speed={70} showCursorWhenDone={false} />
+                    <TypewriterText parts={line1Parts} speed={120} showCursorWhenDone={false} />
                   </span>
                   <span className="block whitespace-nowrap mt-1">
-                    <TypewriterText parts={line2Parts} speed={70} delayMs={line1Length * 70 + 200} />
+                    <TypewriterText parts={line2Parts} speed={120} delayMs={line1Length * 120 + 400} />
                   </span>
                 </h1>
               </motion.div>

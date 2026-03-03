@@ -189,7 +189,7 @@ body {
 
 /* Marquee */
 .marquee-wrapper { overflow: hidden; position: relative; }
-.marquee-track { display: flex; align-items: center; gap: 1.5rem; white-space: nowrap; animation: marquee-scroll 50s linear infinite; width: max-content; }
+.marquee-track { display: flex; align-items: center; gap: 1.5rem; white-space: nowrap; animation: marquee-scroll 80s linear infinite; width: max-content; }
 .marquee-wrapper:hover .marquee-track { animation-play-state: paused; }
 .marquee-wrapper:hover .marquee-item { color: hsl(259 72% 58%) !important; }
 .marquee-item { display: inline-flex; align-items: center; gap: 0.75rem; flex-shrink: 0; cursor: default; }

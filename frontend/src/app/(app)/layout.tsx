@@ -48,8 +48,56 @@ export const metadata: Metadata = {
 }
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
+  const orgJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'AceInovations',
+    url: 'https://aceinovations.com',
+    logo: 'https://aceinovations.com/favicon.svg',
+    description: 'We build scalable platforms that redefine industries. Specialists in Marketplace Development, Custom Integrations, and Strategic Innovation.',
+    foundingDate: '2020',
+    sameAs: [],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      availableLanguage: 'English',
+    },
+    areaServed: 'Worldwide',
+    knowsAbout: [
+      'Marketplace Development',
+      'Custom Software Engineering',
+      'AI Integration',
+      'SaaS Platforms',
+      'Mobile App Development',
+      'Data Migration',
+    ],
+  }
+
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'AceInovations',
+    url: 'https://aceinovations.com',
+    description: 'Enterprise marketplace development and strategic innovation studio.',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://aceinovations.com/stacks?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  }
+
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+      </head>
       <body className="min-h-screen bg-background text-foreground antialiased font-body">
         <TransitionProvider>
           {children}
