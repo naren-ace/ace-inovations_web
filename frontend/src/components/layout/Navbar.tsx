@@ -41,7 +41,7 @@ export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [contactOpen, setContactOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
   const [services, setServices] = useState<ServiceItem[]>([])
   const pathname = usePathname()
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -75,8 +75,10 @@ export const Navbar = () => {
 
   useEffect(() => {
     const saved = localStorage.getItem('ace-dark-mode')
-    if (saved === 'true') {
-      setDarkMode(true)
+    if (saved === 'false') {
+      setDarkMode(false)
+      document.documentElement.classList.remove('dark')
+    } else {
       document.documentElement.classList.add('dark')
     }
   }, [])
