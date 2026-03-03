@@ -8,6 +8,7 @@ Migrate the "ACE Labs" website content to a manageable CMS and fix recurring dat
 - **CMS**: Payload CMS v3
 - **Database**: MongoDB
 - **Animation**: Framer Motion 12
+- **3D Graphics**: Three.js, @react-three/fiber, @react-three/drei
 - **Styling**: Tailwind CSS + custom CSS variables (dark/light mode)
 - **Toast**: Sonner
 
@@ -58,6 +59,25 @@ Migrate the "ACE Labs" website content to a manageable CMS and fix recurring dat
 - [x] **Clean centered layout**: Badge, headline, subtitle, CTAs, marquee all centered
 - [x] Code cards removed per user request
 
+### Phase 5 - Scroll Effects, Auto-Refresh Fix & 3D Globe (Mar 3, 2026)
+- [x] **3D Interactive Globe**: Three.js globe with dots, connection arcs, orbiting particles, equator glow ring
+- [x] **Gradient Mesh Background**: Canvas-based animated gradient blobs behind globe
+- [x] **Scroll Progress Bar**: Fixed gradient bar at top of page
+- [x] **Scroll Reveal**: Sections slide in on scroll
+- [x] **Smooth Scroll**: Global `scroll-behavior: smooth`
+- [x] **Auto-Refresh Fix**: Cleaned up `allowedDevOrigins` in `next.config.mjs`
+
+### Phase 6 - SEO Structured Data & Performance (Mar 3, 2026)
+- [x] **JSON-LD Organization schema** on all pages
+- [x] **JSON-LD WebSite schema** with SearchAction
+- [x] **JSON-LD ItemList** on Services page
+- [x] **JSON-LD Article** on each Insights article
+- [x] **Marquee slowed** from 50s to 80s cycle
+- [x] **Typewriter slowed** from 70ms to 120ms/char
+
+### Phase 7 - Headline Spacing Fix (Mar 3, 2026)
+- [x] **Fixed headline spacing**: Replaced leading-[1.5] with explicit responsive margin (mb-3 sm:mb-4 md:mb-5 lg:mb-7) between two headline lines for antigravity.google-style generous breathing room
+
 ## Key Architecture
 ```
 src/
@@ -68,17 +88,21 @@ src/
   components/
     effects/
       TypewriterText.tsx    - Character-by-character typing animation
-      NeuralLab.tsx         - Background neural network animation
-      AntigravityHero.tsx   - Matter.js physics (legacy, still mounted)
+      HeroGlobe.tsx         - 3D globe with Three.js
+      GradientMesh.tsx      - Animated gradient mesh background
+      ScrollReveal.tsx      - Scroll-triggered animations
+      ScrollProgress.tsx    - Scroll progress bar
     home/
-      Hero.tsx              - Centered hero with typewriter + floating code cards
+      Hero.tsx              - Hero section with 3D globe + typewriter headline
       ContactModal.tsx      - Contact form with server action + toast
       NewsletterForm.tsx    - Newsletter subscription with toast
+      KeywordMarquee.tsx    - Keyword marquee animation
     layout/
       PageTransition.tsx    - Framer Motion fade+slide
       TransitionProvider.tsx- AnimatePresence + Toaster
       Footer.tsx            - CTA + newsletter + footer links
       Navbar.tsx            - Glassmorphism nav
+      StructuredData.tsx    - JSON-LD SEO data
 ```
 
 ## Admin Credentials
@@ -90,30 +114,8 @@ src/
 - **Newsletter**: `subscribeNewsletter` server action logs to console only
 - **Contact Form**: `submitContactForm` server action logs to console (data also saved to Payload CMS)
 
-### Phase 5 - Scroll Effects, Auto-Refresh Fix & 3D Globe (Mar 3, 2026)
-- [x] **3D Interactive Globe**: Three.js globe with 2000 Fibonacci-distributed dots, 8 city connection arcs, 120 orbiting particles, equator glow ring
-  - Mouse-reactive rotation + slow auto-rotation
-  - Dark mode: bright blue dots, purple particles, enhanced neon glow
-  - Light mode: subtle semi-transparent dots for text readability
-  - Dynamically imported (ssr: false) to avoid SSR issues
-- [x] **Gradient Mesh Background**: Canvas-based animated gradient blobs (5 colors) behind globe
-- [x] **Scroll Progress Bar**: Fixed gradient bar at top of page
-- [x] **Scroll Reveal**: Sections slide in on scroll (position only, no opacity dimming)
-- [x] **Smooth Scroll**: Global `scroll-behavior: smooth`
-- [x] **Auto-Refresh Fix**: Cleaned up `allowedDevOrigins` in `next.config.mjs`
-- [x] **Section Visibility Fix**: Removed opacity/blur from ScrollReveal
-
-### Phase 6 - SEO Structured Data & Performance (Mar 3, 2026)
-- [x] **JSON-LD Organization schema** on all pages (name, description, knowsAbout, contactPoint)
-- [x] **JSON-LD WebSite schema** with SearchAction
-- [x] **JSON-LD ItemList** on Services page (5 services listed)
-- [x] **JSON-LD Article** on each Insights article (headline, author, datePublished, category)
-- [x] **Marquee slowed** from 50s to 80s cycle
-- [x] **Typewriter slowed** from 70ms to 120ms/char (antigravity pacing)
-- [x] **Performance**: Fonts use display:swap, Three.js is dynamic-imported, no raw `<img>` tags, unused NeuralLab removed from imports
-
 ## Remaining / Future Tasks
+- [ ] **(P1) SEO Performance Audit** - Lighthouse/Core Web Vitals optimization
 - [ ] **(P2) Connect newsletter to real email service** (SendGrid/Resend)
 - [ ] **(P2) Replace og-image.jpg placeholder** with branded image
-- [ ] **(P3) SEO: Structured data (JSON-LD)** for services and articles
 - [ ] **(P3) Performance audit** - Core Web Vitals optimization
