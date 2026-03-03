@@ -10,7 +10,6 @@ import { KeywordMarquee } from '@/components/home/KeywordMarquee'
 import { ContactModal } from '@/components/home/ContactModal'
 import { ArrowRight, ChevronRight } from 'lucide-react'
 
-// Lazy-load globe to avoid SSR issues with Three.js
 const HeroGlobe = dynamic(
   () => import('@/components/effects/HeroGlobe').then(m => ({ default: m.HeroGlobe })),
   { ssr: false }
@@ -58,78 +57,79 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
           <GradientMesh />
         </div>
 
-        {/* 3D Globe — offset to the right, clipped to hero bounds */}
+        {/*
+          3D Globe:
+          - Mobile: full background, centered, semi-transparent
+          - Tablet (md): shifted right
+          - Desktop (lg): more right, bigger space
+        */}
         <div
-          className="absolute top-0 bottom-0 hidden lg:block"
-          style={{ zIndex: 2, left: '40%', right: 0 }}
+          className="absolute inset-0 md:left-[30%] lg:left-[40%]"
+          style={{ zIndex: 2 }}
         >
-          <HeroGlobe />
+          <div className="w-full h-full opacity-30 md:opacity-100">
+            <HeroGlobe />
+          </div>
         </div>
 
         {/* Content */}
         <div className="section-container relative w-full" style={{ zIndex: 10 }}>
-          <div className="grid lg:grid-cols-2 gap-8 items-center min-h-screen pt-20 pb-8">
-            {/* Left column — text */}
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-              {/* Badge */}
-              <motion.div custom={0} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="mb-6">
-                <span
-                  className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide uppercase"
-                  style={{ background: 'hsl(216 100% 50% / 0.06)', color: 'hsl(var(--primary))', border: '1px solid hsl(216 100% 50% / 0.12)' }}
-                  data-testid="hero-badge"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full animate-status-pulse" style={{ background: 'hsl(142 76% 36%)' }} />
-                  {badge}
+          <div className="flex flex-col items-center text-center md:items-start md:text-left min-h-screen justify-center pt-20 pb-8">
+            {/* Badge */}
+            <motion.div custom={0} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="mb-6">
+              <span
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-medium tracking-wide uppercase"
+                style={{ background: 'hsl(216 100% 50% / 0.06)', color: 'hsl(var(--primary))', border: '1px solid hsl(216 100% 50% / 0.12)' }}
+                data-testid="hero-badge"
+              >
+                <span className="w-1.5 h-1.5 rounded-full animate-status-pulse" style={{ background: 'hsl(142 76% 36%)' }} />
+                {badge}
+              </span>
+            </motion.div>
+
+            {/* Typewriter headline — responsive sizing, natural wrapping */}
+            <motion.div custom={1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="max-w-2xl lg:max-w-none">
+              <h1
+                className="text-[1.75rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.2rem] xl:text-[3.8rem] font-extrabold leading-[1.12] text-foreground"
+                style={{ letterSpacing: '-0.04em' }}
+                data-testid="hero-headline"
+              >
+                <span className="block lg:whitespace-nowrap">
+                  <TypewriterText parts={line1Parts} speed={120} showCursorWhenDone={false} />
                 </span>
-              </motion.div>
+                <span className="block lg:whitespace-nowrap mt-0.5 sm:mt-1">
+                  <TypewriterText parts={line2Parts} speed={120} delayMs={line1Length * 120 + 400} />
+                </span>
+              </h1>
+            </motion.div>
 
-              {/* Typewriter headline */}
-              <motion.div custom={1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
-                <h1
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[3.8rem] font-extrabold leading-[1.1] text-foreground"
-                  style={{ letterSpacing: '-0.04em' }}
-                  data-testid="hero-headline"
-                >
-                  <span className="block whitespace-nowrap">
-                    <TypewriterText parts={line1Parts} speed={120} showCursorWhenDone={false} />
-                  </span>
-                  <span className="block whitespace-nowrap mt-1">
-                    <TypewriterText parts={line2Parts} speed={120} delayMs={line1Length * 120 + 400} />
-                  </span>
-                </h1>
-              </motion.div>
+            {/* Subtitle */}
+            <motion.p custom={2} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
+              className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg leading-relaxed max-w-md md:max-w-lg"
+              style={{ color: 'hsl(var(--body))' }}
+              data-testid="hero-subheadline"
+            >
+              {subtitle}
+            </motion.p>
 
-              {/* Subtitle */}
-              <motion.p custom={2} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-                className="mt-5 text-base md:text-lg leading-relaxed max-w-lg"
-                style={{ color: 'hsl(var(--body))' }}
-                data-testid="hero-subheadline"
-              >
-                {subtitle}
-              </motion.p>
+            {/* CTAs */}
+            <motion.div custom={3} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
+              className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
+            >
+              <Button variant="premium" size="lg" onClick={() => setContactOpen(true)} className="btn-glow w-full sm:w-auto" data-testid="hero-start-project-btn">
+                {ctaText}
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+              <Button variant="ghost-gradient" size="lg" onClick={scrollToEngine} className="w-full sm:w-auto" data-testid="hero-explore-btn">
+                {secText}
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Button>
+            </motion.div>
 
-              {/* CTAs */}
-              <motion.div custom={3} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-                className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start"
-              >
-                <Button variant="premium" size="lg" onClick={() => setContactOpen(true)} className="btn-glow" data-testid="hero-start-project-btn">
-                  {ctaText}
-                  <ArrowRight className="w-4 h-4 ml-1" />
-                </Button>
-                <Button variant="ghost-gradient" size="lg" onClick={scrollToEngine} data-testid="hero-explore-btn">
-                  {secText}
-                  <ChevronRight className="w-4 h-4 ml-1" />
-                </Button>
-              </motion.div>
-
-              {/* Marquee */}
-              <motion.div custom={4} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="mt-12 w-full lg:max-w-lg">
-                <KeywordMarquee />
-              </motion.div>
-            </div>
-
-            {/* Right column — space for the globe (the globe is position:absolute) */}
-            <div className="hidden lg:block" />
+            {/* Marquee */}
+            <motion.div custom={4} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="mt-10 sm:mt-12 w-full md:max-w-lg">
+              <KeywordMarquee />
+            </motion.div>
           </div>
         </div>
       </section>
