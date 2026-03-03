@@ -42,7 +42,7 @@ function GlobeDots({ count = 1400, radius = 2.0, isDark }: { count?: number; rad
   return (
     <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
       <sphereGeometry args={[0.012, 6, 6]} />
-      <meshBasicMaterial color={color} transparent opacity={isDark ? 0.55 : 0.2} />
+      <meshBasicMaterial color={color} transparent opacity={isDark ? 0.55 : 0.4} />
     </instancedMesh>
   )
 }
@@ -112,7 +112,7 @@ function ConnectionArcs({ radius = 2.0, isDark }: { radius?: number; isDark: boo
               itemSize={3}
             />
           </bufferGeometry>
-          <lineBasicMaterial color={color} transparent opacity={isDark ? 0.4 : 0.15} linewidth={1} />
+          <lineBasicMaterial color={color} transparent opacity={isDark ? 0.4 : 0.3} linewidth={1} />
         </line>
       ))}
     </group>
@@ -162,7 +162,7 @@ function DataPulses({ radius = 2.0, isDark }: { radius?: number; isDark: boolean
   return (
     <instancedMesh ref={meshRef} args={[undefined, undefined, pulseCount]}>
       <sphereGeometry args={[0.025, 8, 8]} />
-      <meshBasicMaterial color={color} transparent opacity={isDark ? 0.9 : 0.5} />
+      <meshBasicMaterial color={color} transparent opacity={isDark ? 0.9 : 0.65} />
     </instancedMesh>
   )
 }
@@ -214,7 +214,7 @@ function OrbitingParticles({ count = 120, radius = 2.0, isDark }: { count?: numb
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />
       </bufferGeometry>
-      <pointsMaterial color={color} size={isDark ? 0.03 : 0.02} sizeAttenuation transparent opacity={isDark ? 0.7 : 0.35} />
+      <pointsMaterial color={color} size={isDark ? 0.03 : 0.025} sizeAttenuation transparent opacity={isDark ? 0.7 : 0.5} />
     </points>
   )
 }

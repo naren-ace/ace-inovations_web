@@ -90,14 +90,14 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
             {/* Typewriter headline — responsive sizing, natural wrapping */}
             <motion.div custom={1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="max-w-2xl lg:max-w-none">
               <h1
-                className="text-[1.75rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.2rem] xl:text-[3.8rem] font-extrabold leading-[1.12] text-foreground"
+                className="text-[1.75rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.2rem] xl:text-[3.8rem] font-extrabold leading-[1.3] text-foreground"
                 style={{ letterSpacing: '-0.04em' }}
                 data-testid="hero-headline"
               >
                 <span className="block lg:whitespace-nowrap">
                   <TypewriterText parts={line1Parts} speed={120} showCursorWhenDone={false} />
                 </span>
-                <span className="block lg:whitespace-nowrap mt-0.5 sm:mt-1">
+                <span className="block lg:whitespace-nowrap mt-2 sm:mt-3">
                   <TypewriterText parts={line2Parts} speed={120} delayMs={line1Length * 120 + 400} />
                 </span>
               </h1>
