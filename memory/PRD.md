@@ -90,6 +90,12 @@ src/
 - **Newsletter**: `subscribeNewsletter` server action logs to console only
 - **Contact Form**: `submitContactForm` server action logs to console (data also saved to Payload CMS)
 
+### Phase 5 - Scroll Effects & Auto-Refresh Fix (Mar 3, 2026)
+- [x] **Scroll Progress Bar**: Fixed gradient bar (blue->purple) at top of page, scales with scroll position
+- [x] **Scroll Reveal Animations**: Non-hero sections fade in with blur, scale, and directional slide (up/left/right alternating)
+- [x] **Smooth Scroll**: Global `scroll-behavior: smooth` on html element
+- [x] **Auto-Refresh Fix**: Added `premium-cms-hub` domains to `allowedDevOrigins` in `next.config.mjs`
+
 ## Remaining / Future Tasks
 - [ ] **(P2) Connect newsletter to real email service** (SendGrid/Resend)
 - [ ] **(P2) Replace og-image.jpg placeholder** with branded image
