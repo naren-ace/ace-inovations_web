@@ -58,8 +58,11 @@ export const HeroSection = ({ cms }: { cms?: any }) => {
           <GradientMesh />
         </div>
 
-        {/* 3D Globe — positioned to the right half */}
-        <div className="absolute inset-0 hidden lg:block" style={{ zIndex: 2, left: '25%' }}>
+        {/* 3D Globe — offset to the right, clipped to hero bounds */}
+        <div
+          className="absolute top-0 bottom-0 hidden lg:block"
+          style={{ zIndex: 2, left: '40%', right: 0 }}
+        >
           <HeroGlobe />
         </div>
 

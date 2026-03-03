@@ -5,7 +5,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 
 // --- Globe dots on sphere surface ---
-function GlobeDots({ count = 2000, radius = 2.0, isDark }: { count?: number; radius?: number; isDark: boolean }) {
+function GlobeDots({ count = 1400, radius = 2.0, isDark }: { count?: number; radius?: number; isDark: boolean }) {
   const meshRef = useRef<THREE.InstancedMesh>(null)
   const dummy = useMemo(() => new THREE.Object3D(), [])
 
@@ -280,7 +280,6 @@ function GlobeScene({ isDark }: { isDark: boolean }) {
       <ConnectionArcs isDark={isDark} />
       <DataPulses isDark={isDark} />
       <OrbitingParticles isDark={isDark} />
-      <GlowRing isDark={isDark} />
     </group>
   )
 }
@@ -303,7 +302,7 @@ export function HeroGlobe() {
       data-testid="hero-globe"
     >
       <Canvas
-        camera={{ position: [0, 0, 5.2], fov: 45 }}
+        camera={{ position: [0, 0, 6.5], fov: 45 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}
         style={{ pointerEvents: 'auto' }}
